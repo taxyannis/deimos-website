@@ -7,13 +7,14 @@ import {
 // Two-column editorial layout at lg+ (stacked below it): the main statement
 // paired with three short, structured restatements of ideas already in that
 // statement (see homepage.ts's sourcing comment on POSITIONING_PRINCIPLES).
-// Still no visible headline and no serif treatment on the body copy —
-// DESIGN.md's One-Serif Rule and this section's original restraint call
-// both stay intact; the added structure comes from composition (a second
-// column, thin rule dividers) not from decoration, cards, or icons.
+// Deep navy, continuous with the hero it follows — the homepage is one
+// coherent capital-markets environment now, not alternating light/dark
+// blocks; sections separate by hairline rules and tonal shifts within the
+// navy family, never by flipping to a bright surface. Still no visible
+// headline and no serif on body copy (One-Serif Rule intact).
 export function Positioning() {
   return (
-    <section className="section-light py-[var(--space-section)]">
+    <section className="ambient-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         {/* Visually hidden — this section deliberately has no visible title
             (HOMEPAGE_BLUEPRINT.md §18's restraint call), but still needs a
@@ -22,19 +23,19 @@ export function Positioning() {
 
         <div className="grid gap-[var(--space-xl)] lg:grid-cols-[3fr_2fr] lg:items-start">
           <div>
-            <p className="max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] font-medium">
+            <p className="text-on-dark max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] font-medium">
               {HOMEPAGE_SELF_IDENTIFICATION}
             </p>
-            <p className="mt-[var(--space-sm)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)]">
+            <p className="text-on-dark mt-[var(--space-sm)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
               {POSITIONING_COPY}
             </p>
           </div>
 
-          <ul className="divide-y divide-ink-on-light/15 border-t border-b border-ink-on-light/15 lg:mt-[var(--space-3xs)]">
+          <ul className="divide-y divide-white/10 border-t border-b border-white/10 lg:mt-[var(--space-3xs)]">
             {POSITIONING_PRINCIPLES.map((line) => (
               <li
                 key={line}
-                className="py-[var(--space-sm)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] text-ink-on-light/85"
+                className="text-muted-on-dark py-[var(--space-sm)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]"
               >
                 {line}
               </li>

@@ -5,6 +5,8 @@ import { HERO_TRANSITION_MS } from "@/content/hero";
 type HeroSlideLayerProps = {
   slide: HeroSlide;
   isActive: boolean;
+  /** True only during the crossfade window, for the slide being replaced. */
+  isOutgoing: boolean;
   /** Explicit stacking order during a crossfade: current > outgoing > rest. */
   zIndex: number;
   mountVideo: boolean;
@@ -25,14 +27,22 @@ const PREMIUM_EASE = "cubic-bezier(0.25, 1, 0.5, 1)";
  * One slide's full stacked background: navy fallback panel (always present,
  * bottom layer) -> poster image (if eligible and not failed) -> video (if
  * eligible, mounted, and not failed) -> dark overlay -> this slide's own
- * metric/label/supporting line. Opacity-crossfades in/out via `isActive`;
- * the layering itself never needs to know which tier "won" — a failed
- * video/poster simply isn't rendered, and whatever sits beneath shows
- * through instead. See HERO_COMPONENT_BLUEPRINT.md §5.
+ * metric/label/supporting line.
+ *
+ * Crossfade model: a TRUE dissolve, not a double-fade. The outgoing slide
+ * holds opacity 1 underneath (zIndex 1) while the incoming slide fades
+ * 0 -> 1 on top (zIndex 2) — so the frame never dips through a darker
+ * mid-blend the way simultaneous out-fade + in-fade does, and there is no
+ * flash and no hard cut. Once the incoming layer is fully opaque, the
+ * outgoing layer is released (covered, so the release is invisible). The
+ * lower-third metric block rides the same crossfade with a slight delayed
+ * rise, so text and video move as one choreographed transition instead of
+ * two competing ones.
  */
 export function HeroSlideLayer({
   slide,
   isActive,
+  isOutgoing,
   zIndex,
   mountVideo,
   allowVideo,
@@ -44,17 +54,22 @@ export function HeroSlideLayer({
 }: HeroSlideLayerProps) {
   const showVideo = allowVideo && mountVideo && !videoFailed;
   const showPoster = !showVideo && !posterFailed;
+  const visible = isActive || isOutgoing;
 
   return (
     <div
       aria-hidden={!isActive}
       className="absolute inset-0"
       style={{
-        opacity: isActive ? 1 : 0,
+        opacity: visible ? 1 : 0,
         zIndex,
-        transition: reducedMotion
-          ? "none"
-          : `opacity ${HERO_TRANSITION_MS}ms ${PREMIUM_EASE}`,
+        // Only the INCOMING layer animates; the outgoing layer holds still
+        // beneath it and non-participating layers snap (invisibly, they're
+        // covered by the fully-opaque active layer).
+        transition:
+          reducedMotion || !isActive
+            ? "none"
+            : `opacity ${HERO_TRANSITION_MS}ms ${PREMIUM_EASE}`,
       }}
     >
       {/* Tier 3 — navy-led cinematic fallback panel. Always present as the
@@ -97,8 +112,22 @@ export function HeroSlideLayer({
           against worst-case bright footage; see globals.css .hero-overlay. */}
       <div className="hero-overlay absolute inset-0" aria-hidden="true" />
 
-      {/* This slide's coordinated metric/label/supporting line — lower-third */}
-      <div className="absolute inset-x-0 bottom-0 px-[var(--space-md)] pb-[var(--space-2xl)] sm:px-[var(--space-lg)] sm:pb-[var(--space-3xl)]">
+      {/* This slide's coordinated metric/label/supporting line — lower-third.
+          Rides the crossfade with a short delayed rise so the incoming
+          metric settles as the incoming footage resolves; the outgoing
+          slide's text stays put and is covered along with its video (no
+          text flicker, no double-motion). */}
+      <div
+        className="absolute inset-x-0 bottom-0 px-[var(--space-md)] pb-[var(--space-2xl)] sm:px-[var(--space-lg)] sm:pb-[var(--space-3xl)]"
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(12px)",
+          transition:
+            reducedMotion || !isActive
+              ? "none"
+              : `opacity 900ms ${PREMIUM_EASE} 350ms, transform 900ms ${PREMIUM_EASE} 350ms`,
+        }}
+      >
         <div className="mx-auto max-w-7xl">
           {slide.metricRegister === "numeric" ? (
             <p className="text-on-dark text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)] tracking-[var(--text-h1--letter-spacing)] font-serif">

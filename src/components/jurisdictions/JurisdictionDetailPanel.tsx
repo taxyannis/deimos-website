@@ -1,4 +1,4 @@
-import { JURISDICTION_EXPOSURE_TYPE_LABEL, type JurisdictionGroup } from "@/content/jurisdictions";
+import { jurisdictionClassification, type JurisdictionGroup } from "@/content/jurisdictions";
 
 export type SelectedJurisdiction = { name: string; region: string };
 
@@ -52,8 +52,11 @@ export function JurisdictionDetailPanel({
           {jurisdiction.name}
         </h3>
         <div className="mt-[var(--space-sm)] border-t border-white/15 pt-[var(--space-sm)]">
-          <p className="text-muted-on-dark max-w-[40ch] text-[length:var(--text-body)]">
-            {JURISDICTION_EXPOSURE_TYPE_LABEL}
+          <p className="text-muted-on-dark text-[length:var(--text-small)] tracking-[var(--text-small--letter-spacing)]">
+            Exposure classification
+          </p>
+          <p className="text-on-dark mt-[var(--space-3xs)] max-w-[40ch] text-[length:var(--text-body)]">
+            {jurisdictionClassification(jurisdiction.name)}
           </p>
         </div>
       </div>
@@ -69,7 +72,7 @@ export function JurisdictionDetailPanel({
         <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
           {activeGroup.region}
         </p>
-        <ul className="mt-[var(--space-sm)] max-h-[14rem] overflow-y-auto border-t border-white/15">
+        <ul className="scrollbar-dark mt-[var(--space-sm)] max-h-[14rem] overflow-y-auto border-t border-white/15">
           {activeGroup.jurisdictions.map((name) => (
             <li key={name} className="border-b border-white/10 last:border-b-0">
               <button

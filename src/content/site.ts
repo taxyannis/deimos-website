@@ -4,10 +4,13 @@ export const SITE_NAME = "Deimos Group";
 // are not linked here — Situations/Sectors are optional Phase 2.5 pages not
 // yet built, and Experience was removed from v1 entirely and merged into
 // /firm's Exposure & Experience section (SITE_COMPLETION_PLAN.md).
+// "Jurisdictions" renamed to "Coverage" across the public UI (client
+// decision, v1 rebuild pass) — /coverage is the public route and
+// /jurisdictions permanently redirects to it (next.config.ts).
 export const MAIN_NAV = [
   { label: "Firm", href: "/firm" },
   { label: "Advisory", href: "/advisory" },
-  { label: "Jurisdictions", href: "/jurisdictions" },
+  { label: "Coverage", href: "/coverage" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -15,7 +18,7 @@ export const MAIN_NAV = [
 export const FOOTER_NAV = [
   { label: "Firm", href: "/firm" },
   { label: "Advisory", href: "/advisory" },
-  { label: "Jurisdictions", href: "/jurisdictions" },
+  { label: "Coverage", href: "/coverage" },
   { label: "Contact", href: "/contact" },
   { label: "Legal / Disclaimer", href: "/legal" },
   { label: "Privacy Policy", href: "/privacy" },
@@ -28,8 +31,11 @@ export const FOOTER_NAV = [
 export const DISCLAIMERS = {
   general:
     "Information on this website is provided for general institutional and informational purposes only. It does not constitute an offer to sell, a solicitation to buy, investment advice, legal advice, tax advice or regulated financial advice. Deimos Group engages selectively and subject to applicable laws, documentation, mandate terms and jurisdictional requirements.",
+  // Wording updated with the Jurisdictions -> Coverage rename (client-
+  // provided replacement text, same legal substance: exposure/coverage,
+  // never offices or regulated operations).
   jurisdictional:
-    "Selected jurisdictions reflect current or recent market exposure, transaction review, advisory activity, partner coverage or structuring relevance, and do not imply physical office presence or regulated operations in each market.",
+    "Selected coverage reflects current or recent market exposure, transaction review, advisory activity, partner coverage or structuring relevance, and does not imply physical office presence or regulated operations in each market.",
   capitalAccess:
     "References to capital access or capital formation refer to advisory, structuring, positioning and counterparty engagement support, and do not constitute a guarantee of financing or investment.",
 } as const;

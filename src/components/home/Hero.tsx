@@ -135,6 +135,7 @@ export function Hero() {
             key={slide.id}
             slide={slide}
             isActive={isActive}
+            isOutgoing={isOutgoing}
             zIndex={isActive ? 2 : isOutgoing ? 1 : 0}
             // Current slide plays; the next slide starts pre-loading/playing
             // silently beneath it (opacity 0) only once preloadNext flips
@@ -159,7 +160,9 @@ export function Hero() {
       })}
 
       <div className="relative z-10 flex min-h-dvh flex-col justify-center px-[var(--space-md)] pb-[clamp(10rem,22vh,16rem)] sm:px-[var(--space-lg)]">
-        <div className="mx-auto max-w-7xl">
+        {/* One quiet rise on first paint (rise-in, globals.css) — mount-time
+            only, never scroll-gated, collapsed under reduced motion. */}
+        <div className="mx-auto max-w-7xl [animation:rise-in_800ms_cubic-bezier(0.25,1,0.5,1)_both]">
           <h1 className="text-on-dark max-w-[18ch] text-[length:var(--text-display)] leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)] font-serif">
             {HERO_HEADLINE}
           </h1>

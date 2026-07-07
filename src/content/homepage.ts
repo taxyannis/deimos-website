@@ -91,7 +91,9 @@ export const PROCESS_STEPS = [
   "Execution Support",
 ] as const;
 
-export const JURISDICTION_HEADLINE = "Selected Jurisdictional Exposure";
+// "Coverage" is the public-facing term as of the v1 rebuild (rename from
+// "Jurisdictions" across nav, footer, CTAs and page title).
+export const JURISDICTION_HEADLINE = "Selected Market Coverage";
 
 export const JURISDICTION_SUBTEXT =
   "Deimos operates across a selective set of cross-border markets where the firm is evaluating, structuring, advising on, or advancing transaction situations through direct activity or aligned counterparty coverage.";
@@ -106,9 +108,9 @@ export const JURISDICTION_REGIONS = [
 ] as const;
 
 export const JURISDICTION_DISCLAIMER =
-  "Selected jurisdictions reflect current or recent market exposure, transaction review, advisory activity, partner coverage or structuring relevance, and do not imply physical office presence or regulated operations in each market.";
+  "Selected coverage reflects current or recent market exposure, transaction review, advisory activity, partner coverage or structuring relevance, and does not imply physical office presence or regulated operations in each market.";
 
-export const JURISDICTION_LINK = { label: "View jurisdictional exposure", href: "/jurisdictions" };
+export const JURISDICTION_LINK = { label: "View selected coverage", href: "/coverage" };
 
 // /experience (and its homepage Experience section) was removed from v1 —
 // the same three anonymized exposure themes now live on /firm's Exposure &

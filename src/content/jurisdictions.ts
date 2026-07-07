@@ -113,8 +113,40 @@ export const JURISDICTION_GROUPS: JurisdictionGroup[] = [
   },
 ];
 
-// Safe, sitewide-consistent classification shown in the map/list detail
-// view for every jurisdiction — never a claim of offices, licenses, or
-// completed mandates (task spec §D.4 / DISCLAIMERS.jurisdictional).
-export const JURISDICTION_EXPOSURE_TYPE_LABEL =
-  "Market exposure / transaction review / partner coverage / structuring relevance";
+// Per-jurisdiction exposure classification shown in the coverage detail
+// panel — never a claim of offices, licenses, local teams, or completed
+// mandates (DISCLAIMERS.jurisdictional). The approved vocabulary is
+// exactly these six values (client-provided):
+//
+//   Transaction Review · Market Exposure · Partner Coverage ·
+//   Structuring Relevance · Principal / Historical Exposure ·
+//   Strategic Market Monitoring
+//
+// IMPORTANT — assignment discipline: no source document maps a specific
+// jurisdiction to a specific classification, so per-country values here
+// are deliberately conservative: "Structuring Relevance" for the two
+// International Structuring jurisdictions (that is literally their
+// category) and the baseline "Market Exposure" for everything else.
+// Assigning, say, "Principal / Historical Exposure" to a named country
+// without client data would make an unsupported claim MORE specific —
+// exactly what the credibility rules prohibit. When the client supplies a
+// real per-jurisdiction mapping, put it in CLASSIFICATION_OVERRIDES below;
+// nothing else needs to change.
+export type JurisdictionClassification =
+  | "Transaction Review"
+  | "Market Exposure"
+  | "Partner Coverage"
+  | "Structuring Relevance"
+  | "Principal / Historical Exposure"
+  | "Strategic Market Monitoring";
+
+const DEFAULT_CLASSIFICATION: JurisdictionClassification = "Market Exposure";
+
+const CLASSIFICATION_OVERRIDES: Record<string, JurisdictionClassification> = {
+  "Cayman Islands": "Structuring Relevance",
+  "Saint Vincent and the Grenadines": "Structuring Relevance",
+};
+
+export function jurisdictionClassification(name: string): JurisdictionClassification {
+  return CLASSIFICATION_OVERRIDES[name] ?? DEFAULT_CLASSIFICATION;
+}

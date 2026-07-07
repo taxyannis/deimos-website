@@ -137,11 +137,22 @@
 
   html {
     scroll-behavior: smooth;
+    /* Dark-tinted scrollbars sitewide — the browser-default near-white
+       scrollbar reads as a foreign artifact against the navy system
+       (it was the "white slider" visible when the coverage region picker
+       overflowed). */
+    scrollbar-color: oklch(0.38 0.03 252) var(--color-deep-navy);
   }
 
+  /* Deep navy is the site's base surface, not an accent — the whole v1
+     experience now lives inside the navy family (deep navy base, ink-blue
+     panels, slate footer), with off-white demoted from default background
+     to typography color. This is the "one coherent capital-markets
+     environment" rework: tonal variation within navy, not white/grey
+     section alternation. */
   body {
-    background: var(--color-off-white);
-    color: var(--color-ink-on-light);
+    background: var(--color-deep-navy);
+    color: var(--color-ink-on-dark);
     font-family: var(--font-sans);
     line-height: var(--text-body--line-height);
     -webkit-font-smoothing: antialiased;
@@ -165,8 +176,8 @@
   }
 
   ::selection {
-    background: var(--color-steel-blue-on-light);
-    color: var(--color-off-white);
+    background: var(--color-steel-blue);
+    color: var(--color-deep-navy);
   }
 }
 
@@ -224,6 +235,29 @@
     color: var(--color-muted-on-light);
   }
 
+  /* Thin, navy-tinted scrollbar for small internal scroll regions (the
+     coverage detail panel's region picker) — track transparent so only a
+     quiet thumb shows against the panel. */
+  .scrollbar-dark {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.38 0.03 252) transparent;
+  }
+
+  /* Ambient tonal depth — a faint ink-blue radial wash over the deep-navy
+     base, for sections that need atmosphere rather than a flat fill. Depth
+     via layered gradient inside the navy family (DESIGN.md's tonal-shift
+     elevation rule), never via boxes, panels, or shadows. */
+  .ambient-navy {
+    background:
+      radial-gradient(
+        120% 90% at 12% 0%,
+        color-mix(in oklab, var(--color-ink-blue) 55%, transparent),
+        transparent 60%
+      ),
+      var(--color-deep-navy);
+    color: var(--color-ink-on-dark);
+  }
+
   /*
     Hero video overlay — bottom-to-top navy wash with a HIGH FLOOR, not just
     a bottom-weighted fade. A live pixel audit against real footage measured
@@ -264,6 +298,58 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/*
+  Page-header entrance — a single quiet rise on load for the serif title
+  block (hero headline, subpage PageHeader). Runs once on mount, never on
+  scroll (no IntersectionObserver gating, so content is never hidden if a
+  reveal fails to fire), and collapses to instant under the global
+  reduced-motion reset below. `both` fill so the pre-animation frame is
+  already at opacity 0 instead of flashing.
+*/
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+  Process-rail draw — the hairline rule above the six process steps draws
+  in from the left as the section scrolls into view (scroll-driven
+  animation-timeline where supported). Progressive enhancement three ways:
+  browsers without animation-timeline just run the keyframe once on load
+  (the property is ignored, the line still ends full-width); reduced-motion
+  users get a static full-width line via the override below; and the base
+  transform is scaleX(1), so a line with `animation: none` is simply drawn.
+*/
+@keyframes rail-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.rail-line {
+  transform-origin: left;
+  animation: rail-draw 1.1s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation-timeline: view();
+  animation-range: entry 15% entry 95%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail-line {
+    /* Scroll-driven scrubbing ignores animation-duration, so the global
+       0.01ms reset below doesn't neutralize it — this does. */
+    animation: none !important;
   }
 }
 

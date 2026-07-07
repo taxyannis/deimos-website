@@ -9,29 +9,28 @@ import { CTALink } from "@/components/ui/CTALink";
 
 // Editorial index, not cards — per HOMEPAGE_BLUEPRINT.md §8/§18: large label
 // typography, thin rule dividers, one-line definitions in sans, no icons, no
-// bordered boxes. Each pillar name is a real link (not a decorative hover
-// trigger) so the hover/focus-reveal works for keyboard users too, not just
-// a mouse.
+// bordered boxes. Ink-blue tonal panel against the deep-navy page base —
+// the section shift reads as a quiet change of register, not a zebra flip
+// to a bright surface. Each pillar name is a real link (not a decorative
+// hover trigger) so the hover/focus-reveal works for keyboard users too.
 export function AdvisoryPreview() {
   return (
-    <section className="section-light py-[var(--space-section)]">
+    <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        <h2 className="max-w-[60ch] text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
+        <h2 className="text-on-dark max-w-[60ch] text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
           {ADVISORY_INTRO}
         </h2>
 
-        <div className="divide-ink-on-light/15 mt-[var(--space-xl)] divide-y border-t border-b border-ink-on-light/15">
+        <div className="mt-[var(--space-xl)] divide-y divide-white/10 border-t border-b border-white/10">
           {ADVISORY_PILLARS.map((pillar) => (
             <div key={pillar.name} className="group py-[var(--space-md)]">
               <Link
                 href={ADVISORY_LINK.href}
-                className="inline-block text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif transition-colors hover:text-steel-blue-on-light focus-visible:text-steel-blue-on-light focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue-on-light"
+                className="text-on-dark inline-block text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif transition-colors hover:text-steel-blue focus-visible:text-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
               >
                 {pillar.name}
               </Link>
-              <p
-                className="mt-[var(--space-2xs)] max-w-[65ch] text-[length:var(--text-body)] text-ink-on-light/85 sm:max-h-0 sm:overflow-hidden sm:opacity-0 sm:transition-all sm:duration-300 sm:group-hover:max-h-24 sm:group-hover:opacity-100 sm:group-focus-within:max-h-24 sm:group-focus-within:opacity-100"
-              >
+              <p className="text-muted-on-dark mt-[var(--space-2xs)] max-w-[65ch] text-[length:var(--text-body)] sm:max-h-0 sm:overflow-hidden sm:opacity-0 sm:transition-all sm:duration-300 sm:group-hover:max-h-24 sm:group-hover:opacity-100 sm:group-focus-within:max-h-24 sm:group-focus-within:opacity-100">
                 {pillar.definition}
               </p>
             </div>
@@ -39,7 +38,7 @@ export function AdvisoryPreview() {
         </div>
 
         <div className="mt-[var(--space-lg)] flex flex-col gap-[var(--space-sm)]">
-          <CTALink href={ADVISORY_LINK.href} tone="on-light">
+          <CTALink href={ADVISORY_LINK.href} tone="on-dark">
             {ADVISORY_LINK.label}
             <span aria-hidden="true" className="ml-[var(--space-2xs)]">
               &rarr;
@@ -49,7 +48,7 @@ export function AdvisoryPreview() {
           {/* Capital access disclaimer travels with the claim: one of the
               four pillars above is Capital Access & Private Capital
               Formation, so the hedge sits here, not only in the footer. */}
-          <p className="text-muted-on-light max-w-[65ch] text-[length:var(--text-small)]">
+          <p className="text-muted-on-dark max-w-[65ch] text-[length:var(--text-small)]">
             {CAPITAL_ACCESS_DISCLAIMER}
           </p>
         </div>

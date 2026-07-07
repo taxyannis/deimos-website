@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
         destination: "/advisory#capabilities",
         permanent: true,
       },
+      // "Jurisdictions" renamed to "Coverage" across the public UI —
+      // /coverage is the canonical route; this keeps old links working.
+      {
+        source: "/jurisdictions",
+        destination: "/coverage",
+        permanent: true,
+      },
     ];
   },
 };

@@ -4,26 +4,28 @@ import { useState } from "react";
 import { ADVISORY_PILLARS } from "@/content/advisory";
 import { DISCLAIMERS } from "@/content/site";
 
-// Accordion, not cards — DESIGN.md's anti-card-grid stance. /services was
-// merged back into this page (v1 scope decision: one advisory page, not two
-// near-duplicate ones) — these 7 pillars are now the single, authoritative
-// "Advisory Capabilities" surface, covering strategic framing and typical-
-// situation detail together. No icons — each trigger is typography plus a
-// plain +/− indicator, not a generic icon.
+// Accordion, not cards — DESIGN.md's anti-card-grid stance. These 7 pillars
+// are the single, authoritative "Advisory Capabilities" surface (the old
+// /services page was merged back in here). No icons — each trigger is
+// typography plus a plain +/− indicator. Interaction states: the whole row
+// is the trigger, hover tints the name toward steel blue, the open row's
+// name holds steel blue as its active state, and the detail panel reveals
+// via the grid-rows 0fr/1fr height transition (collapses under the global
+// reduced-motion reset). Ink-blue tonal panel against the navy page base.
 export function AdvisoryPillars() {
   const [openId, setOpenId] = useState<string | null>(ADVISORY_PILLARS[0].id);
 
   return (
     <section
       id="capabilities"
-      className="section-light scroll-mt-24 py-[var(--space-section)]"
+      className="section-dark scroll-mt-24 border-t border-white/10 py-[var(--space-section)]"
     >
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        <h2 className="text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
+        <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           Advisory Capabilities
         </h2>
 
-        <div className="divide-ink-on-light/15 mt-[var(--space-lg)] divide-y border-t border-b border-ink-on-light/15">
+        <div className="mt-[var(--space-lg)] divide-y divide-white/10 border-t border-b border-white/10">
           {ADVISORY_PILLARS.map((pillar) => {
             const isOpen = openId === pillar.id;
             const panelId = `advisory-panel-${pillar.id}`;
@@ -34,29 +36,30 @@ export function AdvisoryPillars() {
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   onClick={() => setOpenId(isOpen ? null : pillar.id)}
-                  className="flex w-full items-center justify-between gap-[var(--space-md)] text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue-on-light"
+                  className="group flex w-full items-center justify-between gap-[var(--space-md)] text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
                 >
-                  <span className="text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
+                  <span
+                    className={`text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif transition-colors group-hover:text-steel-blue ${
+                      isOpen ? "text-steel-blue" : "text-on-dark"
+                    }`}
+                  >
                     {pillar.name}
                   </span>
                   <span
                     aria-hidden="true"
-                    className="text-muted-on-light text-[length:var(--text-h3)] font-serif"
+                    className="text-muted-on-dark text-[length:var(--text-h3)] font-serif transition-colors group-hover:text-steel-blue"
                   >
                     {isOpen ? "−" : "+"}
                   </span>
                 </button>
 
-                <p className="mt-[var(--space-2xs)] max-w-[65ch] text-[length:var(--text-body)] text-ink-on-light/85">
+                <p className="text-muted-on-dark mt-[var(--space-2xs)] max-w-[65ch] text-[length:var(--text-body)]">
                   {pillar.definition}
                 </p>
 
-                {/* CSS grid height-transition trick (transitioning
-                    grid-template-rows between 0fr/1fr) — a real smooth
-                    reveal instead of the previous instant `hidden` toggle.
-                    The sitewide reduced-motion reset in globals.css already
-                    collapses this transition's duration for those users, so
-                    no extra branching is needed here. */}
+                {/* CSS grid height-transition (grid-template-rows 0fr/1fr) —
+                    a real smooth reveal; the sitewide reduced-motion reset
+                    collapses its duration for those users. */}
                 <div
                   id={panelId}
                   aria-hidden={!isOpen}
@@ -65,11 +68,11 @@ export function AdvisoryPillars() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="mt-[var(--space-sm)] max-w-[65ch] border-l border-ink-on-light/15 pl-[var(--space-sm)]">
-                      <p className="text-muted-on-light text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+                    <div className="mt-[var(--space-sm)] max-w-[65ch] border-l border-white/15 pl-[var(--space-sm)]">
+                      <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
                         Typical situations
                       </p>
-                      <p className="mt-[var(--space-2xs)] text-[length:var(--text-body)] text-ink-on-light/85">
+                      <p className="text-on-dark mt-[var(--space-2xs)] text-[length:var(--text-body)] opacity-90">
                         {pillar.typicalSituations}
                       </p>
                     </div>
@@ -83,7 +86,7 @@ export function AdvisoryPillars() {
         {/* Capital access disclaimer travels with the claim: the first
             pillar above is Capital Access & Private Capital Formation, so
             the hedge sits here, not only in the sitewide footer. */}
-        <p className="text-muted-on-light mt-[var(--space-lg)] max-w-[65ch] text-[length:var(--text-small)]">
+        <p className="text-muted-on-dark mt-[var(--space-lg)] max-w-[65ch] text-[length:var(--text-small)]">
           {DISCLAIMERS.capitalAccess}
         </p>
       </div>

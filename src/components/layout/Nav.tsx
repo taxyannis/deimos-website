@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useCallback, useRef } from "react";
-import { MAIN_NAV, SITE_NAME } from "@/content/site";
+import { MAIN_NAV } from "@/content/site";
+import { Wordmark } from "@/components/layout/Wordmark";
 
 export function Nav() {
   const pathname = usePathname();
@@ -75,11 +76,13 @@ export function Nav() {
           aria-label="Primary"
           className="mx-auto flex max-w-7xl items-center justify-between px-[var(--space-md)] py-[var(--space-sm)] sm:px-[var(--space-lg)]"
         >
+          {/* Same serif masthead treatment as the footer (shared Wordmark),
+              scaled down to nav height. */}
           <Link
             href="/"
-            className="text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] uppercase text-ink-on-dark"
+            className="text-ink-on-dark transition-colors hover:text-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
           >
-            {SITE_NAME}
+            <Wordmark className="text-[length:var(--text-body-lg)]" />
           </Link>
 
           {/* Desktop links */}

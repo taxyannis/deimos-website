@@ -1,31 +1,45 @@
-import { CONFIDENTIALITY_COPY, CONFIDENTIALITY_PRINCIPLES, PROCESS_STEPS } from "@/content/homepage";
+import {
+  CONFIDENTIALITY_COPY,
+  CONFIDENTIALITY_PRINCIPLES,
+  PROCESS_STEPS,
+} from "@/content/homepage";
 
-// Slate-navy: a deliberate tonal pivot, distinct from the off-white sections
-// above and the deep-navy jurisdiction section below (HOMEPAGE_BLUEPRINT.md
-// §18). Still the quietest, most typographic section on the page — no
-// imagery, no cards, no icons. Now three typographic tiers instead of one:
-// statement -> principles (middot-separated, parallel qualities, no
-// implied order) -> process (arrow-connected, a real sequence). The middot
-// vs. arrow distinction matters: arrows are reserved sitewide for genuine
-// sequences, and using them for the principles list would misleadingly
-// imply an order these five qualities don't have.
+// "Mandate Discipline" — the former grey confidentiality box, rebuilt as a
+// premium process/control section inside the dark homepage system rather
+// than a disconnected slate panel. Three typographic tiers, all editorial
+// (no cards, no icons, no panel background): statement -> principles
+// (middot-separated, parallel qualities with no implied order) -> the
+// process RAIL: a single hairline with a station dot above each step,
+// which is what actually conveys "controlled sequence" — the arrow glyphs
+// the old version used are retired here because the rail itself now does
+// that job. The heading reuses the approved principle label "Mandate
+// Discipline" (FIRM_CONFIDENTIALITY.principles) — no new claim. Hover on a
+// step is a restrained focus detail (dot + label sharpen), not decoration.
 export function Confidentiality() {
+  // The section heading IS "Mandate Discipline," so that label is filtered
+  // out of the principles row below — showing it twice within a few lines
+  // read as an awkward near-phrase ("...Mandate Discipline · Institutional
+  // Process Control") stacked under the same words. The full five-label
+  // list still appears intact on /firm, where the heading differs.
+  const principles = CONFIDENTIALITY_PRINCIPLES.filter((p) => p !== "Mandate Discipline");
+
   return (
-    <section className="section-slate py-[var(--space-section)]">
+    <section className="ambient-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        {/* Visually hidden — quiet, title-less by design, but still exposed
-            to screen-reader heading navigation. */}
-        <h2 className="sr-only">Confidentiality &amp; Mandate Orientation</h2>
-        <p className="max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)]">
+        <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
+          Mandate Discipline
+        </h2>
+
+        <p className="text-on-dark mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
           {CONFIDENTIALITY_COPY}
         </p>
 
-        <ul className="mt-[var(--space-lg)] flex flex-wrap items-center gap-y-[var(--space-2xs)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] text-muted-on-slate">
-          {CONFIDENTIALITY_PRINCIPLES.map((principle, index) => (
+        <ul className="text-muted-on-dark mt-[var(--space-lg)] flex flex-wrap items-center gap-y-[var(--space-2xs)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+          {principles.map((principle, index) => (
             <li key={principle} className="flex items-center">
               <span>{principle}</span>
-              {index < CONFIDENTIALITY_PRINCIPLES.length - 1 && (
-                <span aria-hidden="true" className="mx-[var(--space-sm)] text-muted-on-slate/60">
+              {index < principles.length - 1 && (
+                <span aria-hidden="true" className="mx-[var(--space-sm)] text-white/30">
                   &middot;
                 </span>
               )}
@@ -33,23 +47,27 @@ export function Confidentiality() {
           ))}
         </ul>
 
-        <ol className="mt-[var(--space-xl)] flex flex-col flex-wrap gap-[var(--space-sm)] border-t border-white/10 pt-[var(--space-lg)] sm:flex-row sm:items-center sm:gap-0">
-          {PROCESS_STEPS.map((step, index) => (
-            <li key={step} className="flex items-center">
-              <span className="text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
-                {step}
-              </span>
-              {index < PROCESS_STEPS.length - 1 && (
+        {/* Process rail — a hairline that draws in from the left as the
+            section enters view (rail-line, globals.css; static full-width
+            under reduced motion or without scroll-timeline support); each
+            step's dot sits centered on it. A real sequence, so an ordered
+            list; order is carried by the rail geometry, left to right. */}
+        <div className="relative mt-[var(--space-2xl)]">
+          <span aria-hidden="true" className="rail-line absolute top-0 left-0 h-px w-full bg-white/15" />
+          <ol className="grid grid-cols-2 gap-x-[var(--space-lg)] gap-y-[var(--space-lg)] sm:grid-cols-3 lg:grid-cols-6">
+            {PROCESS_STEPS.map((step) => (
+              <li key={step} className="group relative pt-[var(--space-md)]">
                 <span
                   aria-hidden="true"
-                  className="text-muted-on-slate mx-[var(--space-sm)] hidden sm:inline"
-                >
-                  &rarr;
+                  className="absolute top-0 left-0 h-[7px] w-[7px] -translate-y-1/2 rounded-full bg-steel-blue/60 transition-colors group-hover:bg-steel-blue"
+                />
+                <span className="text-muted-on-dark block text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] transition-colors group-hover:text-on-dark">
+                  {step}
                 </span>
-              )}
-            </li>
-          ))}
-        </ol>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

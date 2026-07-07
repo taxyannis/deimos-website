@@ -1,42 +1,42 @@
 import { MANDATE_ORIENTATION, PROCESS_STEPS } from "@/content/advisory";
 
-// Slate-navy tonal pivot, matching the homepage Confidentiality section's
-// register. Unlike the homepage's label-only compression, this dedicated
-// advisory page has room for the full process description alongside the
-// step labels — connected by thin rules/arrows, never numbered circles.
+// Same process-rail treatment as the homepage's Mandate Discipline section
+// (Confidentiality.tsx) — the two surfaces showing this sequence share one
+// visual language: a hairline rail with a station dot per step, restrained
+// hover sharpening, no arrows, no numbered circles. This dedicated page
+// keeps the full process description the homepage compresses away.
 export function MandateProcess() {
   return (
-    <section className="section-slate py-[var(--space-section)]">
+    <section className="ambient-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        <h2 className="text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
+        <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {MANDATE_ORIENTATION.heading}
         </h2>
 
-        <p className="mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)]">
+        <p className="text-on-dark mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
           {MANDATE_ORIENTATION.statement}
         </p>
 
-        <p className="mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body)] opacity-90">
+        <p className="text-on-dark mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body)] opacity-90">
           {MANDATE_ORIENTATION.processDescription}
         </p>
 
-        <ol className="mt-[var(--space-xl)] flex flex-col flex-wrap gap-[var(--space-sm)] sm:flex-row sm:items-center sm:gap-0">
-          {PROCESS_STEPS.map((step, index) => (
-            <li key={step} className="flex items-center">
-              <span className="text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
-                {step}
-              </span>
-              {index < PROCESS_STEPS.length - 1 && (
+        <div className="relative mt-[var(--space-2xl)]">
+          <span aria-hidden="true" className="rail-line absolute top-0 left-0 h-px w-full bg-white/15" />
+          <ol className="grid grid-cols-2 gap-x-[var(--space-lg)] gap-y-[var(--space-lg)] sm:grid-cols-3 lg:grid-cols-6">
+            {PROCESS_STEPS.map((step) => (
+              <li key={step} className="group relative pt-[var(--space-md)]">
                 <span
                   aria-hidden="true"
-                  className="text-muted-on-slate mx-[var(--space-sm)] hidden sm:inline"
-                >
-                  &rarr;
+                  className="absolute top-0 left-0 h-[7px] w-[7px] -translate-y-1/2 rounded-full bg-steel-blue/60 transition-colors group-hover:bg-steel-blue"
+                />
+                <span className="text-muted-on-dark block text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] transition-colors group-hover:text-on-dark">
+                  {step}
                 </span>
-              )}
-            </li>
-          ))}
-        </ol>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

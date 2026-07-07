@@ -5,9 +5,9 @@ import { JurisdictionsExposure } from "@/components/jurisdictions/JurisdictionsE
 import { JurisdictionRepresentationLine } from "@/components/layout/JurisdictionRepresentationLine";
 import { JURISDICTIONS_HERO } from "@/content/jurisdictions";
 
-const TITLE = "Jurisdictions | Deimos Group";
+const TITLE = "Coverage | Deimos Group";
 const DESCRIPTION =
-  "Selected jurisdictional exposure across Europe, Africa, the Middle East/Central Asia, Asia-Pacific, the Americas and international structuring jurisdictions — market exposure and advisory activity, not offices or regulated operations.";
+  "Selected market coverage across Europe, Africa, the Middle East/Central Asia, Asia-Pacific, the Americas and international structuring jurisdictions — market exposure and advisory activity, not offices or regulated operations.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -16,13 +16,14 @@ export const metadata: Metadata = {
   twitter: { card: "summary", title: TITLE, description: DESCRIPTION },
 };
 
-// Section order per SITE_COMPLETION_PLAN.md /jurisdictions spec: hero ->
-// region filter + grouped list + density visual + disclaimer -> discreet
-// representation-in-uncovered-jurisdictions line -> contact CTA.
-// JurisdictionRepresentationLine is reused as-is from /firm (src/content/
-// site.ts's JURISDICTION_REPRESENTATION_LINE) since it already carries no
-// page-specific coupling.
-export default function JurisdictionsPage() {
+// Public route for what was /jurisdictions in earlier v1 builds —
+// "Jurisdictions" was renamed to "Coverage" across the public UI (nav,
+// footer, CTAs, page title) and /jurisdictions now permanently redirects
+// here (next.config.ts). Internal component/content module names keep the
+// jurisdictions vocabulary to limit churn; only public-facing language
+// changed. Section order unchanged from the approved /jurisdictions spec:
+// hero -> map + region filters + disclaimer -> representation line -> CTA.
+export default function CoveragePage() {
   return (
     <>
       <PageHeader title={JURISDICTIONS_HERO.title} description={JURISDICTIONS_HERO.description} />

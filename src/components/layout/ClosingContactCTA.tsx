@@ -17,7 +17,7 @@ const DEFAULT_STATEMENT =
 // everywhere else, rather than one more identical thin-bordered button.
 export function ClosingContactCTA({ statement }: ClosingContactCTAProps) {
   return (
-    <section className="section-navy py-[var(--space-section)]">
+    <section className="section-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto flex max-w-3xl flex-col items-center px-[var(--space-md)] text-center sm:px-[var(--space-lg)]">
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {statement ?? DEFAULT_STATEMENT}

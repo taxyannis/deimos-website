@@ -3,21 +3,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { DISCLAIMERS, FOOTER_NAV, SITE_NAME } from "@/content/site";
+import { Wordmark } from "@/components/layout/Wordmark";
 
 export function Footer() {
   const pathname = usePathname();
   const year = new Date().getFullYear();
 
   return (
-    <footer className="section-slate">
+    <footer className="section-slate border-t border-white/10">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] py-[var(--space-2xl)] sm:px-[var(--space-lg)]">
         <div className="flex flex-col gap-[var(--space-xl)] border-b border-white/10 pb-[var(--space-xl)] sm:flex-row sm:justify-between">
           <div>
-            {/* Serif masthead treatment, not the small uppercase UI-chrome
-                label used elsewhere — the footer imprint reads as the
-                firm's name, not another nav element. */}
-            <p className="text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
-              {SITE_NAME}
+            {/* Serif masthead treatment (shared Wordmark, same as the
+                header) — the footer imprint reads as the firm's name, not
+                another nav element. */}
+            <p className="text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)]">
+              <Wordmark className="text-[length:var(--text-h3)]" />
             </p>
           </div>
 

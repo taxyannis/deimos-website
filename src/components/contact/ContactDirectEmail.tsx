@@ -8,20 +8,20 @@ import { DIRECT_EMAIL_MAILTO } from "@/content/contact";
 // one real action, per the "hedge travels with the claim" rule).
 export function ContactDirectEmail() {
   return (
-    <section className="section-light py-[var(--space-section-tight)]">
+    <section className="section-navy border-t border-white/10 py-[var(--space-section-tight)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        <p className="max-w-[60ch] text-[length:var(--text-body)] text-ink-on-light/85">
+        <p className="text-on-dark max-w-[60ch] text-[length:var(--text-body)] opacity-90">
           Prefer a direct line? Email Deimos Group at{" "}
           <a
             href={DIRECT_EMAIL_MAILTO}
-            className="text-ink-on-light underline decoration-ink-on-light/30 underline-offset-4 transition-colors hover:text-steel-blue-on-light hover:decoration-steel-blue-on-light focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue-on-light"
+            className="text-on-dark underline decoration-white/30 underline-offset-4 transition-colors hover:text-steel-blue hover:decoration-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
           >
             {CONTACT_EMAIL}
           </a>
           .
         </p>
 
-        <p className="text-muted-on-light mt-[var(--space-lg)] max-w-[65ch] text-[length:var(--text-small)]">
+        <p className="text-muted-on-dark mt-[var(--space-lg)] max-w-[65ch] text-[length:var(--text-small)]">
           {DISCLAIMERS.general}
         </p>
       </div>

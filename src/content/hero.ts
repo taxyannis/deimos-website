@@ -58,7 +58,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     // src/content/jurisdictions.ts — keep this in sync if that list changes.
     metric: "50",
     metricRegister: "numeric",
-    label: "Selected jurisdictional exposure",
+    label: "Selected market coverage",
     supportingLine:
       "Cross-border market activity, transaction review, and aligned counterparty coverage.",
     video: {

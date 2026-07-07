@@ -6,13 +6,11 @@ import { RegionFilterButton } from "@/components/jurisdictions/RegionFilterButto
 
 const ALL = "all";
 
-// Toggle-button region filter over a grouped list — satisfies "region
-// filters or grouped region sections" with one control rather than forcing
-// a choice between the two: default view ("All Regions") already shows the
+// Toggle-button region filter over a grouped list — the mobile fallback for
+// the interactive world map. Default view ("All Regions") already shows the
 // full grouped list, and picking a region narrows it. Accordion pattern was
-// deliberately not reused here (unlike AdvisoryPillars) — jurisdictions
-// within a region are a flat reference list, not content worth
-// collapsing/expanding one at a time.
+// deliberately not reused here — jurisdictions within a region are a flat
+// reference list, not content worth collapsing one item at a time.
 export function RegionJurisdictionList() {
   const [activeRegion, setActiveRegion] = useState<string>(ALL);
 
@@ -25,8 +23,8 @@ export function RegionJurisdictionList() {
     <div>
       <div
         role="group"
-        aria-label="Filter jurisdictions by region"
-        className="flex flex-wrap gap-y-[var(--space-sm)] border-b border-ink-on-light/15 pb-[var(--space-md)] [&>button:first-child]:-ml-[var(--space-sm)]"
+        aria-label="Filter coverage by region"
+        className="flex flex-wrap gap-y-[var(--space-sm)] border-b border-white/15 pb-[var(--space-md)] [&>button:first-child]:-ml-[var(--space-sm)]"
       >
         <RegionFilterButton active={activeRegion === ALL} onClick={() => setActiveRegion(ALL)}>
           All Regions
@@ -42,17 +40,17 @@ export function RegionJurisdictionList() {
         ))}
       </div>
 
-      <div className="divide-ink-on-light/15 mt-[var(--space-lg)] divide-y border-b border-ink-on-light/15">
+      <div className="mt-[var(--space-lg)] divide-y divide-white/10 border-b border-white/10">
         {visibleGroups.map((group) => (
           <div key={group.id} className="py-[var(--space-md)]">
-            <h3 className="text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
+            <h3 className="text-on-dark text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
               {group.region}
             </h3>
             <ul className="mt-[var(--space-2xs)] flex flex-wrap gap-x-[var(--space-md)] gap-y-[var(--space-2xs)]">
               {group.jurisdictions.map((jurisdiction) => (
                 <li
                   key={jurisdiction}
-                  className="text-[length:var(--text-body)] text-ink-on-light/85"
+                  className="text-muted-on-dark text-[length:var(--text-body)]"
                 >
                   {jurisdiction}
                 </li>

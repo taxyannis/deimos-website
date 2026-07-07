@@ -7,8 +7,17 @@ rendered screenshot. **Before circulating any preview build, a human must
 run this checklist in an actual browser.** Nothing below has been confirmed
 visually; treat every box as unchecked until someone with a browser does it.
 
-Routes to check on every pass: `/`, `/firm`, `/advisory`, `/jurisdictions`,
-`/contact`, `/legal`, `/privacy`.
+Routes to check on every pass: `/`, `/firm`, `/advisory`, `/coverage`
+(formerly `/jurisdictions`, which now 308-redirects here), `/contact`,
+`/legal`, `/privacy`.
+
+> **Rebuild note:** the site moved to a unified dark navy-led system (deep
+> navy body, ink-blue tonal panels, hairline `white/10` dividers — no
+> off-white sections remain), and the coverage map is now a stylized SVG
+> world-map silhouette with nodes at projected capital positions. Items
+> below referring to "off-white sections" or light-surface tokens predate
+> that rework; check the dark equivalents (`text-on-dark`,
+> `text-muted-on-dark`, `text-muted-on-slate` in the footer) instead.
 
 ## 1. Breakpoint sweep
 

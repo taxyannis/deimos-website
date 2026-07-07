@@ -1,14 +1,12 @@
 import { WHO_DEIMOS_SERVES } from "@/content/firm";
 
-// Navy tonal pivot against the light sections either side of it, per the
-// section-order contrast pass for this page. Counterparties render as a
-// single flowing, wrapped label list — the same visual language as the
-// homepage's JurisdictionTeaser region list — not a grid of boxes, per
-// original-master-prompt.txt §10's own instruction that this section
+// Ink-blue tonal panel against the deep-navy page base. Counterparties
+// render as a single flowing, wrapped label list — not a grid of boxes,
+// per original-master-prompt.txt §10's own instruction that this section
 // "should not become a crowded list of boxes."
 export function WhoDeimosServes() {
   return (
-    <section className="section-navy py-[var(--space-section)]">
+    <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {WHO_DEIMOS_SERVES.heading}
