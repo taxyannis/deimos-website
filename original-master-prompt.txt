@@ -1,0 +1,1079 @@
+You are redesigning the current Deimos Group website: https://dldj5ijbsdlb2.kimi.page
+
+I will attach drone aerial videos to this prompt. Use those videos as priority visual assets for the homepage hero / metrics section. The final website should feel like an elite, institutional, independent private investment banking and strategic transaction advisory platform.
+
+Before implementing the website, first create a clear website outline and structure. Then redesign and rewrite the website based on the outline.
+
+Objective:
+Rebuild the website into a polished, institutional, capital-markets-facing website.
+
+The current version looks too modular, box-heavy, generic and insufficiently defined. It should not feel like a startup landing page, SaaS page, AI agency page, consulting brochure, capital-introduction site, or generic advisory website.
+
+It should feel like a disciplined boutique private investment banking and strategic transaction advisory platform.
+
+Reference quality standard:
+Research and align the website structure, tone, spacing, navigation discipline, interaction quality and institutional restraint of the following firms:
+
+* Rothschild & Co: https://www.rothschildandco.com/en/
+* PJT Partners: https://www.pjtpartners.com
+* Lazard: https://www.lazard.com
+* Post Oak Group: https://www.postoakgroup.co
+* Houlihan Lokey: https://hl.com
+
+Do not copy their design, branding, wording, navigation or layouts directly. Use them only as calibration for seriousness, hierarchy, page architecture, restraint, institutional credibility, capital markets tone and advisory-firm presentation.
+
+Core positioning of Deimos Group:
+Deimos Group is an independent private investment banking and strategic transaction advisory platform focused on complex private-market situations.
+
+The firm works across capital access, private capital formation, transaction structuring, M&A and joint venture advisory, special situations, recapitalizations, restructuring, real assets, infrastructure, energy, natural resources, hospitality, sports, media, lifestyle assets, sovereign-linked development, public-private opportunities, concession-linked opportunities and cross-border private capital situations.
+
+Deimos should be positioned as a firm that enters where opportunities are valuable but incomplete, under-structured, cross-border, capital-intensive, politically or commercially complex, or not yet bankable for conventional institutional capital.
+
+The role of Deimos is to structure, sharpen, diligence, position, finance and advance transactions into executable mandates.
+
+Do not position Deimos as:
+
+* a broker
+* finder
+* passive introducer
+* listing platform
+* venture studio
+* fund
+* accelerator
+* AI company
+* real estate agency
+* generic consultancy
+* investor matching platform
+
+The language must communicate that Deimos is mandate-oriented, process-driven, confidential, commercially rigorous and institutional.
+
+Primary website message:
+Deimos Group advises on complex private-market transactions where capital access, transaction structure, stakeholder alignment and execution discipline determine whether an opportunity can move from interest to mandate.
+
+Deimos is not a passive introducer. The firm works across defined advisory workstreams to sharpen the transaction, prepare the capital narrative, identify execution gaps, align counterparties and support the process required to advance complex opportunities.
+
+Suggested homepage headline options:
+Use one of the following or create a better version in the same style:
+
+“Independent Advisory for Complex Private-Market Transactions”
+
+“Private Investment Banking for Complex Capital Situations”
+
+“Structured Advisory for Transactions Requiring Capital, Discipline and Execution”
+
+“Where Structure Precedes Capital”
+
+Hero subline:
+Deimos Group advises owners, sponsors, investors, operators and public-sector stakeholders on complex private-market transactions where structure, capital, diligence and execution must be aligned before institutional capital can move.
+
+Visual direction:
+The site should be restrained, high-end and institutional.
+
+Use deep navy, black, off-white, charcoal, steel grey, and possibly a muted gold, bronze or silver accent.
+
+The design should feel expensive through spacing, typography, hierarchy, motion restraint and editorial structure — not through decorative effects.
+
+Avoid:
+
+* bulky boxes
+* endless cards
+* SaaS-style KPI blocks
+* generic gradient backgrounds
+* startup-style rounded cards
+* neon effects
+* crypto aesthetics
+* AI-generated visual clichés
+* fake client logos
+* excessive scroll effects
+* overdone parallax
+* cartoonish maps
+* generic business stock photos
+* exaggerated claims
+
+Use:
+
+* editorial spacing
+* thin dividers
+* restrained motion
+* tabbed sections
+* refined accordions
+* hover-based indexes
+* cinematic video backgrounds
+* controlled transitions
+* clean institutional panels
+* premium typography
+* dark overlay video treatment
+* precise advisory language
+
+Typography:
+Use a serious institutional type system. Headings should feel traditional, authoritative and precise. Body copy must be crisp, readable and not oversized.
+
+Avoid cartoonish, SaaS-like, rounded, overly friendly or consumer-brand fonts.
+
+Navigation:
+Create a clean top navigation:
+
+* Firm
+* Advisory
+* Services
+* Situations
+* Sectors
+* Jurisdictions
+* Experience
+* Insights
+* Contact
+
+Website outline:
+Create the site around the following structure:
+
+1. Homepage
+2. Firm
+3. Advisory
+4. Services / Capabilities
+5. Situations
+6. Sectors
+7. Jurisdictions
+8. Experience
+9. Insights
+10. Contact
+
+The site can be one refined long-scroll homepage with section anchors, or a homepage plus supporting subpages. If implementing as a one-page website, the navigation should still behave cleanly and anchor users to each section.
+
+Homepage structure:
+
+1. Hero section with automatic metrics and video slider
+
+The hero section must be visually strong and should use the attached drone aerial videos as the core visual background assets if suitable.
+
+Create an automatic coordinated slider where both the headline metric and the background video change together.
+
+This should not be a simple number carousel. It should be a premium media-and-metrics sequence.
+
+Each slide should include:
+
+* one key metric or statement
+* a concise supporting line
+* a corresponding drone aerial video background
+* dark overlay for legibility
+* subtle transition into the next video and metric
+* restrained motion timing
+* no aggressive animation
+
+Suggested hero / metrics slider sequence:
+
+Slide 1:
+Metric:
+“US$21.2bn”
+
+Label:
+“Historical transaction exposure”
+
+Supporting line:
+“Principal, affiliated advisory and transaction exposure across complex private-market situations.”
+
+Video:
+Use the most institutional drone aerial video — city skyline, financial district, infrastructure corridor, port, or large-scale real asset footage.
+
+Slide 2:
+Metric:
+“40”
+
+Label:
+“Selected jurisdictional exposure”
+
+Supporting line:
+“Cross-border market activity, transaction review, structuring relevance and aligned counterparty coverage.”
+
+Video:
+Use global, aerial, city, coastline, infrastructure or logistics footage.
+
+Slide 3:
+Metric:
+“7”
+
+Label:
+“Advisory disciplines”
+
+Supporting line:
+“Capital formation, structuring, M&A/JV advisory, special situations, infrastructure, investor coverage and execution management.”
+
+Video:
+Use footage that feels corporate, institutional or infrastructure-related.
+
+Slide 4:
+Metric:
+“Cross-Border”
+
+Label:
+“Private capital situations”
+
+Supporting line:
+“Advisory work across jurisdictions where capital, structure and stakeholder alignment must be sequenced.”
+
+Video:
+Use aerial footage suggesting international markets, ports, cities, transport corridors or strategic assets.
+
+Slide 5:
+Metric:
+“Complex Assets”
+
+Label:
+“Real assets, infrastructure, energy, hospitality, sports and strategic sectors”
+
+Supporting line:
+“Focused on situations where conventional capital processes often require deeper structuring before execution.”
+
+Video:
+Use the most asset-heavy drone footage available.
+
+Slider behavior:
+
+* Automatically transition between slides.
+* Each slide should last long enough to read comfortably.
+* Transition both the text and video together.
+* Use smooth fades, cross-dissolves, subtle wipes or refined motion blur.
+* Avoid sudden cuts.
+* Avoid overly fast rotation.
+* Include manual controls or small elegant progress indicators if possible.
+* The first slide should load quickly and gracefully.
+* Include a fallback static image for mobile or low-bandwidth environments.
+* Ensure text remains legible over video.
+* Respect reduced-motion settings if technically possible.
+* On mobile, simplify the motion and ensure the key message remains readable.
+
+Hero CTAs:
+Include:
+
+* “Explore Advisory Capabilities”
+* “Contact Deimos”
+
+Do not use generic CTA language such as:
+
+* Get Started
+* Let’s Build Together
+* Start Your Journey
+* Unlock Growth
+
+Important credibility instruction:
+Use “US$21.2bn historical transaction exposure” carefully. Do not imply Deimos has completed, closed or advised on all of this as a regulated bank unless explicitly supported.
+
+Phrase it as:
+
+* historical transaction exposure
+* associated transaction volume
+* principal / affiliated advisory exposure
+
+Keep it credible and precise.
+
+2. Institutional positioning section
+
+Explain what Deimos is in 2–3 compact paragraphs.
+
+The copy should state that Deimos operates across complex, under-structured, cross-border and capital-intensive private-market transactions.
+
+It should emphasize structure, capital, diligence, stakeholder alignment, bankability and execution.
+
+Suggested copy direction:
+“Deimos Group advises on complex private-market transactions where value exists, but the transaction is not yet institutional. The firm supports sponsors, owners, operators, investors and public-sector stakeholders in defining structure, clarifying the capital requirement, preparing the transaction for serious review and advancing the process toward execution.”
+
+“Across capital formation, M&A, joint ventures, real assets, infrastructure, special situations and sovereign-linked opportunities, Deimos works where standard introductions are insufficient and where disciplined transaction architecture is required before capital can move.”
+
+3. Commercial service architecture
+
+The website must clearly explain what Deimos actually does. Do not keep the website overly abstract. A serious visitor must immediately understand what services Deimos can be engaged for.
+
+Create a prominent “Services” or “Advisory Capabilities” section.
+
+Capital Access & Formation should be one of the headline service pillars.
+
+Do not present capital access as guaranteed financing or a loose investor introduction service. Phrase it as disciplined capital formation and counterparty access.
+
+Preferred terminology:
+
+* Capital Access & Formation
+* Private Capital Formation
+* Strategic Investor Access
+* Structured Capital Solutions
+* Investor, Sponsor & Operator Coverage
+
+Suggested wording:
+“Deimos supports sponsors, owners and operators in positioning complex transactions for aligned private capital, strategic investors, family offices, operating partners and institutional counterparties.”
+
+Do not say:
+
+* guaranteed capital
+* immediate funding
+* direct access to unlimited investors
+* we raise money for everyone
+* broker network
+* investor matching platform
+
+Services / Capabilities:
+
+A. Capital Access & Private Capital Formation
+
+Deimos advises on the preparation, positioning and execution of private capital processes for complex transactions.
+
+Services include:
+
+* private placements
+* growth capital
+* completion capital
+* acquisition financing
+* refinancing and recapitalization capital
+* bridge capital
+* structured equity
+* preferred equity
+* strategic capital
+* family office and HNWI capital processes
+* sponsor and co-investor access
+* institutional counterparty positioning
+* capital partner targeting
+* investor materials and capital narrative development
+
+B. Strategic Advisory & Transaction Structuring
+
+Deimos helps turn commercially attractive but incomplete opportunities into structured, investable and executable transactions.
+
+Services include:
+
+* transaction architecture
+* commercial structuring
+* feasibility review
+* stakeholder mapping
+* execution sequencing
+* risk allocation
+* mandate structuring
+* partner and sponsor alignment
+* transaction positioning
+* negotiation support
+
+C. M&A, Joint Ventures & Strategic Partnerships
+
+Deimos advises on acquisition, disposal, merger, joint venture and partnership situations where capital, operators, sponsors and stakeholders need to be aligned.
+
+Services include:
+
+* buy-side advisory
+* sell-side advisory
+* joint venture structuring
+* platform formation
+* strategic partnership processes
+* operating partner identification
+* sponsor-led acquisition support
+* minority and majority investment processes
+* strategic counterparty engagement
+
+D. Special Situations, Restructuring & Recapitalizations
+
+Deimos works on situations where assets, companies or projects require capital, repositioning, stakeholder alignment or restructuring before they can move forward.
+
+Services include:
+
+* recapitalizations
+* bridge capital situations
+* distressed or under-capitalized assets
+* stalled projects
+* refinancing situations
+* creditor / investor alignment
+* strategic rescue capital
+* completion funding
+* balance sheet repositioning
+* operational and financial restructuring support
+
+E. Infrastructure, Real Assets & Project Finance Advisory
+
+Deimos advises on capital-intensive real asset, infrastructure and project-backed opportunities requiring structured capital, stakeholder coordination and investor readiness.
+
+Services include:
+
+* infrastructure transaction structuring
+* project finance preparation
+* real estate and hospitality development capital
+* energy and natural resource project positioning
+* logistics and transport-related opportunities
+* public-private and concession-linked structures
+* feasibility and bankability review
+* operator / sponsor coordination
+* strategic capital sourcing
+
+F. Sovereign-Linked, Public-Private & Concession Opportunities
+
+Deimos supports complex opportunities involving government-linked stakeholders, public-sector assets, concessions, privatizations, infrastructure mandates and development-linked capital.
+
+Services include:
+
+* public-private transaction positioning
+* concession structuring
+* privatization support
+* government-linked stakeholder alignment
+* sovereign-linked development opportunities
+* strategic investor and operator engagement
+* bankability preparation
+* public-sector interface strategy
+
+G. Investor Readiness, Diligence & Bankability
+
+Deimos helps prepare transactions for serious investor review by identifying what is missing, what must be clarified, and what needs to be structured before capital can move.
+
+Services include:
+
+* investor readiness review
+* data room review
+* diligence request lists
+* financial model review
+* use-of-proceeds analysis
+* capital stack review
+* risk review
+* transaction documentation review
+* commercial diligence
+* bankability assessment
+* investor Q&A preparation
+
+H. Process Management & Execution Support
+
+Deimos can manage defined transaction workstreams from initial assessment through capital partner engagement, diligence, negotiation and execution support.
+
+Services include:
+
+* process design
+* workstream management
+* investor process coordination
+* counterparty communications
+* diligence coordination
+* materials management
+* negotiation support
+* transaction sequencing
+* closing preparation support
+
+I. Strategic Investor, Offtake & Industrial Partner Processes
+
+For energy, resources, infrastructure, industrial and real asset opportunities, Deimos can support strategic counterparty processes beyond purely financial capital.
+
+Services include:
+
+* strategic investor targeting
+* offtake partner engagement
+* industrial partner access
+* operating partner coordination
+* technology partner alignment
+* sponsor and platform partner development
+* commercial partnership structuring
+
+J. Platform Formation & Asset Aggregation
+
+Deimos can support the creation of investment platforms around fragmented, under-capitalized or strategically valuable sectors and assets.
+
+Services include:
+
+* platform strategy
+* acquisition pipeline development
+* capital partner positioning
+* operator / sponsor structuring
+* asset aggregation strategy
+* holding company and SPV structuring support
+* growth capital roadmap
+* institutionalization of early-stage platforms
+
+The services section should be interactive and skimmable. Use a refined tabbed interface, accordion system, horizontal index, or vertical editorial navigation. Avoid large repetitive boxes.
+
+4. Content discipline / avoid laundry-list language
+
+Avoid overly long listings of generic advisory terms in the visible website copy.
+
+Do not stack phrases such as:
+“capital structuring, investor alignment, transaction readiness, stakeholder engagement, process management, strategic advisory, execution support”
+
+in long comma-separated sequences.
+
+The website should not read like a capabilities inventory. It should read like a disciplined institutional advisory platform.
+
+Use concise, selective wording. Each section should have one clear point, supported by a short explanation.
+
+Where multiple capabilities need to be shown, use structured tabs, accordions, indexes or short grouped phrases rather than long lists.
+
+Bad style:
+“Deimos provides capital structuring, investor alignment, transaction readiness, stakeholder engagement, mandate support, diligence, process management, capital access, private placements, strategic advisory, restructuring, refinancing, recapitalization and execution support.”
+
+Preferred style:
+“Deimos prepares complex private-market situations for serious capital review by aligning structure, stakeholders, documentation and execution path.”
+
+Or:
+“Where required, Deimos supports defined workstreams across capital formation, transaction structuring, diligence and execution management.”
+
+The Services section can contain more detail, but public-facing paragraphs should remain sharp, selective and institutional. Avoid repeating the same capability language across multiple sections.
+
+The website must be commercially clear without becoming overloaded. Avoid long lists of services in paragraph form. Use concise section copy, structured interaction and editorial hierarchy to communicate depth without visual or verbal clutter.
+
+5. Seven Disciplines
+
+The Seven Disciplines need to be tightened and made interactive. Do not show them as bulky boxes.
+
+Create a tabbed, button-based, horizontal index, or refined accordion interface where users can click each discipline and skim concise descriptions.
+
+Use these seven disciplines:
+
+* Strategic Advisory & Transaction Structuring
+* Capital Access & Private Capital Formation
+* M&A, Joint Venture & Partnership Advisory
+* Special Situations, Recapitalizations & Restructuring
+* Infrastructure, Real Assets & Project Finance
+* Investor, Sponsor & Operator Coverage
+* Bankability, Diligence & Execution Management
+
+Each discipline should include:
+
+* one sharp sentence defining the discipline
+* 3–5 specific advisory activities
+* typical transaction situations where it applies
+
+Avoid repeating the full Services section. The Seven Disciplines should be a more elegant strategic framework, while the Services section explains commercial capabilities in more practical terms.
+
+6. Selected Situations
+
+Make this skimmable through tabs, buttons, a refined index, or an elegant interactive section. Do not use bulky cards.
+
+Include situations such as:
+
+* completion capital and refinancing
+* growth capital and private placements
+* sponsor-led acquisitions and platform formation
+* cross-border M&A and joint ventures
+* public-private, concession and sovereign-linked opportunities
+* special situations and distressed or under-capitalized assets
+* strategic investor, offtake and industrial partner processes
+* early-stage opportunities requiring bankability work before financing
+* under-documented opportunities requiring institutional preparation
+* stalled developments requiring recapitalization or repositioning
+* fragmented asset aggregation opportunities
+* cross-border sponsor / operator / investor alignment
+
+7. Sector Coverage
+
+Use an elegant sector index rather than cards.
+
+Include:
+
+* Infrastructure & Logistics
+* Energy & Natural Resources
+* Real Estate, Lodging & Hospitality
+* Sports, Media & Lifestyle Assets
+* Agriculture & Food Systems
+* Technology, Data Centers & Digital Infrastructure
+* Environmental & Earth Systems
+* Financial Services & Private Capital
+* Sovereign-Linked Development
+* Industrial & Strategic Assets
+
+8. Interactive jurisdiction map
+
+Add an interactive world map section somewhere on the website, ideally on the homepage below the core advisory sections or on a dedicated Firm / Global Reach / Jurisdictional Exposure section.
+
+This map must not be presented as offices, branches or regulated operations. It should be positioned as:
+
+“Selected Jurisdictional Exposure”
+
+Other acceptable formulations:
+
+* Markets Under Review and Transactional Coverage
+* Cross-Border Jurisdictions of Current or Recent Engagement
+* Selected Markets of Advisory Activity
+
+Do not use oversized pins or a startup-style map. Use an elegant dark-toned or neutral-toned institutional map with subtle country highlighting and refined hover states.
+
+Highlighted jurisdictions should include:
+
+Europe:
+
+* Greece
+* Estonia
+* Lithuania
+* France
+* Spain
+* Portugal
+* United Kingdom / England-focused exposure
+* Switzerland
+
+Asia-Pacific:
+
+* Cambodia
+* China
+* Philippines
+* Indonesia
+* India
+* Hong Kong SAR
+* Singapore
+* Australia
+
+Middle East / Central Asia:
+
+* Saudi Arabia
+* United Arab Emirates
+* Qatar
+* Kazakhstan
+* Uzbekistan
+
+Africa:
+
+* Uganda
+* Kenya
+* Namibia
+* Ghana
+* Democratic Republic of the Congo
+* Malawi
+* Morocco
+* South Africa
+* Rwanda
+
+North America:
+
+* United States
+* Canada
+* Mexico
+
+Latin America / Caribbean:
+
+* Nicaragua
+* Panama
+* Chile
+* Dominican Republic
+* Antigua and Barbuda
+
+International Structuring / Offshore:
+
+* Cayman Islands
+* Saint Vincent and the Grenadines
+
+If possible, create map filters by region:
+
+* Europe
+* Africa
+* Middle East / Central Asia
+* Asia-Pacific
+* Americas
+* International Structuring Jurisdictions
+
+Map supporting language:
+
+Suggested headline:
+“Selected Jurisdictional Exposure”
+
+Suggested subtext:
+“Deimos operates across a selective set of cross-border markets where the firm is evaluating, structuring, advising on, or advancing transaction situations through direct activity or aligned counterparty coverage.”
+
+Add a small disclaimer below the map:
+“Selected jurisdictions reflect current or recent market exposure, transaction review, advisory activity, partner coverage or structuring relevance, and do not imply physical office presence or regulated operations in each market.”
+
+9. Representation in additional jurisdictions
+
+Add a refined line inviting credible representation in jurisdictions not currently covered, but phrase it discreetly and institutionally.
+
+Use one of the following formulations:
+
+“Deimos selectively welcomes dialogue with qualified counterparties, local representatives and operating partners in jurisdictions not presently covered.”
+
+“The firm remains open to select representation relationships in additional jurisdictions where credible transaction opportunities and aligned local access exist.”
+
+“For jurisdictions not currently represented, Deimos welcomes discreet discussion with qualified local counterparties.”
+
+Do not make this look like open recruitment, a franchise model, or a generic call for agents.
+
+10. Who Deimos serves
+
+Add a concise section explaining Deimos’ client and counterparty base.
+
+Deimos works with:
+
+* asset owners
+* sponsors
+* entrepreneurs
+* developers
+* operators
+* family offices
+* HNWIs
+* private investors
+* strategic investors
+* capital partners
+* public-sector stakeholders
+* concession holders
+* infrastructure sponsors
+* real asset developers
+* intermediaries with credible transaction access
+* government-linked or sovereign-linked counterparties
+
+This section should be concise and elegant. It should not become a crowded list of boxes.
+
+11. Why clients engage Deimos
+
+Add a concise “Why Deimos” or “Where Deimos Is Engaged” section.
+
+Suggested positioning:
+“Deimos is built for situations where value exists, but the transaction is not yet institutional. The firm helps define the structure, sharpen the capital story, identify gaps, align stakeholders, prepare the opportunity for investor review and manage the process required to advance toward execution.”
+
+Key reasons:
+
+* complex transactions require structure before capital
+* early-stage opportunities often lack investor-ready materials
+* cross-border situations require trusted stakeholder alignment
+* real assets and infrastructure require disciplined capital sequencing
+* sponsors need credible access to aligned capital partners
+* investors need sharper diligence, risk framing and execution pathways
+* operators and owners need more than passive introductions
+
+Suggested section headline options:
+
+* Built for Complex Transactions
+* Where Structure Precedes Capital
+* From Opportunity to Executable Mandate
+* Where Deimos Is Engaged
+
+12. Experience / Transaction Exposure
+
+Create a serious institutional section that shows experience without overstating. Use “historical transaction exposure” and “selected exposure themes” rather than fake tombstones unless actual transactions are provided.
+
+Include:
+
+* US$21.2bn historical transaction exposure
+* 40 jurisdictions of selected market exposure
+* cross-border private capital situations
+* real assets, infrastructure and strategic sector exposure
+* early-stage structuring, capital formation and bankability work
+
+Do not invent:
+
+* client names
+* logos
+* closed transactions
+* awards
+* regulatory licenses
+* rankings
+* offices
+* team members
+* tombstones
+* case studies
+
+If tombstones or deal examples are desired, use only neutral anonymized exposure themes such as:
+
+* infrastructure and logistics opportunities
+* energy and natural resource situations
+* real estate and hospitality development capital
+* sports and lifestyle platform opportunities
+* sovereign-linked and concession-linked opportunities
+* cross-border private capital processes
+
+13. Advisory approach
+
+Present the process in a clean horizontal sequence:
+
+* Situation Assessment
+* Structuring & Diligence
+* Capital Strategy
+* Counterparty Positioning
+* Process Management
+* Execution Support
+
+Tone should be disciplined and transaction-oriented.
+
+Suggested language:
+“Deimos begins by defining the transaction reality: capital requirement, stakeholder position, documentation gaps, execution risk and investor readiness. The firm then supports the structuring, materials, counterparty strategy and process discipline required to advance credible opportunities toward mandate and execution.”
+
+14. Confidentiality / Mandate Orientation
+
+Add a short institutional section explaining how Deimos engages. This should prevent the website from feeling like an open-ended broker page.
+
+Suggested language:
+“Deimos engages on a selective, mandate-oriented basis. The firm prioritizes situations where transaction complexity, capital requirements, stakeholder alignment or cross-border execution require structured advisory work rather than passive introduction.”
+
+This section should communicate:
+
+* confidentiality
+* selective engagement
+* defined advisory workstreams
+* mandate discipline
+* no open-ended broker positioning
+* institutional process control
+
+15. Firm / About
+
+Keep this concise.
+
+Deimos is an independent advisory platform built for complex private-market opportunities. It works with owners, sponsors, investors, operators and public-sector stakeholders where institutional capital requires more than a standard introduction process.
+
+Do not overstate firm size. Do not invent offices or personnel. Do not make it sound like a regulated global bank.
+
+16. Insights
+
+Add a clean Insights section, even if initially limited. This gives the site institutional credibility.
+
+Possible categories:
+
+* Transaction Notes
+* Market Views
+* Sector Briefings
+* Capital Formation Commentary
+* Special Situations
+* Infrastructure & Real Assets
+
+Do not create fake articles unless needed for layout. If placeholders are necessary, use restrained titles without pretending they are published content.
+
+17. Contact
+
+Use a serious contact section. Avoid generic “Let’s build together” language.
+
+Suggested language:
+“For confidential transaction, capital formation or strategic advisory enquiries, contact Deimos Group.”
+
+Email:
+[intake@deimos-group.com](mailto:intake@deimos-group.com)
+
+Contact section should include inquiry categories:
+
+* Transaction advisory
+* Capital formation
+* Strategic partnership
+* Jurisdictional representation
+* Investor / sponsor dialogue
+* General enquiries
+
+CTA hierarchy:
+Use controlled, serious CTAs across the site.
+
+Preferred CTAs:
+
+* Explore Advisory Capabilities
+* Discuss a Transaction
+* Contact Deimos
+* View Jurisdictional Exposure
+* Review Services
+* Submit an Enquiry
+
+Avoid:
+
+* Get Started
+* Join Us
+* Let’s Build Together
+* Unlock Opportunity
+* Start Your Journey
+* Scale With Us
+
+18. Footer and legal credibility
+
+Add a restrained institutional footer.
+
+Footer should include:
+
+* Firm
+* Advisory
+* Services
+* Jurisdictions
+* Insights
+* Contact
+* Legal / Disclaimer
+* Privacy Policy placeholder if needed
+
+Add a concise website disclaimer:
+“Information on this website is provided for general institutional and informational purposes only. It does not constitute an offer to sell, a solicitation to buy, investment advice, legal advice, tax advice or regulated financial advice. Deimos Group engages selectively and subject to applicable laws, documentation, mandate terms and jurisdictional requirements.”
+
+Add a jurisdictional disclaimer near the map and/or footer:
+“Selected jurisdictions reflect current or recent market exposure, transaction review, advisory activity, partner coverage or structuring relevance, and do not imply physical office presence or regulated operations in each market.”
+
+Add a capital access disclaimer where relevant:
+“References to capital access or capital formation refer to advisory, structuring, positioning and counterparty engagement support, and do not constitute a guarantee of financing or investment.”
+
+19. Animation and transition direction
+
+Use modern transitions and animations, but keep them institutional and premium.
+
+Appropriate animation style:
+
+* smooth fade-ins
+* subtle upward text reveals
+* controlled section transitions
+* refined hover states
+* understated line animations
+* smooth tab transitions
+* gentle video crossfades
+* elegant progress indicators
+* map hover highlights
+* restrained parallax only where it improves depth
+
+Avoid:
+
+* bouncing elements
+* excessive scroll-jacking
+* loud cursor effects
+* spinning icons
+* overdone 3D
+* aggressive zooms
+* fast slide changes
+* heavy particle effects
+* animated clutter
+* gaming-style transitions
+* crypto-style transitions
+
+The website should feel modern, high-quality and dynamic, but never gimmicky. Think institutional motion design, not startup animation.
+
+20. Performance and mobile behavior
+
+Optimize the website for performance.
+
+Video requirements:
+
+* compress videos appropriately
+* use web-friendly formats
+* ensure fast initial load
+* lazy-load non-critical videos
+* use fallback images where needed
+* prevent video from reducing text readability
+* ensure mobile compatibility
+* do not let video backgrounds make the site feel heavy or slow
+
+Mobile:
+
+* simplify the hero video slider if needed
+* keep metrics readable
+* keep the map usable
+* ensure tabs and accordions are easy to navigate
+* avoid tiny text
+* avoid over-complex hover interactions that fail on mobile
+
+Accessibility:
+
+* maintain strong contrast
+* ensure text is readable over videos
+* include pause or reduced-motion behavior where possible
+* avoid essential information being available only through hover
+* keep navigation clear
+
+21. SEO and metadata
+
+Add basic SEO structure.
+
+Suggested meta title:
+“Deimos Group | Independent Private Investment Banking & Strategic Transaction Advisory”
+
+Suggested meta description:
+“Deimos Group advises on complex private-market transactions across capital formation, transaction structuring, M&A, joint ventures, special situations, real assets, infrastructure and cross-border private capital.”
+
+Suggested page keywords / themes:
+
+* private investment banking
+* strategic transaction advisory
+* capital formation
+* private capital
+* transaction structuring
+* special situations
+* infrastructure advisory
+* real assets advisory
+* cross-border transactions
+* project finance advisory
+* M&A advisory
+* joint venture advisory
+
+Copy style:
+The copy must use elite boutique investment banking language. It should be direct, precise, commercially sharp and mandate-oriented.
+
+Avoid AI-sounding phrases such as:
+
+* unlocking potential
+* transformative solutions
+* bespoke world-class ecosystem
+* seamless innovation
+* empowering growth
+* game-changing
+* next-generation platform
+* visionary impact
+* tailored excellence
+* redefining the future
+* driving innovation
+* creating impact at scale
+
+Preferred language:
+
+* capital formation
+* transaction structuring
+* strategic advisory
+* execution discipline
+* bankability
+* stakeholder alignment
+* mandate
+* process control
+* investor readiness
+* structured capital
+* special situations
+* cross-border private markets
+* completion capital
+* refinancing
+* recapitalization
+* strategic investor process
+* public-private interface
+* real asset-backed opportunities
+* advisory workstream
+* counterparty positioning
+* transaction architecture
+
+Important credibility rules:
+
+* Do not overstate Deimos as a large bank.
+* Do not claim regulatory permissions unless provided.
+* Do not claim completed transactions unless provided.
+* Do not present Deimos as managing a fund unless provided.
+* Do not invent people, offices, awards, rankings, licenses, client names, tombstones or case studies.
+* Do not use fake client logos.
+* Do not present jurisdictional exposure as offices or regulated operations.
+* Do not describe capital access as guaranteed financing.
+* Do not describe Deimos as a passive broker, finder or introducer.
+* Do not use vague startup language.
+* Do not make the site overly long.
+* Do not create dozens of repetitive boxes.
+* Do not make the site look like a SaaS page.
+* Do not use overly long service lists in public-facing paragraphs.
+* Do not repeat the same advisory terms across multiple sections.
+
+Final deliverable:
+Redesign and rewrite the full website into a polished, institutional, capital-markets-facing website.
+
+Prioritize:
+
+* clear Deimos positioning
+* elite advisory tone
+* strong homepage hero section
+* attached drone aerial video integration
+* automatic metric slider that also swaps the background videos
+* refined modern transitions and animations
+* clear services and capabilities section
+* capital access as a headline capability
+* clickable / skimmable Seven Disciplines
+* selected situations and sectors as elegant interactive sections
+* interactive jurisdiction map with 40 selected jurisdictions
+* credible use of US$21.2bn historical transaction exposure
+* credible use of 40 jurisdictions of selected market exposure
+* restrained typography and spacing
+* institutional footer and disclaimers
+* no bulky continuous boxes
+* no exaggerated claims
+* no AI-generic language
+* no laundry-list copy
+* strong mobile experience
+* fast-loading video behavior
+* serious contact and inquiry structure
+
+Final quality check before completion:
+Before finalizing, quality-check the website against Rothschild & Co, PJT Partners, Lazard, Post Oak Group and Houlihan Lokey.
+
+The site does not need to look as large as those firms, but it must feel:
+
+* credible
+* restrained
+* serious
+* modern
+* commercially clear
+* institutionally coherent
+* capital-markets appropriate
+* legally careful
+* visually premium
+* not startup-like
+* not generic consulting-like
+* not broker-like
+
+The final output should make Deimos feel like a serious independent advisory platform with capital formation capability, transaction structuring discipline, cross-border relevance and institutional credibility.

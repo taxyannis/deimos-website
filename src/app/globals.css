@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+/*
+  Deimos design tokens — navy-led institutional palette per DESIGN.md.
+  All colors specified in OKLCH; every text/background pairing below has
+  been checked against WCAG AA (4.5:1 body, 3:1 large text) before use —
+  see the "on-light" / "on-dark" variants for steel-blue and cobalt, which
+  exist specifically because the base tone fails AA on the opposite surface.
+*/
+:root {
+  /* Primary — navy carries real surface weight, not a token accent (DESIGN.md's Committed Rule) */
+  --color-deep-navy: oklch(0.19 0.045 254);
+  --color-ink-blue: oklch(0.27 0.05 254);
+
+  /* Neutral */
+  --color-slate-navy: oklch(0.5 0.02 252);
+  --color-cool-grey: oklch(0.42 0.015 250);
+  --color-off-white: oklch(0.96 0.008 254);
+
+  /* Tertiary accents — used sparingly, never as a repeating brand flourish */
+  --color-steel-blue: oklch(0.62 0.06 230); /* decorative use, and text-on-dark */
+  --color-steel-blue-on-light: oklch(0.5 0.06 230); /* body/link text on off-white — 5.26:1 */
+  --color-cobalt: oklch(0.46 0.1 258); /* decorative use, and text-on-light */
+  --color-cobalt-on-dark: oklch(0.62 0.1 258); /* text on navy surfaces — 5.06:1 */
+
+  /* Semantic ink/muted roles */
+  --color-ink-on-dark: var(--color-off-white);
+  --color-ink-on-light: var(--color-deep-navy);
+  --color-muted-on-dark: oklch(0.72 0.02 250); /* secondary text on deep-navy/ink-blue — 6-7.5:1 */
+  --color-muted-on-light: var(--color-cool-grey);
+  /*
+    --color-muted-on-dark was verified against deep-navy/ink-blue only and
+    silently reused on slate-navy (a meaningfully LIGHTER surface, L=0.5 vs
+    0.19/0.27), where it measured 2.43:1 in a live audit — a real, confirmed
+    AA failure across the entire footer. Slate-navy needs its own calibrated
+    muted tone; a color that reads "quiet" against near-black does not
+    automatically read "quiet but legible" against a mid-tone.
+  */
+  --color-muted-on-slate: oklch(0.92 0.015 250); /* secondary text on slate-navy — 4.73:1 */
+
+  /* No-Gold Rule: gold/brass/silver/warm-metallic tokens do not exist in this system. */
+
+  /*
+    Spacing scale — deliberately named --space-* (not --spacing-*) and kept
+    OUTSIDE the @theme block below. Tailwind v4 auto-generates utilities from
+    @theme keys by pattern-matching the suffix against its OWN reserved scales
+    (e.g. max-w-lg, w-lg, h-lg all resolve via a "lg" key). A --spacing-lg
+    token inside @theme silently overrides Tailwind's built-in max-w-lg/w-lg
+    with a 2rem value meant for padding/gaps — exactly this bug shipped once
+    already in this file and broke text wrapping sitewide. These tokens are
+    only ever consumed via arbitrary-value syntax (e.g. px-[var(--space-md)]),
+    never as auto-generated utilities, so they have no reason to sit inside
+    Tailwind's theme-scanning namespace at all.
+  */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 8rem;
+  --space-section-tight: clamp(3rem, 1.6rem + 4vw, 5rem);
+  --space-section: clamp(5rem, 2.5rem + 6vw, 9rem);
+}
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-body-sans);
+  --font-serif: var(--font-display-serif);
+
+  /* Colors -> generates bg-, text-, and border- utilities */
+  --color-deep-navy: var(--color-deep-navy);
+  --color-ink-blue: var(--color-ink-blue);
+  --color-slate-navy: var(--color-slate-navy);
+  --color-cool-grey: var(--color-cool-grey);
+  --color-off-white: var(--color-off-white);
+  --color-steel-blue: var(--color-steel-blue);
+  --color-steel-blue-on-light: var(--color-steel-blue-on-light);
+  --color-cobalt: var(--color-cobalt);
+  --color-cobalt-on-dark: var(--color-cobalt-on-dark);
+  --color-ink-on-dark: var(--color-ink-on-dark);
+  --color-ink-on-light: var(--color-ink-on-light);
+  --color-muted-on-dark: var(--color-muted-on-dark);
+  --color-muted-on-slate: var(--color-muted-on-slate);
+  --color-muted-on-light: var(--color-muted-on-light);
+
+  /* Type scale — fluid clamp(), >=1.25 ratio, display ceiling <=6rem,
+     letter-spacing floor >=-0.04em. Paired line-height/tracking per Tailwind v4's
+     compound text-style convention. */
+  --text-display: clamp(2.5rem, 1.7rem + 3.2vw, 6rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.03em;
+
+  --text-h1: clamp(2rem, 1.5rem + 2vw, 3.25rem);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.025em;
+
+  --text-h2: clamp(1.5rem, 1.25rem + 1vw, 2.25rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.01em;
+
+  --text-h3: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: 0em;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.65;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+
+  --text-label: 0.875rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.04em;
+
+  --text-small: 0.75rem;
+  --text-small--line-height: 1.5;
+  --text-small--letter-spacing: 0.02em;
+}
+
+/*
+  Base resets — deliberately inside @layer base, not plain author CSS.
+  @import "tailwindcss" declares the layer order theme, base, components,
+  utilities. Unlayered rules sit "after" all named layers and win
+  unconditionally over anything in @layer utilities regardless of
+  specificity — an `a { color: inherit }` written as plain CSS silently
+  overrode every text-color utility on every Link/<a> sitewide. Wrapping
+  these resets in @layer base is what lets utility classes actually win.
+*/
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-off-white);
+    color: var(--color-ink-on-light);
+    font-family: var(--font-sans);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  p {
+    max-width: 75ch;
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--color-steel-blue-on-light);
+    color: var(--color-off-white);
+  }
+}
+
+/*
+  Section theme + text utilities — explicit surface/text PAIRINGS, bundled
+  together deliberately. The launch-blocker contrast bugs both came from a
+  background being set without its paired text color travelling with it
+  (a `bg-*` utility with no guaranteed `text-*` partner). These classes make
+  that mistake structurally harder: applying `section-navy` (etc.) sets both
+  halves of the pairing in one declaration, and the `text-on-*` / `text-muted-*`
+  classes are the only sanctioned way to set text color against a named surface.
+  Prefer these over ad hoc `bg-*`/`text-*` combinations on new sections.
+*/
+@layer components {
+  .section-navy {
+    background-color: var(--color-deep-navy);
+    color: var(--color-ink-on-dark);
+  }
+
+  .section-dark {
+    background-color: var(--color-ink-blue);
+    color: var(--color-ink-on-dark);
+  }
+
+  .section-slate {
+    background-color: var(--color-slate-navy);
+    color: var(--color-ink-on-dark);
+  }
+
+  .section-light {
+    background-color: var(--color-off-white);
+    color: var(--color-ink-on-light);
+  }
+
+  .text-on-dark {
+    color: var(--color-ink-on-dark);
+  }
+
+  .text-on-light {
+    color: var(--color-ink-on-light);
+  }
+
+  /* Muted/secondary text is surface-specific — a tone tuned "quiet" against
+     one navy surface is not automatically legible against a lighter one.
+     Always pick the variant matching the actual surface underneath. */
+  .text-muted-on-dark {
+    color: var(--color-muted-on-dark);
+  }
+
+  .text-muted-on-slate {
+    color: var(--color-muted-on-slate);
+  }
+
+  .text-muted-on-light {
+    color: var(--color-muted-on-light);
+  }
+
+  /*
+    Hero video overlay — bottom-to-top navy wash with a HIGH FLOOR, not just
+    a bottom-weighted fade. A live pixel audit against real footage measured
+    contrast as low as ~1.4:1 for text near the top of the frame (nav, the
+    permanent headline) whenever bright sky/facades happened to sit behind
+    it — nowhere near the 3:1/4.5:1 minimums. These stops are solved
+    mathematically, not eyeballed: 0.65 opacity is the minimum navy wash that
+    keeps off-white text at >=4.5:1 even against a pure-white worst case; the
+    gradient still reads as a gradient (0.65 -> 0.9), it just never drops
+    low enough to gamble legibility against unpredictable footage content.
+  */
+  .hero-overlay {
+    background: linear-gradient(
+      to top,
+      color-mix(in oklab, var(--color-deep-navy) 90%, transparent) 0%,
+      color-mix(in oklab, var(--color-deep-navy) 78%, transparent) 40%,
+      color-mix(in oklab, var(--color-deep-navy) 70%, transparent) 70%,
+      color-mix(in oklab, var(--color-deep-navy) 65%, transparent) 100%
+    );
+  }
+}
+
+/*
+  Shared "content swapped in" fade — a quiet enter cue for small panels whose
+  content is replaced outright (not transitioned property-by-property), e.g.
+  the jurisdiction detail panel's three states. Same decelerating curve as
+  the hero crossfade (PREMIUM_EASE in HeroSlideLayer.tsx) so the two most
+  deliberate motion moments on the site share one feel, kept short here
+  (220ms) because this fires on every click, not once per 7s slide. Collapses
+  under prefers-reduced-motion via the global reset below — no per-usage
+  branching needed.
+*/
+@keyframes panel-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Global reduced-motion handling. Every animation/transition in this project
+   must have a reduced-motion path; this is the enforced floor, not a substitute
+   for component-level care (see HERO_COMPONENT_BLUEPRINT.md's per-section rules). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,35 @@
+import type { Metadata } from "next";
+import { PageHeader } from "@/components/layout/PageHeader";
+import { ContactStatement } from "@/components/contact/ContactStatement";
+import { InquiryCategories } from "@/components/contact/InquiryCategories";
+import { ContactConfidentiality } from "@/components/contact/ContactConfidentiality";
+import { ContactDirectEmail } from "@/components/contact/ContactDirectEmail";
+import { CONTACT_HERO } from "@/content/contact";
+
+const TITLE = "Contact | Deimos Group";
+const DESCRIPTION =
+  "A confidential contact channel for transaction advisory, capital formation, strategic partnership, jurisdictional representation, investor/sponsor dialogue and general enquiries with Deimos Group.";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: { title: TITLE, description: DESCRIPTION, siteName: "Deimos Group", type: "website" },
+  twitter: { card: "summary", title: TITLE, description: DESCRIPTION },
+};
+
+// Section order per SITE_COMPLETION_PLAN.md /contact spec: hero -> contact
+// statement -> categorized mailto: inquiry links -> confidentiality/
+// selective-engagement note -> direct email + disclaimer reminder. No
+// ClosingContactCTA here — this page already IS the contact destination
+// every other page's contact CTA points to.
+export default function ContactPage() {
+  return (
+    <>
+      <PageHeader title={CONTACT_HERO.title} description={CONTACT_HERO.description} />
+      <ContactStatement />
+      <InquiryCategories />
+      <ContactConfidentiality />
+      <ContactDirectEmail />
+    </>
+  );
+}
