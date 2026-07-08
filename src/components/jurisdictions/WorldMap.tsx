@@ -147,8 +147,40 @@ const ISLAND_DOTS: ReadonlyArray<readonly [number, number]> = [
   [-61.2, 13.2], // Saint Vincent and the Grenadines
 ];
 
-const WORLD_PATHS: string[] = LANDMASSES.map(
-  (ring) =>
+// Inland seas carved OUT of a landmass ring as even-odd holes (see
+// WORLD_PATHS below). Without this, the coarse Eurasia silhouette merges
+// Scandinavia, the Baltic states and western Russia into one unbroken blob,
+// so the Estonia/Lithuania nodes read as sitting inside Russia. Carving the
+// Baltic Sea + Gulf of Bothnia + Gulf of Finland restores the coastline the
+// two Baltic nodes belong to and separates them from the Russian interior.
+// Traced as a single simple (lon, lat) loop fully interior to the Eurasia
+// ring; the graticule/backdrop shows through it exactly like open ocean.
+const BALTIC_SEA: Ring = [
+  [13, 55], // south-west (Danish straits / south Baltic west)
+  [13, 58], // off south-east Sweden
+  [17, 60.5], // Stockholm / mouth of the Gulf of Bothnia
+  [17.5, 63], // Gulf of Bothnia, Swedish side
+  [21, 65.8], // head of the Gulf of Bothnia
+  [22.5, 63], // Gulf of Bothnia, Finnish side
+  [23, 60.5], // south-west Finland
+  [27, 60.2], // Gulf of Finland (mid)
+  [29.5, 60], // Gulf of Finland, eastern end (toward St Petersburg)
+  [27, 59.4], // Gulf of Finland, south shore (east)
+  [23, 59.2], // Gulf of Finland, south shore (Estonian coast)
+  [21, 57.3], // mouth of the Gulf of Riga (Latvian coast)
+  [21, 55.4], // Lithuanian / Kaliningrad coast
+  [19, 54.3], // Polish coast
+  [15, 54.2], // south Baltic (German / Polish coast)
+];
+
+// Seas keyed to the LANDMASSES index they are carved from. Only Eurasia
+// needs one today; the structure keeps future additions declarative.
+const LANDMASS_SEAS: Record<number, Ring[]> = {
+  5: [BALTIC_SEA], // index 5 === the Eurasia ring
+};
+
+function ringToSubpath(ring: Ring): string {
+  return (
     "M" +
     ring
       .map(([lon, lat]) => {
@@ -156,8 +188,19 @@ const WORLD_PATHS: string[] = LANDMASSES.map(
         return `${x.toFixed(1)} ${y.toFixed(1)}`;
       })
       .join("L") +
-    "Z",
-);
+    "Z"
+  );
+}
+
+// Each landmass is one <path>; any seas for that landmass are appended as
+// additional subpaths and cut out with fill-rule="evenodd".
+const WORLD_PATHS: string[] = LANDMASSES.map((ring, i) => {
+  let d = ringToSubpath(ring);
+  for (const sea of LANDMASS_SEAS[i] ?? []) {
+    d += ringToSubpath(sea);
+  }
+  return d;
+});
 
 /**
  * The silhouette layer only — consumers wrap it in their own <svg
@@ -171,6 +214,7 @@ export function WorldMapPaths() {
         <path
           key={i}
           d={d}
+          fillRule="evenodd"
           fill="var(--color-steel-blue)"
           fillOpacity="0.09"
           stroke="var(--color-steel-blue)"
@@ -202,8 +246,13 @@ export function WorldMapPaths() {
 export const JURISDICTION_COORDS: Record<string, [number, number]> = {
   // Europe
   Greece: [23.7, 38.0],
-  Estonia: [24.7, 59.4],
-  Lithuania: [25.3, 54.7],
+  // Country centroids (not capitals) so both nodes sit safely inland on the
+  // Baltic land strip — west of Russia and east of the carved Baltic Sea —
+  // rather than on the coastline edge where they read ambiguously. Estonia
+  // sits on the Gulf of Finland north of Latvia; Lithuania is south of
+  // Latvia and north-east of Poland. Neither belongs inside Russia.
+  Estonia: [25.0, 58.6],
+  Lithuania: [23.9, 55.2],
   France: [2.35, 48.85],
   Spain: [-3.7, 40.4],
   Portugal: [-9.14, 38.7],
