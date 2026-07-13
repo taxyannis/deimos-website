@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ADVISORY_INTRO,
   ADVISORY_LINK,
@@ -11,8 +10,11 @@ import { CTALink } from "@/components/ui/CTALink";
 // typography, thin rule dividers, one-line definitions in sans, no icons, no
 // bordered boxes. Ink-blue tonal panel against the deep-navy page base —
 // the section shift reads as a quiet change of register, not a zebra flip
-// to a bright surface. Each pillar name is a real link (not a decorative
-// hover trigger) so the hover/focus-reveal works for keyboard users too.
+// to a bright surface. The pillar names are deliberately NON-clickable
+// editorial labels (not links): the homepage index never navigates — the
+// single CTA below is the only navigation action. Each name stays keyboard-
+// focusable (tabIndex 0, no role/href/onClick) purely so the hover reveal of
+// its definition also fires on focus, matching the mouse hover.
 export function AdvisoryPreview() {
   return (
     <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
@@ -24,12 +26,12 @@ export function AdvisoryPreview() {
         <div className="mt-[var(--space-xl)] divide-y divide-white/10 border-t border-b border-white/10">
           {ADVISORY_PILLARS.map((pillar) => (
             <div key={pillar.name} className="group py-[var(--space-md)]">
-              <Link
-                href={ADVISORY_LINK.href}
-                className="text-on-dark inline-block text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif transition-colors hover:text-steel-blue focus-visible:text-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
+              <span
+                tabIndex={0}
+                className="text-on-dark inline-block text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif transition-colors duration-150 ease-out hover:text-steel-blue focus-visible:text-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
               >
                 {pillar.name}
-              </Link>
+              </span>
               <p className="text-muted-on-dark mt-[var(--space-2xs)] max-w-[65ch] text-[length:var(--text-body)] sm:max-h-0 sm:overflow-hidden sm:opacity-0 sm:transition-all sm:duration-300 sm:group-hover:max-h-24 sm:group-hover:opacity-100 sm:group-focus-within:max-h-24 sm:group-focus-within:opacity-100">
                 {pillar.definition}
               </p>

@@ -5,8 +5,9 @@ type CTALinkProps = {
   children: React.ReactNode;
   /** primary = the page's one real ask (filled); secondary = every other link (outline). */
   variant?: "primary" | "secondary";
-  /** Which surface this sits on — picks the correct pre-verified color pairing. */
-  tone?: "on-dark" | "on-light";
+  /** Surface pairing. Only on-dark exists now — the whole site is navy-led;
+      the former on-light variant was unused after the dark rebuild. */
+  tone?: "on-dark";
   className?: string;
 };
 
@@ -29,11 +30,6 @@ const VARIANTS = {
     primary: "bg-off-white text-deep-navy hover:bg-off-white/85 focus-visible:outline-steel-blue",
     secondary:
       "text-on-dark border border-ink-on-dark/50 hover:border-steel-blue hover:text-steel-blue focus-visible:outline-steel-blue",
-  },
-  "on-light": {
-    primary: "bg-deep-navy text-off-white hover:bg-ink-blue focus-visible:outline-steel-blue-on-light",
-    secondary:
-      "text-ink-on-light border border-ink-on-light/40 hover:border-steel-blue-on-light hover:text-steel-blue-on-light focus-visible:outline-steel-blue-on-light",
   },
 } as const;
 

@@ -9,64 +9,72 @@ import { CONTACT_EMAIL } from "@/content/site";
 export const CONTACT_HERO = {
   title: "Contact",
   description:
-    "A single, direct channel for confidential transaction, capital formation and strategic advisory dialogue with Deimos Group.",
+    "A direct, confidential channel for transaction, capital formation and strategic advisory enquiries.",
 };
 
 export const CONTACT_STATEMENT =
-  "For confidential transaction, capital formation or strategic advisory enquiries, contact Deimos Group.";
+  "Deimos reviews a limited number of enquiries at any one time. For confidential transaction, capital formation, strategic partnership or coverage enquiries, contact the firm directly.";
 
 // Identical to CONFIDENTIALITY_COPY (homepage.ts) / FIRM_CONFIDENTIALITY.statement
 // (firm.ts) / MANDATE_ORIENTATION.statement (advisory.ts) by design — the same
-// approved sentence, not a new claim invented for this page.
+// Mandate Discipline sentence, not a new claim invented for this page.
 export const CONTACT_CONFIDENTIALITY_NOTE =
-  "Deimos engages on a selective, mandate-oriented basis. The firm prioritizes situations where transaction complexity, capital requirements, stakeholder alignment or cross-border execution require structured advisory work rather than passive introduction.";
+  "Deimos engages selectively, through defined advisory mandates. The firm's role is to reduce capital risk through structure, process discipline and execution control. It does not act as a listing platform, an open broker network or a passive introducer.";
 
 export type InquiryCategory = {
   id: string;
   label: string;
   subject: string;
+  email: string;
 };
 
-// Six categories and their exact subject lines, per SITE_COMPLETION_PLAN.md's
-// /contact spec — order matches the spec's own ordering.
+// Five categories, routed to the address that owns each stream. Transaction
+// advisory and capital formation (including any public-private / concession
+// enquiries) are consolidated under "Transaction & capital advisory", which
+// keeps the intake@ address; the former Jurisdictional representation and
+// standalone Public-private categories were removed. Subject line mirrors the
+// category so the recipient sees the stream at a glance. CONTACT_EMAIL
+// (intake@) stays the transaction-intake address; the direct/closing channel
+// (DIRECT_EMAIL_MAILTO) is unchanged.
 export const INQUIRY_CATEGORIES: InquiryCategory[] = [
-  {
-    id: "transaction-advisory",
-    label: "Transaction advisory",
-    subject: "Transaction advisory enquiry",
-  },
-  {
-    id: "capital-formation",
-    label: "Capital formation",
-    subject: "Capital formation enquiry",
-  },
-  {
-    id: "strategic-partnership",
-    label: "Strategic partnership",
-    subject: "Strategic partnership enquiry",
-  },
-  {
-    id: "jurisdictional-representation",
-    label: "Jurisdictional representation",
-    subject: "Jurisdictional representation enquiry",
-  },
-  {
-    id: "investor-sponsor-dialogue",
-    label: "Investor / sponsor dialogue",
-    subject: "Investor / sponsor dialogue",
-  },
   {
     id: "general-enquiries",
     label: "General enquiries",
     subject: "General enquiry",
+    email: "contact@deimos-group.com",
+  },
+  {
+    id: "transaction-capital-advisory",
+    label: "Transaction & capital advisory",
+    subject: "Transaction & capital advisory enquiry",
+    email: CONTACT_EMAIL,
+  },
+  {
+    id: "strategic-partnerships",
+    label: "Strategic partnerships",
+    subject: "Strategic partnerships enquiry",
+    email: "partners@deimos-group.com",
+  },
+  {
+    id: "investor-capital-partner-dialogue",
+    label: "Investor & capital partner dialogue",
+    subject: "Investor & capital partner dialogue",
+    email: "partners@deimos-group.com",
+  },
+  {
+    id: "press",
+    label: "Press",
+    subject: "Press enquiry",
+    email: "office@deimos-group.com",
   },
 ] as const;
 
 // Single source of mailto: construction so every link on this page builds
-// its href identically (encodeURIComponent for safety, not because subject
-// lines currently contain characters that need it).
-export function inquiryMailto(subject: string) {
-  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+// its href identically. The address now varies per category (routing above),
+// so both the recipient and the subject are passed in; encodeURIComponent is
+// kept for safety even though current subject lines don't require it.
+export function inquiryMailto(email: string, subject: string) {
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 }
 
 export const DIRECT_EMAIL_MAILTO = `mailto:${CONTACT_EMAIL}`;

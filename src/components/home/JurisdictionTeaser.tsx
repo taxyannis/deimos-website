@@ -5,22 +5,15 @@ import {
   JURISDICTION_REGIONS,
   JURISDICTION_SUBTEXT,
 } from "@/content/homepage";
-import {
-  JURISDICTION_COORDS,
-  MAP_H,
-  MAP_W,
-  WorldMapPaths,
-  project,
-} from "@/components/jurisdictions/WorldMap";
+import { CoverageMapCanvas } from "@/components/jurisdictions/CoverageMapCanvas";
 import { CTALink } from "@/components/ui/CTALink";
 
-// Coverage teaser — the world-map silhouette from /coverage (WorldMap.tsx),
-// rendered here as a static, non-interactive miniature with every selected
-// jurisdiction as a small fixed dot. Same geometry as the real map, so the
-// teaser and the destination page read as one instrument; interactivity
-// (filters, selection, detail panel) lives only on /coverage. Ink-blue
-// tonal panel against the deep-navy base, ahead of the navy contact
-// bookend that follows.
+// Coverage teaser — the exact same map canvas as /coverage
+// (CoverageMapCanvas), rendered STATIC and non-interactive: no onSelect, so
+// there are no clickable markers, no hover panels and no detail panel. It
+// simply supports the "View selected coverage" CTA visually, reading as one
+// instrument with the destination page. Ink-blue tonal panel against the
+// deep-navy base, ahead of the navy contact bookend that follows.
 export function JurisdictionTeaser() {
   return (
     <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
@@ -55,18 +48,7 @@ export function JurisdictionTeaser() {
             </div>
           </div>
 
-          <svg
-            viewBox={`0 0 ${MAP_W} ${MAP_H}`}
-            className="h-auto w-full"
-            role="img"
-            aria-label="Stylized world map marking Deimos's selected market coverage"
-          >
-            <WorldMapPaths />
-            {Object.values(JURISDICTION_COORDS).map(([lon, lat], i) => {
-              const [x, y] = project(lon, lat);
-              return <circle key={i} cx={x} cy={y} r="3" fill="var(--color-steel-blue)" fillOpacity="0.8" />;
-            })}
-          </svg>
+          <CoverageMapCanvas className="h-auto w-full" />
         </div>
       </div>
     </section>

@@ -9,7 +9,13 @@ import { RegionJurisdictionList } from "@/components/jurisdictions/RegionJurisdi
 export function JurisdictionsExposure() {
   return (
     <section className="section-navy border-t border-white/10 py-[var(--space-section)]">
-      <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
+      {/* Standard content column up to xl; at 2xl the coverage instrument is
+          allowed a modest breakout (7xl -> 86rem) so the map reads as a
+          primary feature on ultra-wide screens rather than a short strip in a
+          sea of margin. The map already fills this column's full width, so the
+          wider container directly enlarges the map. Sub-2xl is unchanged, so
+          mobile/tablet/laptop and the page-header alignment are preserved. */}
+      <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)] 2xl:max-w-[86rem]">
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           Coverage by Region
         </h2>

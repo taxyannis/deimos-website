@@ -53,10 +53,16 @@ export function JurisdictionDetailPanel({
         </h3>
         <div className="mt-[var(--space-sm)] border-t border-white/15 pt-[var(--space-sm)]">
           <p className="text-muted-on-dark text-[length:var(--text-small)] tracking-[var(--text-small--letter-spacing)]">
-            Exposure classification
+            Classification
           </p>
           <p className="text-on-dark mt-[var(--space-3xs)] max-w-[40ch] text-[length:var(--text-body)]">
             {jurisdictionClassification(jurisdiction.name)}
+          </p>
+          {/* Restrained selected-entry panel: name, region, classification
+              only — deliberately no industry, sector or service-coverage
+              detail, and this line keeps the legal posture explicit. */}
+          <p className="text-muted-on-dark mt-[var(--space-sm)] max-w-[42ch] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
+            Coverage classification does not imply office presence, regulated operations or active mandate activity in this market.
           </p>
         </div>
       </div>
@@ -78,7 +84,7 @@ export function JurisdictionDetailPanel({
               <button
                 type="button"
                 onClick={() => onSelect({ name, region: activeGroup.region })}
-                className="text-on-dark hover:text-steel-blue focus-visible:text-steel-blue block w-full py-[var(--space-xs)] text-left text-[length:var(--text-body)] transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-steel-blue"
+                className="text-on-dark hover:text-steel-blue focus-visible:text-steel-blue block w-full origin-left py-[var(--space-xs)] text-left text-[length:var(--text-body)] transition-[color,transform] duration-150 ease-out active:scale-[0.99] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-steel-blue"
               >
                 {name}
               </button>

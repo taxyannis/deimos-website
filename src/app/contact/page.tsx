@@ -8,13 +8,13 @@ import { CONTACT_HERO } from "@/content/contact";
 
 const TITLE = "Contact | Deimos Group";
 const DESCRIPTION =
-  "A confidential contact channel for transaction advisory, capital formation, strategic partnership, jurisdictional representation, investor/sponsor dialogue and general enquiries with Deimos Group.";
+  "A direct, confidential channel for transaction, capital formation and strategic advisory enquiries to Deimos Group. Categorized email enquiries only.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   openGraph: { title: TITLE, description: DESCRIPTION, siteName: "Deimos Group", type: "website" },
-  twitter: { card: "summary", title: TITLE, description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
 // Section order per SITE_COMPLETION_PLAN.md /contact spec: hero -> contact

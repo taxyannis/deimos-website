@@ -70,7 +70,20 @@
       "Bash(curl -s http://localhost:3000/jurisdictions -o /tmp/juris3.html)",
       "Bash(curl -s http://localhost:3000/ -o /tmp/home6.html)",
       "Bash(curl -s http://localhost:3000/legal -o /tmp/legal2.html)",
-      "Bash(curl -s -o /dev/null -w \"Location: %{redirect_url}\\\\n\" http://localhost:3000/services)"
+      "Bash(curl -s -o /dev/null -w \"Location: %{redirect_url}\\\\n\" http://localhost:3000/services)",
+      "Bash(awk '{print \" favicon bytes:\", $5}')",
+      "Bash(awk '{s=$5/1048576; printf \"  %s: %.0f MB\\\\n\", $NF, s}')",
+      "Bash(grep -oE 'definition:\\\\s*$|\"\\(Where|When|A transaction|An asset|Capital-intensive\\)[^\"]*' src/content/advisory.ts)",
+      "Bash(timeout 90 npm install -D world-atlas@2 topojson-client@3)",
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(npx next *)",
+      "Bash(npx eslint *)",
+      "Bash(awk '{print $5}')",
+      "Bash(taskkill //F //PID 17376)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(npm.cmd run *)",
+      "Bash(echo \"eslint-exit=$?\")",
+      "PowerShell(npm.cmd run build 2>&1 | Select-Object -First 6)"
     ]
   },
   "hooks": {

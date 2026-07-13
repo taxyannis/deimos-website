@@ -31,10 +31,10 @@ export function Footer() {
                     <Link
                       href={item.href}
                       aria-current={isActive ? "page" : undefined}
-                      className={`inline-block py-[var(--space-3xs)] text-[length:var(--text-label)] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue ${
+                      className={`inline-block py-[var(--space-3xs)] text-[length:var(--text-label)] transition-colors duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue ${
                         isActive
                           ? "text-steel-blue"
-                          : "text-on-dark hover:text-steel-blue focus-visible:text-steel-blue"
+                          : "text-on-dark hover:text-steel-blue focus-visible:text-steel-blue active:text-steel-blue"
                       }`}
                     >
                       {item.label}

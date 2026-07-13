@@ -8,6 +8,7 @@ import {
   HERO_SLIDES,
   HERO_SLIDE_DURATION_MS,
   HERO_SUBLINE,
+  HERO_THESIS,
   HERO_TRANSITION_MS,
 } from "@/content/hero";
 import {
@@ -23,10 +24,15 @@ import { HeroControls } from "./HeroControls";
 
 export function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [transitioningFrom, setTransitioningFrom] = useState<number | null>(
-    null,
-  );
-  const prevIndexRef = useRef(0);
+  // The slide being replaced during the crossfade, or null when settled.
+  // Crucially it is set in the SAME batched state update that promotes the
+  // incoming slide (see goTo), so there is never an intermediate render where
+  // the departing slide is neither active nor outgoing. That 1-frame gap —
+  // caused by the old code deriving the outgoing slide in a useEffect one
+  // commit late — is what made the previous video snap to opacity 0 and flash
+  // (through to the bare navy background) at the start of every transition.
+  const [outgoingIndex, setOutgoingIndex] = useState<number | null>(null);
+  const currentIndexRef = useRef(0);
 
   const [paused, setPaused] = useState(false);
   const [hoverPaused, setHoverPaused] = useState(false);
@@ -51,21 +57,28 @@ export function Hero() {
   // (HERO_COMPONENT_BLUEPRINT.md §6).
   const allowVideo = viewportAllowsVideo && !reducedMotion;
 
-  // Track the outgoing slide only for the duration of the crossfade, so at
-  // most three videos are ever mounted at once (current, pre-loading next,
-  // briefly-outgoing previous), never all five.
-  useEffect(() => {
-    const from = prevIndexRef.current;
-    prevIndexRef.current = currentIndex;
-    if (from === currentIndex) return;
+  // Advance to a slide, marking the departing slide as outgoing in the same
+  // batched update that promotes the incoming one — so the crossfade layering
+  // is always internally consistent within a single render. No-op if we're
+  // already on that slide (a self-transition would needlessly blank it).
+  const goTo = useCallback((index: number) => {
+    if (index === currentIndexRef.current) return;
+    setOutgoingIndex(currentIndexRef.current);
+    currentIndexRef.current = index;
+    setCurrentIndex(index);
+  }, []);
 
-    setTransitioningFrom(from);
-    const t = setTimeout(
-      () => setTransitioningFrom(null),
-      HERO_TRANSITION_MS + 50,
-    );
+  // Release the outgoing layer only once the crossfade has fully finished. By
+  // then the incoming layer is fully opaque and covers it, so clearing it (an
+  // instant snap to opacity 0) is invisible. At most two layers — current and
+  // outgoing — ever participate in a transition; a small tail beyond
+  // HERO_TRANSITION_MS absorbs timer/paint jitter so the incoming layer is
+  // guaranteed opaque before the outgoing one is dropped.
+  useEffect(() => {
+    if (outgoingIndex === null) return;
+    const t = setTimeout(() => setOutgoingIndex(null), HERO_TRANSITION_MS + 60);
     return () => clearTimeout(t);
-  }, [currentIndex]);
+  }, [currentIndex, outgoingIndex]);
 
   // Delay the next slide's preload until shortly before its turn
   // (HERO_COMPONENT_BLUEPRINT.md §11), rather than the instant the current
@@ -91,17 +104,14 @@ export function Hero() {
 
   // Auto-advance. Every slide gets a fresh full duration whenever it becomes
   // current, and whenever pause state changes (so resuming doesn't jump early).
+  // Routed through goTo so the outgoing index is set atomically with current.
   useEffect(() => {
     if (paused || hoverPaused) return;
     const t = setTimeout(() => {
-      setCurrentIndex((i) => (i + 1) % HERO_SLIDES.length);
+      goTo((currentIndexRef.current + 1) % HERO_SLIDES.length);
     }, HERO_SLIDE_DURATION_MS);
     return () => clearTimeout(t);
-  }, [currentIndex, paused, hoverPaused]);
-
-  const goTo = useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
+  }, [currentIndex, paused, hoverPaused, goTo]);
 
   const togglePause = useCallback(() => setPaused((p) => !p), []);
 
@@ -129,7 +139,8 @@ export function Hero() {
     >
       {HERO_SLIDES.map((slide, index) => {
         const isActive = index === currentIndex;
-        const isOutgoing = index === transitioningFrom;
+        const isOutgoing =
+          index === outgoingIndex && outgoingIndex !== currentIndex;
         return (
           <HeroSlideLayer
             key={slide.id}
@@ -147,7 +158,7 @@ export function Hero() {
             mountVideo={
               index === currentIndex ||
               (index === nextIndex && preloadNext) ||
-              index === transitioningFrom
+              index === outgoingIndex
             }
             allowVideo={allowVideo}
             videoFailed={videoFailed.has(slide.id)}
@@ -159,15 +170,30 @@ export function Hero() {
         );
       })}
 
-      <div className="relative z-10 flex min-h-dvh flex-col justify-center px-[var(--space-md)] pb-[clamp(10rem,22vh,16rem)] sm:px-[var(--space-lg)]">
+      {/* pt floor reserves clearance below the fixed nav wordmark so the
+          (now longer) headline never rides up under it on shorter viewports;
+          justify-center still centres the block on tall screens. */}
+      <div className="relative z-10 flex min-h-dvh flex-col justify-center px-[var(--space-md)] pt-[clamp(6rem,14vh,9rem)] pb-[clamp(10rem,22vh,16rem)] sm:px-[var(--space-lg)]">
         {/* One quiet rise on first paint (rise-in, globals.css) — mount-time
             only, never scroll-gated, collapsed under reduced motion. */}
         <div className="mx-auto max-w-7xl [animation:rise-in_800ms_cubic-bezier(0.25,1,0.5,1)_both]">
-          <h1 className="text-on-dark max-w-[18ch] text-[length:var(--text-display)] leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)] font-serif">
+          {/* 18ch keeps a tight, deliberate column on mobile/tablet/laptop;
+              at 2xl (ultra-wide) the measure opens to 24ch so the long
+              headline resolves in fewer lines and reads calmer instead of
+              stacking into a narrow tower. Still well inside the max-w-7xl
+              wrapper (no full-bleed), and fewer lines only increases the
+              clearance below the fixed wordmark. */}
+          <h1 className="text-on-dark max-w-[18ch] text-[length:var(--text-display)] leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)] font-serif 2xl:max-w-[24ch]">
             {HERO_HEADLINE}
           </h1>
           <p className="text-on-dark mt-[var(--space-md)] max-w-[60ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
             {HERO_SUBLINE}
+          </p>
+          {/* Thesis line — the firm's discipline frame, set apart from the
+              subline as a quieter, tracked-out register so it reads as a
+              standing principle rather than continuation of the prose. */}
+          <p className="text-on-dark mt-[var(--space-sm)] max-w-[60ch] text-[length:var(--text-body)] leading-[var(--text-body--line-height)] tracking-[0.01em] opacity-70">
+            {HERO_THESIS}
           </p>
           <div className="mt-[var(--space-lg)] flex flex-wrap gap-[var(--space-sm)]">
             {HERO_CTAS.map((cta, index) => (

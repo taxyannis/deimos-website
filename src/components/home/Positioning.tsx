@@ -23,7 +23,12 @@ export function Positioning() {
 
         <div className="grid gap-[var(--space-xl)] lg:grid-cols-[3fr_2fr] lg:items-start">
           <div>
-            <p className="text-on-dark max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] font-medium">
+            {/* Lead statement stays visually primary through full opacity
+                against the following paragraph's opacity-90 — the previous
+                `font-medium` is inert under the Caslon Text body face (it
+                ships 400/700 only), so hierarchy is carried by tone, not an
+                unavailable 500 weight. */}
+            <p className="text-on-dark max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)]">
               {HOMEPAGE_SELF_IDENTIFICATION}
             </p>
             <p className="text-on-dark mt-[var(--space-sm)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">

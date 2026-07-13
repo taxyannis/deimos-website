@@ -67,8 +67,11 @@
 }
 
 @theme inline {
-  /* Fonts */
-  --font-sans: var(--font-body-sans);
+  /* Fonts — one Caslon voice across the site. The `--font-sans` token name is
+     retained so existing utilities/base styles keep resolving, but it now maps
+     to the Caslon Text body cut (Public Sans was retired); `--font-serif`
+     stays the Caslon Display cut used for headings. */
+  --font-sans: var(--font-body-serif);
   --font-serif: var(--font-display-serif);
 
   /* Colors -> generates bg-, text-, and border- utilities */

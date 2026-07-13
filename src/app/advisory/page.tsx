@@ -8,13 +8,13 @@ import { ADVISORY_HERO } from "@/content/advisory";
 
 const TITLE = "Advisory | Deimos Group";
 const DESCRIPTION =
-  "How Deimos structures, positions and advances complex private-market transactions — capital access, transaction structuring, M&A, special situations, infrastructure, sovereign-linked opportunities, and execution management.";
+  "Deimos advises across strategic advisory, capital formation, transaction architecture, private capital and partnerships, special situations and selected proprietary transactions.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   openGraph: { title: TITLE, description: DESCRIPTION, siteName: "Deimos Group", type: "website" },
-  twitter: { card: "summary", title: TITLE, description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
 // Section order per SITE_COMPLETION_PLAN.md /advisory spec:

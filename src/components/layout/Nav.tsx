@@ -80,7 +80,7 @@ export function Nav() {
               scaled down to nav height. */}
           <Link
             href="/"
-            className="text-ink-on-dark transition-colors hover:text-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
+            className="text-ink-on-dark transition-colors duration-150 ease-out hover:text-steel-blue active:text-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
           >
             <Wordmark className="text-[length:var(--text-body-lg)]" />
           </Link>
@@ -94,10 +94,10 @@ export function Nav() {
                   <Link
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
-                    className={`border-b-2 pb-[var(--space-3xs)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue ${
+                    className={`border-b-2 pb-[var(--space-3xs)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] transition-colors duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue ${
                       isActive
                         ? "border-steel-blue text-steel-blue"
-                        : "border-transparent text-ink-on-dark/85 hover:text-steel-blue focus-visible:text-steel-blue"
+                        : "border-transparent text-ink-on-dark/85 hover:text-steel-blue focus-visible:text-steel-blue active:text-steel-blue"
                     }`}
                   >
                     {item.label}
@@ -183,8 +183,8 @@ export function Nav() {
                   <Link
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
-                    className={`block py-[var(--space-2xs)] text-[length:var(--text-body)] ${
-                      isActive ? "text-steel-blue" : "text-ink-on-dark"
+                    className={`block py-[var(--space-2xs)] text-[length:var(--text-body)] transition-colors duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-steel-blue ${
+                      isActive ? "text-steel-blue" : "text-ink-on-dark hover:text-steel-blue active:text-steel-blue"
                     }`}
                     onClick={() => setMenuOpen(false)}
                   >

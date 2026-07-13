@@ -26,7 +26,7 @@ export function HeroControls({
       <button
         type="button"
         onClick={onTogglePause}
-        className="flex h-6 w-6 items-center justify-center text-ink-on-dark/80 transition-colors hover:text-ink-on-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-steel-blue"
+        className="flex h-6 w-6 items-center justify-center text-ink-on-dark/80 transition-[color,transform] duration-150 ease-out hover:text-ink-on-dark active:scale-[0.92] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-steel-blue"
         aria-label={paused ? "Resume slide rotation" : "Pause slide rotation"}
       >
         {paused ? (

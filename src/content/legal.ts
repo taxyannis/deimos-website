@@ -8,7 +8,7 @@
 export const LEGAL_HERO = {
   title: "Legal / Disclaimer",
   description:
-    "The full disclaimer reference for this website — general information, jurisdictional exposure, and capital access.",
+    "The full disclaimer reference for this website: general information, jurisdictional exposure, and capital access.",
 };
 
 export type LegalSection = {

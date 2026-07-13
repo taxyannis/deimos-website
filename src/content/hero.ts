@@ -1,3 +1,5 @@
+import { JURISDICTION_GROUPS } from "@/content/jurisdictions";
+
 export type HeroSlide = {
   id: string;
   order: number;
@@ -7,16 +9,34 @@ export type HeroSlide = {
   supportingLine: string;
   video: {
     src: string;
-    poster: string;
+    /** Poster frame path, or null when no real poster exists yet — null is
+        deliberate so next/image is never asked to load a missing file (the
+        navy fallback panel shows instead). */
+    poster: string | null;
     /** Accessible name for the poster fallback only — the video itself is aria-hidden. */
     alt: string;
   };
 };
 
-export const HERO_HEADLINE = "Where Structure Precedes Capital";
+// Derived at build time from the actual coverage dataset (jurisdictions.ts)
+// so the hero metric can never drift from the map. Counts unique displayed
+// entries across every region group — no double-counting, no assumed figure.
+export const COVERAGE_ENTRY_COUNT = new Set(
+  JURISDICTION_GROUPS.flatMap((group) => group.jurisdictions),
+).size;
+
+// Homepage identity block — governed by src/content/CONTENT_DOCTRINE.md.
+// Deimos is positioned as a global independent strategic advisory firm. The
+// headline states the identity; the subline states who it advises and on what;
+// the thesis line ("Reducing capital risk…") carries the firm's discipline
+// frame. "Reducing" is deliberate — never eliminating risk or guaranteeing
+// financing/execution. Wording is doctrine-specified — do not paraphrase.
+export const HERO_HEADLINE = "Global Independent Strategic Advisory Firm";
 
 export const HERO_SUBLINE =
-  "Deimos advises on complex private-market transactions where structure, capital, and execution must be aligned before institutional capital can move.";
+  "Deimos advises principals, investors and institutions across transactions, capital situations, strategic assets and cross-border initiatives where structure, capital strategy and execution discipline determine the quality of engagement.";
+
+export const HERO_THESIS = "Reducing capital risk through structure, process and execution.";
 
 export const HERO_CTAS = [
   { label: "Explore Deimos Advisory", href: "/advisory" },
@@ -32,9 +52,18 @@ export const HERO_CTAS = [
  * the footage play back. Swap the `video.src` / `video.poster` values freely;
  * nothing else in this file or in Hero.tsx should need to change.
  *
- * Held in reserve, not used below: hero-waterfront-skyline-01.mp4,
- * hero-twilight-skyline-01.mp4 (window/balcony-edge concern, needs a look),
- * hero-harbor-night-02.mp4 (likely duplicate angle of hero-harbor-night-01).
+ * Previously reserved but unused, now removed from public/videos so the
+ * deployed asset set is only what the hero actually plays:
+ * hero-waterfront-skyline-01.mp4, hero-twilight-skyline-01.mp4 (window/
+ * balcony-edge concern), hero-harbor-night-02.mp4 (duplicate angle of
+ * hero-harbor-night-01). All three remain recoverable from git history if a
+ * future swap wants them back.
+ *
+ * Video-to-slide assignment note: the approved slide COPY order (metric,
+ * label, supporting line) is fixed; only the video clips rotate. The clip
+ * that previously played last (hero-historic-riverfront-01) now opens the
+ * sequence, and every other clip shifts one slide later, so no src is
+ * dropped or duplicated. Each clip's `alt` travels with it.
  */
 export const HERO_SLIDES: HeroSlide[] = [
   {
@@ -42,43 +71,50 @@ export const HERO_SLIDES: HeroSlide[] = [
     order: 1,
     metric: "US$21.2bn",
     metricRegister: "numeric",
-    label: "Historical transaction exposure",
+    label: "Historical Transaction Exposure",
+    // The figure is AGGREGATE — frame it only as aggregate historical exposure
+    // across prior principal experience, advisory review and market
+    // involvement. It must never imply closed or regulated-bank transactions.
     supportingLine:
-      "Principal and advisory transaction exposure across complex private-market situations.",
+      "Aggregate historical exposure across prior principal experience, advisory review and market involvement.",
     video: {
-      src: "/videos/hero-cable-bridge-skyline-01.mp4",
-      poster: "/images/video-posters/hero-cable-bridge-skyline-01-poster.jpg",
-      alt: "Aerial view of a cable-stayed bridge over a dense city skyline",
+      // Rotated to first (was slide-5).
+      src: "/videos/hero-historic-riverfront-01.mp4",
+      poster: null,
+      alt: "Aerial view of a historic riverfront old town",
     },
   },
   {
     id: "slide-2",
     order: 2,
-    // Matches the actual count of JURISDICTION_GROUPS in
-    // src/content/jurisdictions.ts — keep this in sync if that list changes.
-    metric: "50",
+    // Shown as a rounded "60+" band rather than the exact count, to avoid
+    // over-precision on the public hero — but still derived from the live
+    // coverage dataset (COVERAGE_ENTRY_COUNT, currently 63) via a floor to
+    // the nearest ten, so it can never overstate and updates itself if the
+    // list crosses the next ten.
+    metric: `${Math.floor(COVERAGE_ENTRY_COUNT / 10) * 10}+`,
     metricRegister: "numeric",
-    label: "Selected market coverage",
+    label: "Selected Markets & Structuring Jurisdictions",
     supportingLine:
-      "Cross-border market activity, transaction review, and aligned counterparty coverage.",
+      "Markets, structuring centres and special situations relevant to transaction review, capital positioning and counterparty strategy.",
     video: {
-      src: "/videos/hero-coastline-city-01.mp4",
-      poster: "/images/video-posters/hero-coastline-city-01-poster.jpg",
-      alt: "Aerial view of a dense coastal city built along a steep hillside",
+      src: "/videos/hero-cable-bridge-skyline-01.mp4",
+      poster: null,
+      alt: "Aerial view of a cable-stayed bridge over a dense city skyline",
     },
   },
   {
     id: "slide-3",
     order: 3,
-    metric: "7",
+    metric: "3",
     metricRegister: "numeric",
-    label: "Advisory disciplines",
+    label: "Structure. Process. Execution.",
     supportingLine:
-      "Capital formation, structuring, M&A, special situations, infrastructure, investor coverage and execution management.",
+      "The firm's advisory approach is built on the disciplines that reduce capital risk and support credible engagement.",
     video: {
-      src: "/videos/hero-dense-skyline-01.mp4",
-      poster: "/images/video-posters/hero-dense-skyline-01-poster.jpg",
-      alt: "Dense overcast skyscraper skyline",
+      src: "/videos/hero-coastline-city-01.mp4",
+      poster: null,
+      alt: "Aerial view of a dense coastal city built along a steep hillside",
     },
   },
   {
@@ -86,33 +122,32 @@ export const HERO_SLIDES: HeroSlide[] = [
     order: 4,
     metric: "Cross-Border",
     metricRegister: "qualitative",
-    label: "Private capital situations",
+    label: "Private Capital Situations",
     supportingLine:
-      "Advisory work across jurisdictions where capital, structure and stakeholder alignment must be sequenced.",
+      "Transactions where capital, stakeholders and execution pathways must be sequenced across jurisdictions.",
     video: {
-      src: "/videos/hero-harbor-night-01.mp4",
-      poster: "/images/video-posters/hero-harbor-night-01-poster.jpg",
-      alt: "Night aerial view over a dense harbor-front skyline",
+      src: "/videos/hero-dense-skyline-01.mp4",
+      poster: null,
+      alt: "Dense overcast skyscraper skyline",
     },
   },
   {
     id: "slide-5",
     order: 5,
-    metric: "Complex Assets",
+    metric: "Strategic Assets",
     metricRegister: "qualitative",
-    label:
-      "Real assets, infrastructure, energy, hospitality, sports and strategic sectors",
+    label: "Real Assets, Infrastructure and Operating Platforms",
     supportingLine:
-      "Focused on situations where conventional capital processes often require deeper structuring before execution.",
+      "Asset-backed transactions whose capital risk turns on structure, counterparties, diligence and execution path.",
     video: {
-      src: "/videos/hero-historic-riverfront-01.mp4",
-      poster: "/images/video-posters/hero-historic-riverfront-01-poster.jpg",
-      alt: "Aerial view of a historic riverfront old town",
+      src: "/videos/hero-harbor-night-01.mp4",
+      poster: null,
+      alt: "Night aerial view over a dense harbor-front skyline",
     },
   },
 ];
 
-export const HERO_SLIDE_DURATION_MS = 7000;
+export const HERO_SLIDE_DURATION_MS = 9000;
 // Slow, deliberate institutional cadence — also long enough that the next
 // slide's pre-loaded video (see Hero.tsx) is already playing by the time the
 // dissolve starts, so the crossfade blends two live frames, not a frame into

@@ -16,7 +16,7 @@ export const PRIVACY_PLACEHOLDER_NOTICE =
   "This Privacy Policy is a placeholder in preparation. It does not yet reflect a complete or final policy and has not been reviewed by legal counsel. A complete, counsel-reviewed Privacy Policy will replace this placeholder before public launch.";
 
 export const PRIVACY_COLLECTION_STATEMENT =
-  "Deimos Group may receive contact information — such as a name, email address, or the content of an enquiry — when a visitor submits an enquiry by email or through one of this website's contact links.";
+  "Deimos Group may receive contact information, such as a name, email address, or the content of an enquiry, when a visitor submits an enquiry by email or through one of this website's contact links.";
 
 export const PRIVACY_USE_STATEMENT =
   "Information submitted in this way is used only to respond to the enquiry it relates to.";

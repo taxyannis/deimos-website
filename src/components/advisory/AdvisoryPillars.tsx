@@ -4,16 +4,25 @@ import { useState } from "react";
 import { ADVISORY_PILLARS } from "@/content/advisory";
 import { DISCLAIMERS } from "@/content/site";
 
-// Accordion, not cards — DESIGN.md's anti-card-grid stance. These 7 pillars
-// are the single, authoritative "Advisory Capabilities" surface (the old
-// /services page was merged back in here). No icons — each trigger is
+// Accordion, not cards — DESIGN.md's anti-card-grid stance. These six
+// capability buckets are the single, authoritative "Advisory Capabilities"
+// surface (the old /services page was merged back in here). No icons — each trigger is
 // typography plus a plain +/− indicator. Interaction states: the whole row
 // is the trigger, hover tints the name toward steel blue, the open row's
 // name holds steel blue as its active state, and the detail panel reveals
 // via the grid-rows 0fr/1fr height transition (collapses under the global
 // reduced-motion reset). Ink-blue tonal panel against the navy page base.
+// Capital Formation opens expanded on load, so the page presents substance
+// immediately rather than a row of collapsed headers; every panel still
+// toggles independently and closes/reopens via click or keyboard
+// (aria-expanded + button semantics). Resolved by name, not a bare index,
+// so reordering the pillars can't silently change which one leads.
+const DEFAULT_OPEN_ID =
+  ADVISORY_PILLARS.find((pillar) => pillar.name === "Capital Formation")?.id ??
+  ADVISORY_PILLARS[0].id;
+
 export function AdvisoryPillars() {
-  const [openId, setOpenId] = useState<string | null>(ADVISORY_PILLARS[0].id);
+  const [openId, setOpenId] = useState<string | null>(DEFAULT_OPEN_ID);
 
   return (
     <section
@@ -29,14 +38,19 @@ export function AdvisoryPillars() {
           {ADVISORY_PILLARS.map((pillar) => {
             const isOpen = openId === pillar.id;
             const panelId = `advisory-panel-${pillar.id}`;
+            // The button carries the full row padding (top and bottom), so the
+            // entire visible header — full width out to the +/− indicator and
+            // the whole row height — is one contiguous tap target with no dead
+            // strip. Bottom breathing room for the revealed panel lives inside
+            // the collapsible region instead, so it exists only when open.
             return (
-              <div key={pillar.id} className="py-[var(--space-md)]">
+              <div key={pillar.id}>
                 <button
                   type="button"
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   onClick={() => setOpenId(isOpen ? null : pillar.id)}
-                  className="group flex w-full items-center justify-between gap-[var(--space-md)] text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
+                  className="group flex w-full cursor-pointer origin-left items-center justify-between gap-[var(--space-md)] py-[var(--space-md)] text-left select-none transition-transform duration-150 ease-out active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
                 >
                   <span
                     className={`text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif transition-colors group-hover:text-steel-blue ${
@@ -53,13 +67,18 @@ export function AdvisoryPillars() {
                   </span>
                 </button>
 
-                <p className="text-muted-on-dark mt-[var(--space-2xs)] max-w-[65ch] text-[length:var(--text-body)]">
-                  {pillar.definition}
-                </p>
-
                 {/* CSS grid height-transition (grid-template-rows 0fr/1fr) —
                     a real smooth reveal; the sitewide reduced-motion reset
-                    collapses its duration for those users. */}
+                    collapses its duration for those users. Both the
+                    definition and the "typical situations" gloss live inside
+                    this collapsed region, so a closed row shows only the name
+                    and the "+" — the indicator is honest (+ = nothing shown
+                    yet, − = the context text is revealed).
+                    The overflow-hidden element itself must stay padding-free:
+                    overflow clips at the PADDING edge, so any padding here
+                    would keep a strip of the first content line visible even
+                    at grid-rows-[0fr]. All breathing room lives one level
+                    deeper, on the inner wrapper. */}
                 <div
                   id={panelId}
                   aria-hidden={!isOpen}
@@ -67,14 +86,19 @@ export function AdvisoryPillars() {
                     isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
-                  <div className="overflow-hidden">
-                    <div className="mt-[var(--space-sm)] max-w-[65ch] border-l border-white/15 pl-[var(--space-sm)]">
-                      <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
-                        Typical situations
+                  <div className="min-h-0 overflow-hidden">
+                    <div className="pt-[var(--space-2xs)] pb-[var(--space-lg)]">
+                      <p className="max-w-[65ch] text-[length:var(--text-body)] text-ink-on-dark/85">
+                        {pillar.definition}
                       </p>
-                      <p className="text-on-dark mt-[var(--space-2xs)] text-[length:var(--text-body)] opacity-90">
-                        {pillar.typicalSituations}
-                      </p>
+                      <div className="mt-[var(--space-md)] max-w-[65ch] border-l border-white/15 pl-[var(--space-md)]">
+                        <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+                          Typical situations
+                        </p>
+                        <p className="mt-[var(--space-2xs)] text-[length:var(--text-body)] text-ink-on-dark/85">
+                          {pillar.typicalSituations}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -83,9 +107,9 @@ export function AdvisoryPillars() {
           })}
         </div>
 
-        {/* Capital access disclaimer travels with the claim: the first
-            pillar above is Capital Access & Private Capital Formation, so
-            the hedge sits here, not only in the sitewide footer. */}
+        {/* Capital access disclaimer travels with the claim: Capital Formation
+            is one of the capabilities above, so the hedge sits here, not only
+            in the sitewide footer. */}
         <p className="text-muted-on-dark mt-[var(--space-lg)] max-w-[65ch] text-[length:var(--text-small)]">
           {DISCLAIMERS.capitalAccess}
         </p>

@@ -53,7 +53,12 @@ export function HeroSlideLayer({
   onPosterError,
 }: HeroSlideLayerProps) {
   const showVideo = allowVideo && mountVideo && !videoFailed;
-  const showPoster = !showVideo && !posterFailed;
+  // Only render the poster <Image> when a real poster path exists — a null
+  // poster (no frame generated yet) must never reach next/image, or it logs
+  // an "invalid image ... received null" error and requests a missing file.
+  // With no poster, the Tier-3 navy fallback panel shows instead.
+  const poster = slide.video.poster;
+  const showPoster = !showVideo && !posterFailed && Boolean(poster);
   const visible = isActive || isOutgoing;
 
   return (
@@ -79,10 +84,10 @@ export function HeroSlideLayer({
         aria-hidden="true"
       />
 
-      {/* Tier 2 — poster image */}
-      {showPoster && (
+      {/* Tier 2 — poster image (only when a real poster path exists) */}
+      {showPoster && poster && (
         <Image
-          src={slide.video.poster}
+          src={poster}
           alt={slide.video.alt}
           fill
           priority={isActive}
@@ -113,10 +118,11 @@ export function HeroSlideLayer({
       <div className="hero-overlay absolute inset-0" aria-hidden="true" />
 
       {/* This slide's coordinated metric/label/supporting line — lower-third.
-          Rides the crossfade with a short delayed rise so the incoming
-          metric settles as the incoming footage resolves; the outgoing
-          slide's text stays put and is covered along with its video (no
-          text flicker, no double-motion). */}
+          Rides the crossfade on the SAME duration and easing as the video
+          dissolve (HERO_TRANSITION_MS / PREMIUM_EASE) and starts at the same
+          instant — no offset — so text and footage resolve as one motion,
+          with a subtle synchronized rise. The outgoing slide's text stays put
+          and is covered along with its video (no flicker, no double-motion). */}
       <div
         className="absolute inset-x-0 bottom-0 px-[var(--space-md)] pb-[var(--space-2xl)] sm:px-[var(--space-lg)] sm:pb-[var(--space-3xl)]"
         style={{
@@ -125,7 +131,7 @@ export function HeroSlideLayer({
           transition:
             reducedMotion || !isActive
               ? "none"
-              : `opacity 900ms ${PREMIUM_EASE} 350ms, transform 900ms ${PREMIUM_EASE} 350ms`,
+              : `opacity ${HERO_TRANSITION_MS}ms ${PREMIUM_EASE}, transform ${HERO_TRANSITION_MS}ms ${PREMIUM_EASE}`,
         }}
       >
         <div className="mx-auto max-w-7xl">

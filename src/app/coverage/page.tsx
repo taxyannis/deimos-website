@@ -7,13 +7,13 @@ import { JURISDICTIONS_HERO } from "@/content/jurisdictions";
 
 const TITLE = "Coverage | Deimos Group";
 const DESCRIPTION =
-  "Selected market coverage across Europe, Africa, the Middle East/Central Asia, Asia-Pacific, the Americas and international structuring jurisdictions — market exposure and advisory activity, not offices or regulated operations.";
+  "Selected coverage reflects markets, structuring jurisdictions and special situations relevant to transaction review, capital positioning, partner coverage and strategic market monitoring, not offices or regulated operations.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   openGraph: { title: TITLE, description: DESCRIPTION, siteName: "Deimos Group", type: "website" },
-  twitter: { card: "summary", title: TITLE, description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
 // Public route for what was /jurisdictions in earlier v1 builds —

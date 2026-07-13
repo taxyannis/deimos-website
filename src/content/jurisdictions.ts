@@ -57,6 +57,11 @@ export const JURISDICTION_GROUPS: JurisdictionGroup[] = [
       "Morocco",
       "South Africa",
       "Rwanda",
+      // Named at the level the market and existing exposure use — not a
+      // sovereign-recognition statement. Inclusion reflects actual coverage
+      // in the Horn of Africa only; never implies an office, branch, local
+      // team, or regulated presence there (DISCLAIMERS.jurisdictional).
+      "Somaliland",
     ],
   },
   {
@@ -84,6 +89,14 @@ export const JURISDICTION_GROUPS: JurisdictionGroup[] = [
       "Singapore",
       "Australia",
       "Malaysia",
+      "Japan",
+      // Special economic zone in Laos — NOT a country and NOT a standard
+      // structuring jurisdiction. Included strictly as a special-market /
+      // strategic-monitoring entry (see its Strategic Market Monitoring
+      // classification below); never imply office presence, regulated
+      // operations, formal mandate, local representation, or clean
+      // structuring status for this entry.
+      "Golden Triangle SEZ",
     ],
   },
   {
@@ -104,12 +117,34 @@ export const JURISDICTION_GROUPS: JurisdictionGroup[] = [
       "Colombia",
       "Ecuador",
       "Paraguay",
+      "Jamaica",
     ],
   },
   {
     id: "international-structuring",
     region: "International Structuring Jurisdictions",
-    jurisdictions: ["Cayman Islands", "Saint Vincent and the Grenadines"],
+    // Several entries here are deliberately sub-national financial centres
+    // or territories, named at the level the structuring market knows them:
+    // "Labuan" (a federal territory of Malaysia), "Ras Al Khaimah" (an
+    // emirate within the UAE), "Nevis" (named as Nevis, not expanded to
+    // country-level St. Kitts and Nevis). Structuring relevance only —
+    // never offices, branches, local teams, licenses, or regulated
+    // operations, and inclusion does not imply active use on current
+    // mandates (DISCLAIMERS.jurisdictional).
+    jurisdictions: [
+      "Cayman Islands",
+      "Saint Vincent and the Grenadines",
+      "Bermuda",
+      "Belize",
+      "Labuan",
+      "Timor-Leste",
+      "Ras Al Khaimah",
+      "Nevis",
+      "Ireland",
+      "Vanuatu",
+      "Cook Islands",
+      "Seychelles",
+    ],
   },
 ];
 
@@ -122,16 +157,19 @@ export const JURISDICTION_GROUPS: JurisdictionGroup[] = [
 //   Structuring Relevance · Principal / Historical Exposure ·
 //   Strategic Market Monitoring
 //
-// IMPORTANT — assignment discipline: no source document maps a specific
-// jurisdiction to a specific classification, so per-country values here
-// are deliberately conservative: "Structuring Relevance" for the two
-// International Structuring jurisdictions (that is literally their
-// category) and the baseline "Market Exposure" for everything else.
-// Assigning, say, "Principal / Historical Exposure" to a named country
-// without client data would make an unsupported claim MORE specific —
-// exactly what the credibility rules prohibit. When the client supplies a
-// real per-jurisdiction mapping, put it in CLASSIFICATION_OVERRIDES below;
-// nothing else needs to change.
+// The six canonical classification values (client-provided vocabulary):
+//
+//   Transaction Review · Market Exposure · Partner Coverage ·
+//   Structuring Relevance · Principal / Historical Exposure ·
+//   Strategic Market Monitoring
+//
+// Per-jurisdiction assignments below are the client's explicit mapping.
+// Where the client didn't name one, a jurisdiction keeps the conservative
+// baseline "Market Exposure" — never invent a stronger classification for a
+// named market (that would make an unsupported claim more specific).
+// Switzerland uses a client-specified dual label ("Partner Coverage /
+// Structuring Relevance"), so override values are typed as string rather
+// than the strict union.
 export type JurisdictionClassification =
   | "Transaction Review"
   | "Market Exposure"
@@ -140,13 +178,36 @@ export type JurisdictionClassification =
   | "Principal / Historical Exposure"
   | "Strategic Market Monitoring";
 
-const DEFAULT_CLASSIFICATION: JurisdictionClassification = "Market Exposure";
+const DEFAULT_CLASSIFICATION = "Market Exposure";
 
-const CLASSIFICATION_OVERRIDES: Record<string, JurisdictionClassification> = {
+const CLASSIFICATION_OVERRIDES: Record<string, string> = {
+  // International Structuring Jurisdictions — Structuring Relevance
   "Cayman Islands": "Structuring Relevance",
   "Saint Vincent and the Grenadines": "Structuring Relevance",
+  Bermuda: "Structuring Relevance",
+  Belize: "Structuring Relevance",
+  Labuan: "Structuring Relevance",
+  "Timor-Leste": "Structuring Relevance",
+  "Ras Al Khaimah": "Structuring Relevance",
+  Nevis: "Structuring Relevance",
+  Ireland: "Structuring Relevance",
+  Vanuatu: "Structuring Relevance",
+  "Cook Islands": "Structuring Relevance",
+  Seychelles: "Structuring Relevance",
+  // General coverage additions (explicit, though Market Exposure is default)
+  Jamaica: "Market Exposure",
+  Japan: "Market Exposure",
+  // Switzerland — client-specified dual classification
+  Switzerland: "Partner Coverage / Structuring Relevance",
+  // Golden Triangle SEZ — special-market monitoring only; NOT a country,
+  // office, formal jurisdiction, or standard structuring jurisdiction.
+  "Golden Triangle SEZ": "Strategic Market Monitoring",
+  // Somaliland — client-specified dual classification, reflecting actual
+  // exposure; not an office/branch/local-team/regulated-presence claim and
+  // not a sovereign-recognition statement.
+  Somaliland: "Market Exposure / Strategic Market Monitoring",
 };
 
-export function jurisdictionClassification(name: string): JurisdictionClassification {
+export function jurisdictionClassification(name: string): string {
   return CLASSIFICATION_OVERRIDES[name] ?? DEFAULT_CLASSIFICATION;
 }

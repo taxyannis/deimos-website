@@ -1,10 +1,10 @@
 import { FIRM_EXPOSURE } from "@/content/firm";
 
 // Ink-blue tonal panel. This is where /experience's content lives now that
-// it's been removed as a standalone page (SITE_COMPLETION_PLAN.md) — three
-// anonymized exposure themes only, no tombstones, no named clients, no
-// claimed completed mandates, and deliberately no repeat of the US$21.2bn
-// figure (the hero carries that number with its required hedge).
+// it's been removed as a standalone page (SITE_COMPLETION_PLAN.md) — five
+// restrained exposure categories only, no named clients or specific
+// transactions, and deliberately no repeat of the US$21.2bn figure (the hero
+// carries that number as aggregate historical exposure with its required hedge).
 export function FirmExposure() {
   return (
     <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
@@ -16,13 +16,19 @@ export function FirmExposure() {
           {FIRM_EXPOSURE.statement}
         </p>
 
-        <div className="mt-[var(--space-lg)] flex flex-col gap-[var(--space-sm)]">
-          {FIRM_EXPOSURE.themes.map((theme) => (
-            <p key={theme} className="text-muted-on-dark max-w-[55ch] text-[length:var(--text-body)]">
-              {theme}
-            </p>
+        {/* Hairline-divided list (same treatment as Where Deimos Is Engaged)
+            rather than loose stacked paragraphs — gives the three exposure
+            themes institutional structure and weight without cards. */}
+        <ul className="mt-[var(--space-xl)] divide-y divide-white/10 border-t border-b border-white/10">
+          {FIRM_EXPOSURE.categories.map((category) => (
+            <li
+              key={category}
+              className="text-muted-on-dark max-w-[65ch] py-[var(--space-sm)] text-[length:var(--text-body)]"
+            >
+              {category}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

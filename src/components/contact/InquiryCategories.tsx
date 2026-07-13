@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, DISCLAIMERS } from "@/content/site";
+import { DISCLAIMERS } from "@/content/site";
 import { INQUIRY_CATEGORIES, inquiryMailto } from "@/content/contact";
 
 // Navy tonal pivot for the page's one real action — categorized mailto:
@@ -17,19 +17,20 @@ export function InquiryCategories() {
           Inquiry Categories
         </h2>
         <p className="text-muted-on-dark mt-[var(--space-sm)] max-w-[60ch] text-[length:var(--text-body)]">
-          Each category below opens your email client, addressed to{" "}
-          <span className="text-on-dark">{CONTACT_EMAIL}</span>, with the
-          category pre-filled as the subject line.
+          Select the relevant inquiry category below. Each link opens your email
+          client with the appropriate Deimos address and subject line
+          pre-filled.
         </p>
 
         {/* Two-column editorial grid at sm+ — a single full-width column
-            for six short rows left a lot of unused space on wide screens.
+            for five short rows left a lot of unused space on wide screens.
             Row-major grid flow means items 0-1 are row 1, 2-3 are row 2,
-            3-4 are row 3; border-t applies from index 2 on (row 2+) at
-            sm+, and from index 1 on (every row) below sm where it's a
-            single stacked column — index 1 is the one case that differs
-            between the two layouts (top-right at sm+, second row on
-            mobile), so it explicitly opts out of the mobile border. */}
+            and item 4 is row 3 (bottom-left, with an empty cell beside it);
+            border-t applies from index 2 on (row 2+) at sm+, and from index
+            1 on (every row) below sm where it's a single stacked column —
+            index 1 is the one case that differs between the two layouts
+            (top-right at sm+, second row on mobile), so it explicitly opts
+            out of the mobile border. */}
         <ul className="mt-[var(--space-xl)] border-t border-b border-white/15 sm:grid sm:grid-cols-2 sm:gap-x-[var(--space-xl)]">
           {INQUIRY_CATEGORIES.map((category, index) => (
             <li
@@ -39,8 +40,8 @@ export function InquiryCategories() {
               } ${index >= 2 ? "sm:border-t sm:border-white/15" : ""}`}
             >
               <a
-                href={inquiryMailto(category.subject)}
-                className="group flex flex-wrap items-center justify-between gap-x-[var(--space-md)] gap-y-[var(--space-3xs)] py-[var(--space-md)] transition-colors hover:text-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
+                href={inquiryMailto(category.email, category.subject)}
+                className="group flex origin-left flex-wrap items-center justify-between gap-x-[var(--space-md)] gap-y-[var(--space-3xs)] py-[var(--space-md)] transition-[color,transform] duration-150 ease-out hover:text-steel-blue active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
               >
                 <span className="text-on-dark text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif transition-colors group-hover:text-steel-blue">
                   {category.label}
@@ -49,7 +50,7 @@ export function InquiryCategories() {
                   aria-hidden="true"
                   className="text-muted-on-dark hidden text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] transition-colors group-hover:text-steel-blue sm:inline"
                 >
-                  {CONTACT_EMAIL} &rarr;
+                  {category.email} &rarr;
                 </span>
                 <span
                   aria-hidden="true"
@@ -62,9 +63,9 @@ export function InquiryCategories() {
           ))}
         </ul>
 
-        {/* Capital access disclaimer travels with the claim: one of the six
-            categories above is Capital formation, so the hedge sits here,
-            not only in the sitewide footer. */}
+        {/* Capital access disclaimer travels with the claim: one of the
+            categories above is Transaction & capital advisory, so the hedge
+            sits here, not only in the sitewide footer. */}
         <p className="text-muted-on-dark mt-[var(--space-lg)] max-w-[65ch] text-[length:var(--text-small)]">
           {DISCLAIMERS.capitalAccess}
         </p>

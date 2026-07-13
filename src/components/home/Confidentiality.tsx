@@ -52,11 +52,15 @@ export function Confidentiality() {
             under reduced motion or without scroll-timeline support); each
             step's dot sits centered on it. A real sequence, so an ordered
             list; order is carried by the rail geometry, left to right. */}
+        {/* The single animated rail only reads as a "rail" when all steps sit
+            on one row (lg). Below lg the grid wraps to 2–3 rows, so each cell
+            carries its own hairline (matching the rail tone) to keep every
+            station dot sitting on a line instead of floating. */}
         <div className="relative mt-[var(--space-2xl)]">
-          <span aria-hidden="true" className="rail-line absolute top-0 left-0 h-px w-full bg-white/15" />
+          <span aria-hidden="true" className="rail-line absolute top-0 left-0 hidden h-px w-full bg-white/15 lg:block" />
           <ol className="grid grid-cols-2 gap-x-[var(--space-lg)] gap-y-[var(--space-lg)] sm:grid-cols-3 lg:grid-cols-6">
             {PROCESS_STEPS.map((step) => (
-              <li key={step} className="group relative pt-[var(--space-md)]">
+              <li key={step} className="group relative border-t border-white/15 pt-[var(--space-md)] lg:border-t-0">
                 <span
                   aria-hidden="true"
                   className="absolute top-0 left-0 h-[7px] w-[7px] -translate-y-1/2 rounded-full bg-steel-blue/60 transition-colors group-hover:bg-steel-blue"
