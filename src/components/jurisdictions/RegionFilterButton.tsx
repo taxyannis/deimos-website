@@ -20,7 +20,7 @@ export function RegionFilterButton({
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className={`border-b-2 px-[var(--space-sm)] py-[var(--space-xs)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] transition-[color,border-color,transform] duration-150 ease-out active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue ${
+      className={`eyebrow border-b-2 px-[var(--space-sm)] py-[var(--space-xs)] transition-[color,border-color,transform] duration-150 ease-out active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue ${
         active
           ? "border-steel-blue text-steel-blue"
           : "text-muted-on-dark border-transparent hover:border-white/30 hover:text-on-dark"

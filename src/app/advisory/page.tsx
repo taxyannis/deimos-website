@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function AdvisoryPage() {
   return (
     <>
-      <PageHeader title={ADVISORY_HERO.title} description={ADVISORY_HERO.description} />
+      <PageHeader eyebrow="Advisory" title={ADVISORY_HERO.title} description={ADVISORY_HERO.description} />
       <WhatWeAdviseOn />
       <AdvisoryPillars />
       <MandateProcess />

@@ -16,6 +16,7 @@ export function JurisdictionsExposure() {
           wider container directly enlarges the map. Sub-2xl is unchanged, so
           mobile/tablet/laptop and the page-header alignment are preserved. */}
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)] 2xl:max-w-[86rem]">
+        <p className="eyebrow text-muted-on-dark mb-[var(--space-md)]">Global Footprint</p>
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           Coverage by Region
         </h2>

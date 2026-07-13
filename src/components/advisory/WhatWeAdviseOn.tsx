@@ -14,6 +14,7 @@ export function WhatWeAdviseOn() {
   return (
     <section className="section-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
+        <p className="eyebrow text-muted-on-dark mb-[var(--space-md)]">Overview</p>
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {WHAT_WE_ADVISE_ON.heading}
         </h2>
@@ -29,7 +30,7 @@ export function WhatWeAdviseOn() {
               below its first line. lg-scoped: the stacked mobile/tablet
               flow keeps its full gap. */}
           <div className="lg:-mt-[var(--space-sm)]">
-            <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+            <p className="eyebrow text-muted-on-dark">
               {ADVISORY_DISCIPLINES_HEADING}
             </p>
             <ul className="mt-[var(--space-xs)] divide-y divide-white/10 border-t border-b border-white/10">

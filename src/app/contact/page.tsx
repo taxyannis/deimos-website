@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageHeader title={CONTACT_HERO.title} description={CONTACT_HERO.description} />
+      <PageHeader eyebrow="Contact" title={CONTACT_HERO.title} description={CONTACT_HERO.description} />
       <ContactStatement />
       <InquiryCategories />
       <ContactConfidentiality />

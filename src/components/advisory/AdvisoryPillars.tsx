@@ -24,12 +24,13 @@ export function AdvisoryPillars() {
       className="section-dark scroll-mt-24 border-t border-white/10 py-[var(--space-section)]"
     >
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
+        <p className="eyebrow text-muted-on-dark mb-[var(--space-md)]">Capabilities</p>
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           Advisory Capabilities
         </h2>
 
         <div className="mt-[var(--space-lg)] divide-y divide-white/10 border-t border-b border-white/10">
-          {ADVISORY_PILLARS.map((pillar) => {
+          {ADVISORY_PILLARS.map((pillar, index) => {
             const isOpen = openId === pillar.id;
             const panelId = `advisory-panel-${pillar.id}`;
             // The button carries the full row padding (top and bottom), so the
@@ -46,12 +47,24 @@ export function AdvisoryPillars() {
                   onClick={() => setOpenId(isOpen ? null : pillar.id)}
                   className="group flex w-full cursor-pointer origin-left items-center justify-between gap-[var(--space-md)] py-[var(--space-md)] text-left select-none transition-transform duration-150 ease-out active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
                 >
-                  <span
-                    className={`text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif transition-colors group-hover:text-steel-blue ${
-                      isOpen ? "text-steel-blue" : "text-on-dark"
-                    }`}
-                  >
-                    {pillar.name}
+                  <span className="flex items-baseline gap-[var(--space-sm)] sm:gap-[var(--space-md)]">
+                    {/* Quiet two-digit index — the numbered register used to
+                        enumerate capabilities on institutional advisory sites,
+                        set in tabular grotesque so it stays subordinate to the
+                        serif capability name. */}
+                    <span
+                      aria-hidden="true"
+                      className="metric-figures text-muted-on-dark w-[2ch] shrink-0 text-[length:var(--text-small)]"
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className={`text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif transition-colors group-hover:text-steel-blue ${
+                        isOpen ? "text-steel-blue" : "text-on-dark"
+                      }`}
+                    >
+                      {pillar.name}
+                    </span>
                   </span>
                   <span
                     aria-hidden="true"
@@ -86,7 +99,7 @@ export function AdvisoryPillars() {
                         {pillar.definition}
                       </p>
                       <div className="mt-[var(--space-md)] max-w-[65ch] border-l border-white/15 pl-[var(--space-md)]">
-                        <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+                        <p className="eyebrow text-muted-on-dark">
                           Typical situations
                         </p>
                         <p className="mt-[var(--space-2xs)] text-[length:var(--text-body)] text-ink-on-dark/85">

@@ -13,6 +13,7 @@ export function InquiryCategories() {
   return (
     <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
+        <p className="eyebrow text-muted-on-dark mb-[var(--space-md)]">How to Engage</p>
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           Inquiry Categories
         </h2>
