@@ -16,10 +16,14 @@ export function Positioning() {
   return (
     <section className="ambient-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        {/* Visually hidden — this section deliberately has no visible title
-            (HOMEPAGE_BLUEPRINT.md §18's restraint call), but still needs a
-            heading so screen-reader heading-navigation doesn't skip it. */}
         <h2 className="sr-only">Institutional Positioning</h2>
+
+        {/* Quiet uppercase kicker — a single tracked label that heads the
+            section the way the reference advisory firms open a page. Restraint
+            preserved (no decorative rule, no icon): just the word. */}
+        <p className="eyebrow text-muted-on-dark mb-[var(--space-lg)]" aria-hidden="true">
+          Positioning
+        </p>
 
         <div className="grid gap-[var(--space-xl)] lg:grid-cols-[3fr_2fr] lg:items-start">
           <div>

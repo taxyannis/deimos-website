@@ -16,8 +16,11 @@ type CTALinkProps = {
 // (0.97) to read as physical response, not bounce. transform is combined
 // into the same transition-property list as the color states so both
 // animate on one timeline instead of two separately-configured ones.
+// Uppercase, medium-weight, widely tracked label — the restrained
+// institutional button voice (Franklin caps) that reads as considered rather
+// than a rounded SaaS pill.
 const BASE =
-  "inline-flex w-fit items-center justify-center px-[var(--space-lg)] py-[var(--space-sm)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] transition-[color,background-color,border-color,transform] duration-150 ease-out active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4";
+  "inline-flex w-fit items-center justify-center px-[var(--space-lg)] py-[var(--space-sm)] text-[length:var(--text-label)] font-medium uppercase tracking-[0.1em] transition-[color,background-color,border-color,transform] duration-150 ease-out active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4";
 
 // Filled vs. outline — not a color introduced for decoration, but a real
 // hierarchy signal: PRODUCT.md's "one clear path to contact" only reads as

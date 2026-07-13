@@ -19,6 +19,7 @@ export function AdvisoryPreview() {
   return (
     <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
+        <p className="eyebrow text-muted-on-dark mb-[var(--space-lg)]">Advisory</p>
         <h2 className="text-on-dark max-w-[60ch] text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
           {ADVISORY_INTRO}
         </h2>

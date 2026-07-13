@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 export default function FirmPage() {
   return (
     <>
-      <PageHeader title={FIRM_HERO.title} description={WHAT_DEIMOS_IS.statement} />
+      <PageHeader eyebrow="Deimos Group" title={FIRM_HERO.title} description={WHAT_DEIMOS_IS.statement} />
       <FirmPrinciples />
       <FirmEngagement />
       <FirmUseful />

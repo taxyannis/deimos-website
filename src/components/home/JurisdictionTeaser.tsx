@@ -20,6 +20,7 @@ export function JurisdictionTeaser() {
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         <div className="grid gap-[var(--space-xl)] lg:grid-cols-2 lg:items-center">
           <div>
+            <p className="eyebrow text-muted-on-dark mb-[var(--space-lg)]">Coverage</p>
             <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
               {JURISDICTION_HEADLINE}
             </h2>

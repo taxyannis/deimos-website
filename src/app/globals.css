@@ -67,11 +67,13 @@
 }
 
 @theme inline {
-  /* Fonts — one Caslon voice across the site. The `--font-sans` token name is
-     retained so existing utilities/base styles keep resolving, but it now maps
-     to the Caslon Text body cut (Public Sans was retired); `--font-serif`
-     stays the Caslon Display cut used for headings. */
-  --font-sans: var(--font-body-serif);
+  /* Fonts — a two-voice institutional system. `--font-serif` (Caslon Display)
+     carries everything that is *said*: headlines, subpage titles, and
+     section-opening statements. `--font-sans` (Libre Franklin, a Franklin-
+     Gothic revival) carries everything that is *operated*: body copy, nav,
+     eyebrow labels, metrics, and small print. This is the modern advisory-bank
+     pairing (Evercore / PJT / Rothschild) — serif gravitas, grotesque UI. */
+  --font-sans: var(--font-body-sans);
   --font-serif: var(--font-display-serif);
 
   /* Colors -> generates bg-, text-, and border- utilities */
@@ -115,13 +117,16 @@
   --text-body: 1rem;
   --text-body--line-height: 1.65;
 
-  --text-label: 0.875rem;
+  /* Label-size text (Title-Case capability lists, quiet captions). Moderate
+     tracking that stays comfortable for mixed-case phrases; the wide uppercase
+     eyebrow tracking lives on the .eyebrow class, not on this shared token. */
+  --text-label: 0.8125rem;
   --text-label--line-height: 1.4;
-  --text-label--letter-spacing: 0.04em;
+  --text-label--letter-spacing: 0.05em;
 
   --text-small: 0.75rem;
   --text-small--line-height: 1.5;
-  --text-small--letter-spacing: 0.02em;
+  --text-small--letter-spacing: 0.01em;
 }
 
 /*
@@ -157,15 +162,21 @@
     background: var(--color-deep-navy);
     color: var(--color-ink-on-dark);
     font-family: var(--font-sans);
+    font-weight: 400;
     line-height: var(--text-body--line-height);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    /* Proportional oldstyle-off figures + kerning + common ligatures for a
+       clean grotesque UI voice. */
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   }
 
   h1,
   h2,
   h3 {
     font-family: var(--font-serif);
+    font-weight: 400;
     text-wrap: balance;
   }
 
@@ -236,6 +247,46 @@
 
   .text-muted-on-light {
     color: var(--color-muted-on-light);
+  }
+
+  /*
+    Eyebrow — the small, widely tracked uppercase label that heads sections
+    across the site. Now set in the grotesque (Franklin) rather than serif, so
+    it reads as a quiet institutional kicker instead of a dated serif caption.
+    Color is intentionally NOT set here: pair it with the surface-specific
+    text-muted-* class so contrast is chosen deliberately at the call site.
+  */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: 0.14em;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  /*
+    Metric figures — lining, tabular numerals so stacked/rotating stats stay
+    optically aligned (the hero rail, exposure counts). Franklin's default
+    figures are proportional; tabular is what keeps a column of numbers from
+    dancing as the value changes.
+  */
+  .metric-figures {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1, "kern" 1;
+  }
+
+  /*
+    Hairline rule — the quiet 1px divider used to separate sections and rows.
+    A single low-opacity ink line is the institutional substitute for cards,
+    borders, and shadows: structure by division, not by boxing.
+  */
+  .hairline {
+    border-color: color-mix(in oklab, var(--color-off-white) 14%, transparent);
+  }
+
+  .hairline-strong {
+    border-color: color-mix(in oklab, var(--color-off-white) 22%, transparent);
   }
 
   /* Thin, navy-tinted scrollbar for small internal scroll regions (the

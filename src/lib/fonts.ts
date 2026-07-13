@@ -1,9 +1,12 @@
-import { Libre_Caslon_Display, Libre_Caslon_Text } from "next/font/google";
+import { Libre_Caslon_Display, Libre_Franklin } from "next/font/google";
 
 /**
- * Display serif — headline / section-opening statements only (DESIGN.md's One-Serif Rule).
- * Libre Caslon Display: an old-style book/document serif cut for larger display sizes.
- * See FONT_RATIONALE.md for why this was chosen over the reflex fonts it was checked against.
+ * Display serif — headline / section-opening statements only.
+ * Libre Caslon Display: an old-style book/document serif cut for larger display
+ * sizes. It carries the editorial, advisory-led voice of the firm: every
+ * headline, subpage title, and section-opening statement is set in Caslon.
+ * See FONT_RATIONALE.md for why this was chosen over the reflex fonts it was
+ * checked against.
  */
 export const displaySerif = Libre_Caslon_Display({
   weight: "400",
@@ -14,17 +17,23 @@ export const displaySerif = Libre_Caslon_Display({
 });
 
 /**
- * Body serif — everything functional: body copy, navigation, labels, metrics, UI.
- * Libre Caslon Text: the text-optimized cut of the same Caslon family as the
- * display serif above, so the whole site reads as one Caslon voice — the
- * display cut carries the headings, the text cut stays legible at body sizes.
- * Ships 400/700 (regular + bold) only — no 500, so avoid `font-medium`; body
- * hierarchy is carried by size and opacity, not an unavailable mid weight.
+ * Body / UI sans — everything functional: body copy, navigation, eyebrow
+ * labels, metrics, small print and interactive controls.
+ *
+ * Libre Franklin is a Franklin-Gothic revival: a restrained American
+ * grotesque with institutional, editorial pedigree (the classic newsroom
+ * pairing for Caslon). It gives the site the crisp, quiet UI voice of a
+ * modern advisory bank — Evercore / PJT / Rothschild read this way — while
+ * the serif keeps the gravitas. Numerals are used for the metric rail, so a
+ * face with even, legible figures matters.
+ *
+ * Two families total (Caslon + Franklin), which is the whole system: serif
+ * for what is *said*, sans for what is *operated*.
  */
-export const bodySerif = Libre_Caslon_Text({
-  weight: ["400", "700"],
+export const bodySans = Libre_Franklin({
+  weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-body-serif",
+  variable: "--font-body-sans",
   display: "swap",
 });
