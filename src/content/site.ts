@@ -52,10 +52,10 @@ export const DISCLAIMERS = {
     "References to capital access or capital formation refer to advisory, structuring, positioning and counterparty engagement support, and do not constitute a guarantee of financing or investment.",
 } as const;
 
-export const CONTACT_EMAIL = "intake@deimos-group.com";
-
-// Verbatim, original-master-prompt.txt §9 (first of three approved
-// formulations). Shared across /firm and, later, /jurisdictions — both
-// pages carry the same discreet representation invitation.
-export const JURISDICTION_REPRESENTATION_LINE =
-  "Deimos selectively welcomes dialogue with qualified counterparties, local representatives and operating partners in jurisdictions not presently covered.";
+// Contact routing addresses. CONTACT_EMAIL is the general/direct channel (used
+// by /contact's direct email and /privacy); the others route specific inquiry
+// streams (see INQUIRY_CATEGORIES in contact.ts).
+export const CONTACT_EMAIL = "contact@deimos-group.com";
+export const INTAKE_EMAIL = "intake@deimos-group.com";
+export const PARTNERS_EMAIL = "partners@deimos-group.com";
+export const OFFICE_EMAIL = "office@deimos-group.com";

@@ -8,7 +8,7 @@ import { CONTACT_HERO } from "@/content/contact";
 
 const TITLE = "Contact | Deimos Group";
 const DESCRIPTION =
-  "A direct, confidential channel for transaction, capital formation and strategic advisory enquiries to Deimos Group. Categorized email enquiries only.";
+  "A direct, confidential channel for transaction, capital formation and strategic advisory enquiries to Deimos Group.";
 
 export const metadata: Metadata = {
   title: TITLE,

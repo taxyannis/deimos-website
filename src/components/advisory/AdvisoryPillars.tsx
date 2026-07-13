@@ -12,17 +12,11 @@ import { DISCLAIMERS } from "@/content/site";
 // name holds steel blue as its active state, and the detail panel reveals
 // via the grid-rows 0fr/1fr height transition (collapses under the global
 // reduced-motion reset). Ink-blue tonal panel against the navy page base.
-// Capital Formation opens expanded on load, so the page presents substance
-// immediately rather than a row of collapsed headers; every panel still
-// toggles independently and closes/reopens via click or keyboard
-// (aria-expanded + button semantics). Resolved by name, not a bare index,
-// so reordering the pillars can't silently change which one leads.
-const DEFAULT_OPEN_ID =
-  ADVISORY_PILLARS.find((pillar) => pillar.name === "Capital Formation")?.id ??
-  ADVISORY_PILLARS[0].id;
-
+// All rows load closed; each panel toggles independently via click or
+// keyboard (aria-expanded + button semantics), and the whole row from title
+// to +/− indicator is a single <button>, so the full width is clickable.
 export function AdvisoryPillars() {
-  const [openId, setOpenId] = useState<string | null>(DEFAULT_OPEN_ID);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <section

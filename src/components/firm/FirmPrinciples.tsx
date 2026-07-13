@@ -64,7 +64,7 @@ export function FirmPrinciples() {
                   }`}
                 >
                   <div className="min-h-0 overflow-hidden">
-                    <p className="max-w-[65ch] border-l border-white/15 pb-[var(--space-md)] pl-[var(--space-md)] text-[length:var(--text-body)] text-ink-on-dark/85">
+                    <p className="max-w-[65ch] border-l border-white/15 pt-[var(--space-2xs)] pb-[var(--space-md)] pl-[var(--space-md)] text-[length:var(--text-body)] text-ink-on-dark/85">
                       {principle.detail}
                     </p>
                   </div>

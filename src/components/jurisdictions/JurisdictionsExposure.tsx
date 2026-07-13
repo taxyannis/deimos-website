@@ -1,4 +1,4 @@
-import { DISCLAIMERS } from "@/content/site";
+import { COVERAGE_THEMES_NOTE } from "@/content/jurisdictions";
 import { JurisdictionMap } from "@/components/jurisdictions/JurisdictionMap";
 import { RegionJurisdictionList } from "@/components/jurisdictions/RegionJurisdictionList";
 
@@ -28,10 +28,12 @@ export function JurisdictionsExposure() {
           <RegionJurisdictionList />
         </div>
 
-        {/* Disclaimer travels with the map/list, not just the footer — the
-            "hedge travels with the claim" rule. */}
+        {/* One global coverage note below the map — replaces the per-card
+            disclaimer that used to repeat on every selected jurisdiction.
+            Carries the legal negatives, so the hedge still travels with the
+            claim; the formal sitewide disclaimer also remains in the footer. */}
         <p className="text-muted-on-dark mt-[var(--space-lg)] max-w-[65ch] text-[length:var(--text-small)]">
-          {DISCLAIMERS.jurisdictional}
+          {COVERAGE_THEMES_NOTE}
         </p>
       </div>
     </section>

@@ -1,12 +1,12 @@
-import { jurisdictionClassification, type JurisdictionGroup } from "@/content/jurisdictions";
+import { jurisdictionThemes, type JurisdictionGroup } from "@/content/jurisdictions";
 
 export type SelectedJurisdiction = { name: string; region: string };
 
 // Read-out panel for the interactive map's selected node — deliberately
-// plain (no icons, no metrics) so the only claim made per jurisdiction is
-// the safe exposure-type label, never an office/license/team implication.
+// plain (no icons, no metrics) so the only claim made per jurisdiction is a
+// set of relevant themes, never an office/license/team implication.
 // Structured as an instrument "readout": identity block (region + name),
-// a thin rule, then the classification line — a spec-sheet convention
+// a thin rule, then the Relevant Themes line — a spec-sheet convention
 // rather than a plain stacked paragraph, matching the map's own restrained
 // "institutional instrument" register.
 //
@@ -52,17 +52,14 @@ export function JurisdictionDetailPanel({
           {jurisdiction.name}
         </h3>
         <div className="mt-[var(--space-sm)] border-t border-white/15 pt-[var(--space-sm)]">
-          <p className="text-muted-on-dark text-[length:var(--text-small)] tracking-[var(--text-small--letter-spacing)]">
-            Classification
+          <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+            Relevant Themes
           </p>
+          {/* Sector, asset, transaction and structuring themes on one restrained
+              readout line. The per-card disclaimer is gone: it now lives once as
+              a global note below the map (COVERAGE_THEMES_NOTE). */}
           <p className="text-on-dark mt-[var(--space-3xs)] max-w-[40ch] text-[length:var(--text-body)]">
-            {jurisdictionClassification(jurisdiction.name)}
-          </p>
-          {/* Restrained selected-entry panel: name, region, classification
-              only — deliberately no industry, sector or service-coverage
-              detail, and this line keeps the legal posture explicit. */}
-          <p className="text-muted-on-dark mt-[var(--space-sm)] max-w-[42ch] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
-            Coverage classification does not imply office presence, regulated operations or active mandate activity in this market.
+            {jurisdictionThemes(jurisdiction.name).join(" · ")}
           </p>
         </div>
       </div>
@@ -101,7 +98,7 @@ export function JurisdictionDetailPanel({
       className="flex h-full min-h-[12rem] flex-col justify-center p-[var(--space-lg)] [animation:panel-fade-in_220ms_cubic-bezier(0.25,1,0.5,1)_both]"
     >
       <p className="text-muted-on-dark max-w-[36ch] text-[length:var(--text-body)]">
-        Select a region or jurisdiction to view its exposure classification.
+        Select a region or jurisdiction to view its relevant themes.
       </p>
     </div>
   );

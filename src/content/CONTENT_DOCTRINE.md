@@ -15,10 +15,8 @@ Deimos is a **global independent strategic advisory firm**.
 
 **Hero subline**
 
-> Deimos advises principals, investors and institutions across transactions,
-> capital situations, strategic assets and cross-border initiatives where
-> structure, capital strategy and execution discipline determine the quality of
-> engagement.
+> Deimos provides independent strategic advice to principals, investors and
+> institutions across private capital, strategic transactions and partnerships.
 
 **Thesis line**
 

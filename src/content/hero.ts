@@ -4,7 +4,6 @@ export type HeroSlide = {
   id: string;
   order: number;
   metric: string;
-  metricRegister: "numeric" | "qualitative";
   label: string;
   supportingLine: string;
   video: {
@@ -34,7 +33,7 @@ export const COVERAGE_ENTRY_COUNT = new Set(
 export const HERO_HEADLINE = "Global Independent Strategic Advisory Firm";
 
 export const HERO_SUBLINE =
-  "Deimos advises principals, investors and institutions across transactions, capital situations, strategic assets and cross-border initiatives where structure, capital strategy and execution discipline determine the quality of engagement.";
+  "Deimos provides independent strategic advice to principals, investors and institutions across private capital, strategic transactions and partnerships.";
 
 export const HERO_THESIS = "Reducing capital risk through structure, process and execution.";
 
@@ -70,13 +69,12 @@ export const HERO_SLIDES: HeroSlide[] = [
     id: "slide-1",
     order: 1,
     metric: "US$21.2bn",
-    metricRegister: "numeric",
     label: "Historical Transaction Exposure",
     // The figure is AGGREGATE — frame it only as aggregate historical exposure
     // across prior principal experience, advisory review and market
     // involvement. It must never imply closed or regulated-bank transactions.
     supportingLine:
-      "Aggregate historical exposure across prior principal experience, advisory review and market involvement.",
+      "Aggregate historical exposure across principal, advisory and market involvement.",
     video: {
       // Rotated to first (was slide-5).
       src: "/videos/hero-historic-riverfront-01.mp4",
@@ -93,10 +91,9 @@ export const HERO_SLIDES: HeroSlide[] = [
     // the nearest ten, so it can never overstate and updates itself if the
     // list crosses the next ten.
     metric: `${Math.floor(COVERAGE_ENTRY_COUNT / 10) * 10}+`,
-    metricRegister: "numeric",
-    label: "Selected Markets & Structuring Jurisdictions",
+    label: "Global Markets & Structuring Jurisdictions",
     supportingLine:
-      "Markets, structuring centres and special situations relevant to transaction review, capital positioning and counterparty strategy.",
+      "Active across selected markets and structuring jurisdictions worldwide.",
     video: {
       src: "/videos/hero-cable-bridge-skyline-01.mp4",
       poster: null,
@@ -107,10 +104,8 @@ export const HERO_SLIDES: HeroSlide[] = [
     id: "slide-3",
     order: 3,
     metric: "3",
-    metricRegister: "numeric",
     label: "Structure. Process. Execution.",
-    supportingLine:
-      "The firm's advisory approach is built on the disciplines that reduce capital risk and support credible engagement.",
+    supportingLine: "Core pillars of the Deimos operating model.",
     video: {
       src: "/videos/hero-coastline-city-01.mp4",
       poster: null,
@@ -121,10 +116,9 @@ export const HERO_SLIDES: HeroSlide[] = [
     id: "slide-4",
     order: 4,
     metric: "Cross-Border",
-    metricRegister: "qualitative",
-    label: "Private Capital Situations",
+    label: "International Transaction Execution",
     supportingLine:
-      "Transactions where capital, stakeholders and execution pathways must be sequenced across jurisdictions.",
+      "Capital, counterparties and process coordination across jurisdictions.",
     video: {
       src: "/videos/hero-dense-skyline-01.mp4",
       poster: null,
@@ -135,10 +129,9 @@ export const HERO_SLIDES: HeroSlide[] = [
     id: "slide-5",
     order: 5,
     metric: "Strategic Assets",
-    metricRegister: "qualitative",
-    label: "Real Assets, Infrastructure and Operating Platforms",
+    label: "Private Markets, Real Assets & Operating Platforms",
     supportingLine:
-      "Asset-backed transactions whose capital risk turns on structure, counterparties, diligence and execution path.",
+      "Advisory focus across asset-backed transactions and operating businesses.",
     video: {
       src: "/videos/hero-harbor-night-01.mp4",
       poster: null,

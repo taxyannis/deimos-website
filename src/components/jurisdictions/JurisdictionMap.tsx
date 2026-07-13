@@ -108,10 +108,6 @@ export function JurisdictionMap() {
           />
         </div>
       </div>
-
-      <p className="text-muted-on-dark mt-[var(--space-sm)] text-[length:var(--text-small)]">
-        Illustrative coverage map — shown for orientation only, not to precise scale.
-      </p>
     </div>
   );
 }

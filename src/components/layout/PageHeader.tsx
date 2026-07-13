@@ -10,15 +10,24 @@ type PageHeaderProps = {
 // gets one quiet rise on mount (rise-in, globals.css) — load-time only,
 // never scroll-gated, collapsed under reduced motion.
 export function PageHeader({ title, description }: PageHeaderProps) {
+  // A blank line in `description` splits it into stacked paragraphs; a plain
+  // single-line description (every other page) renders as one paragraph
+  // unchanged.
+  const paragraphs = description.split("\n\n");
   return (
     <section className="section-navy py-[var(--space-section-tight)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)] [animation:rise-in_700ms_cubic-bezier(0.25,1,0.5,1)_both]">
         <h1 className="text-on-dark max-w-[20ch] text-[length:var(--text-display)] leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)] font-serif">
           {title}
         </h1>
-        <p className="text-on-dark mt-[var(--space-md)] max-w-[60ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
-          {description}
-        </p>
+        {paragraphs.map((paragraph, index) => (
+          <p
+            key={index}
+            className={`text-on-dark ${index === 0 ? "mt-[var(--space-md)]" : "mt-[var(--space-sm)]"} max-w-[60ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90`}
+          >
+            {paragraph}
+          </p>
+        ))}
       </div>
     </section>
   );

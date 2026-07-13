@@ -6,7 +6,6 @@ import { FirmEngagement } from "@/components/firm/FirmEngagement";
 import { FirmUseful } from "@/components/firm/FirmUseful";
 import { FirmExposure } from "@/components/firm/FirmExposure";
 import { FirmOperatingPosture } from "@/components/firm/FirmOperatingPosture";
-import { JurisdictionRepresentationLine } from "@/components/layout/JurisdictionRepresentationLine";
 import { FIRM_HERO, WHAT_DEIMOS_IS } from "@/content/firm";
 
 const TITLE = "Firm | Deimos Group";
@@ -25,9 +24,9 @@ export const metadata: Metadata = {
 // operating-principles accordion) -> How Deimos Engages (mandate, boundary,
 // process) -> Where Deimos Is Useful (editorial index of situations) ->
 // Selected Exposure (merged /experience content, kept with its disclaimer)
-// -> Operating Posture (independence and discipline) -> jurisdictional
-// representation line -> contact CTA. No leadership/team content anywhere in
-// this sequence — resolved out of v1 scope entirely.
+// -> Operating Posture (independence and discipline) -> contact CTA. No
+// leadership/team content anywhere in this sequence — resolved out of v1 scope
+// entirely.
 export default function FirmPage() {
   return (
     <>
@@ -37,7 +36,6 @@ export default function FirmPage() {
       <FirmUseful />
       <FirmExposure />
       <FirmOperatingPosture />
-      <JurisdictionRepresentationLine />
       <ClosingContactCTA />
     </>
   );

@@ -83,7 +83,9 @@
       "Bash(echo \"exit=$?\")",
       "Bash(npm.cmd run *)",
       "Bash(echo \"eslint-exit=$?\")",
-      "PowerShell(npm.cmd run build 2>&1 | Select-Object -First 6)"
+      "PowerShell(npm.cmd run build 2>&1 | Select-Object -First 6)",
+      "Bash(git rm *)",
+      "Bash(grep -v \"^\\\\s*//\")"
     ]
   },
   "hooks": {

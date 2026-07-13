@@ -4,7 +4,7 @@
 // links only — no backend, no third-party form service, no fake submission
 // behavior (SITE_COMPLETION_PLAN.md's shared-infrastructure resolution).
 
-import { CONTACT_EMAIL } from "@/content/site";
+import { CONTACT_EMAIL, INTAKE_EMAIL, OFFICE_EMAIL, PARTNERS_EMAIL } from "@/content/site";
 
 export const CONTACT_HERO = {
   title: "Contact",
@@ -15,9 +15,10 @@ export const CONTACT_HERO = {
 export const CONTACT_STATEMENT =
   "Deimos reviews a limited number of enquiries at any one time. For confidential transaction, capital formation, strategic partnership or coverage enquiries, contact the firm directly.";
 
-// Identical to CONFIDENTIALITY_COPY (homepage.ts) / FIRM_CONFIDENTIALITY.statement
-// (firm.ts) / MANDATE_ORIENTATION.statement (advisory.ts) by design — the same
-// Mandate Discipline sentence, not a new claim invented for this page.
+// The /contact confidentiality note. It still carries the explicit boundary
+// clause (listing platform / open broker network / passive introducer) that the
+// homepage and /advisory have since dropped — /contact keeps it deliberately, as
+// the one surface where the boundary is stated to prospective enquirers.
 export const CONTACT_CONFIDENTIALITY_NOTE =
   "Deimos engages selectively, through defined advisory mandates. The firm's role is to reduce capital risk through structure, process discipline and execution control. It does not act as a listing platform, an open broker network or a passive introducer.";
 
@@ -28,44 +29,41 @@ export type InquiryCategory = {
   email: string;
 };
 
-// Five categories, routed to the address that owns each stream. Transaction
-// advisory and capital formation (including any public-private / concession
-// enquiries) are consolidated under "Transaction & capital advisory", which
-// keeps the intake@ address; the former Jurisdictional representation and
-// standalone Public-private categories were removed. Subject line mirrors the
-// category so the recipient sees the stream at a glance. CONTACT_EMAIL
-// (intake@) stays the transaction-intake address; the direct/closing channel
-// (DIRECT_EMAIL_MAILTO) is unchanged.
+// Five categories, each routed to the address that owns the stream. General
+// enquiries go to CONTACT_EMAIL (contact@); transaction & capital advisory to
+// INTAKE_EMAIL (intake@); partnerships and investor dialogue to PARTNERS_EMAIL;
+// press to OFFICE_EMAIL. The subject line mirrors the category so the recipient
+// sees the stream at a glance.
 export const INQUIRY_CATEGORIES: InquiryCategory[] = [
   {
     id: "general-enquiries",
     label: "General enquiries",
     subject: "General enquiry",
-    email: "contact@deimos-group.com",
+    email: CONTACT_EMAIL,
   },
   {
     id: "transaction-capital-advisory",
     label: "Transaction & capital advisory",
     subject: "Transaction & capital advisory enquiry",
-    email: CONTACT_EMAIL,
+    email: INTAKE_EMAIL,
   },
   {
     id: "strategic-partnerships",
     label: "Strategic partnerships",
     subject: "Strategic partnerships enquiry",
-    email: "partners@deimos-group.com",
+    email: PARTNERS_EMAIL,
   },
   {
     id: "investor-capital-partner-dialogue",
     label: "Investor & capital partner dialogue",
     subject: "Investor & capital partner dialogue",
-    email: "partners@deimos-group.com",
+    email: PARTNERS_EMAIL,
   },
   {
     id: "press",
     label: "Press",
     subject: "Press enquiry",
-    email: "office@deimos-group.com",
+    email: OFFICE_EMAIL,
   },
 ] as const;
 

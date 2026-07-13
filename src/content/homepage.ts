@@ -1,60 +1,55 @@
-// Copy originally sourced from HOMEPAGE_BLUEPRINT.md / MASTER_WEBSITE_BRIEF.md /
-// original-master-prompt.txt, then refined in the sitewide content pass
-// (2026-07: broader positive framing, em dashes removed from public copy,
-// restrictive "non-standard / before capital can move" language reduced).
-// Legal boundaries (no broker/introducer role, no guaranteed financing)
-// are preserved exactly in substance.
+// Homepage copy, governed by src/content/CONTENT_DOCTRINE.md. Positioning is
+// capability-led (advisory mandates, capital situations, strategic assets,
+// selected proprietary transactions); legal boundaries (no broker/introducer
+// role, no guaranteed financing) are preserved in substance.
 
-// Homepage self-identification / positioning block (the second homepage
-// block). Client-specified wording (2026-07); do not paraphrase. This
-// intentionally DIVERGES from /firm's WHAT_DEIMOS_IS.statement, which keeps
-// the longer capital-risk identity sentence — the two surfaces are no longer
-// held identical, so don't "re-sync" them.
+// Homepage positioning block, paragraph 1 (CONTENT_DOCTRINE.md): the fields
+// Deimos operates across. Paragraph 2 (POSITIONING_COPY) states who it works
+// with and what it does for them.
 export const HOMEPAGE_SELF_IDENTIFICATION =
-  "Deimos is an independent private-market advisory firm working across transactions, partnerships and capital situations where structure, process discipline and execution control determine whether capital and counterparties can engage credibly.";
+  "Deimos operates across strategic advisory, capital formation, transaction architecture and private-market partnerships.";
 
 export const POSITIONING_COPY =
-  "The firm supports principals, investors and institutions by clarifying the transaction, defining the capital requirement, aligning stakeholders, strengthening materials and controlling the process around serious engagement.";
+  "The firm works with principals, investors and institutions to structure transactions, align counterparties and support disciplined execution.";
 
-// Supporting thesis for the advisory preview — one connected process across
-// non-standard transactions, framed around what determines credible capital
-// engagement, not a services menu. Deliberately does NOT restate the
-// "structure, process discipline and execution control" triad (already
-// carried by the adjacent Positioning and Mandate Discipline sections on this
-// page); instead it sharpens the anti-introduction posture — the firm's value
-// is preparation, not access to capital.
+// Intro line for the homepage advisory preview (CONTENT_DOCTRINE.md): advisory
+// framed around the decisions that shape a mandate, not a services menu.
 export const ADVISORY_INTRO =
-  "The firm advises on transactions, strategic assets and cross-border initiatives where transaction structure, capital strategy and execution discipline determine the credibility of capital engagement.";
+  "Advisory at Deimos is structured around the decisions that shape a mandate: strategy, capital, counterparties and execution.";
 
-// Homepage-visible advisory preview — connected workstreams within
-// non-standard transactions, not a capability inventory. Each is a short
-// name plus a single condition-and-role sentence; the full seven-workstream
-// detail lives on /advisory. Names map to /advisory's capability set.
+// Homepage-visible advisory preview — the six capability buckets mirrored from
+// /advisory (CONTENT_DOCTRINE.md), each a short label plus a one-line
+// definition. Full detail lives on /advisory.
 export const ADVISORY_PILLARS = [
+  {
+    name: "Strategic Advisory",
+    definition:
+      "Strategic options, capital decisions and transaction paths framed for principals, investors and institutions.",
+  },
   {
     name: "Capital Formation",
     definition:
-      "Preparing and positioning a private capital process so financing can be underwritten on institutional terms, not merely sought.",
+      "Capital requirements, structures and counterparties positioned around a credible financing strategy.",
   },
   {
     name: "Transaction Architecture",
     definition:
-      "Framing the structure, terms and materials a situation requires before institutional counterparties will engage.",
+      "Terms, documentation and risk allocation shaped into an executable transaction structure.",
   },
   {
-    name: "Strategic Counterparties",
+    name: "Private Capital & Partnerships",
     definition:
-      "Identifying and aligning the sponsors, operators and capital partners a transaction depends on.",
+      "Sponsors, operators and capital partners aligned around roles, economics and governance.",
   },
   {
     name: "Special Situations",
     definition:
-      "Advising on recapitalizations, repositioning and restructurings that call for disciplined structure and execution.",
+      "Recapitalizations, restructurings and repositionings approached through structure, capital strategy and process control.",
   },
   {
-    name: "Execution Support",
+    name: "Selected Proprietary Transactions",
     definition:
-      "Carrying a transaction through diligence, negotiation and process control to a controlled close.",
+      "Selective originated or sponsored opportunities governed by defined role, alignment and execution process.",
   },
 ] as const;
 
@@ -66,19 +61,17 @@ export const ADVISORY_LINK = {
 export const CAPITAL_ACCESS_DISCLAIMER =
   "References to capital access or capital formation refer to advisory, structuring, positioning and counterparty engagement support, and do not constitute a guarantee of financing or investment.";
 
-// Mandate Discipline statement — kept verbatim across the homepage, /firm,
-// /advisory and /contact so the firm's engagement posture reads identically
-// wherever it appears. Reducing capital risk is the firm's role, never
-// eliminating it or guaranteeing an outcome; the closing clause preserves
-// the broker/listing-platform boundary.
+// Mandate Discipline statement for the homepage Confidentiality section.
+// Reducing capital risk is the firm's role, never eliminating it or
+// guaranteeing an outcome. The homepage deliberately carries no defensive
+// boundary clause (benchmark posture: no defensive homepage explanations);
+// the broker/listing-platform boundary lives quietly on /firm's Operating
+// Posture and /contact's confidentiality note.
 export const CONFIDENTIALITY_COPY =
-  "Deimos engages selectively, through defined advisory mandates. The firm's role is to reduce capital risk through structure, process discipline and execution control. It does not act as a listing platform, an open broker network or a passive introducer.";
+  "Deimos engages selectively, through defined advisory mandates. The firm's role is to reduce capital risk through structure, process and execution.";
 
-// Identical to FIRM_CONFIDENTIALITY.principles (firm.ts) by design — the
-// same already-approved five labels, not a new list invented for the
-// homepage. Reused here so the Confidentiality section reads as more than
-// one paragraph without introducing any claim that doesn't already appear,
-// verbatim, on /firm.
+// Five engagement-posture labels shown beside the Mandate Discipline statement
+// so the Confidentiality section reads as more than one paragraph.
 export const CONFIDENTIALITY_PRINCIPLES = [
   "Confidentiality",
   "Selective Engagement",
@@ -87,18 +80,18 @@ export const CONFIDENTIALITY_PRINCIPLES = [
   "Institutional Process Control",
 ] as const;
 
-// The four disciplines Deimos brings to a non-standard transaction — the
-// core of the positioning frame, shown as a compact column beside the
-// positioning statement. Not activities; the standards the work is held to.
+// The four operating pillars, shown as a compact column beside the positioning
+// statement — the canonical disciplines named as pillars, not a service list.
+// Kept deliberately terse so they read as a standing frame rather than echoing
+// the paragraph's prose.
 export const POSITIONING_PRINCIPLES = [
-  "Transaction clarity",
-  "Capital discipline",
+  "Transaction architecture",
+  "Capital strategy",
   "Counterparty alignment",
-  "Execution control",
+  "Execution discipline",
 ] as const;
 
-// Labels only on the homepage — full step descriptions live on the Experience
-// subpage (HOMEPAGE_BLUEPRINT.md §14).
+// Process-step labels shown on the homepage; full descriptions live on /advisory.
 export const PROCESS_STEPS = [
   "Situation Assessment",
   "Structuring & Diligence",
@@ -112,8 +105,15 @@ export const PROCESS_STEPS = [
 // "Jurisdictions" across nav, footer, CTAs and page title).
 export const JURISDICTION_HEADLINE = "Selected Market Coverage";
 
+// Shared /coverage hero intro (consumed by JURISDICTIONS_HERO.description).
 export const JURISDICTION_SUBTEXT =
-  "Selected coverage reflects markets, structuring jurisdictions and special situations relevant to transaction review, capital positioning, partner coverage and strategic market monitoring.";
+  "International advisory coverage across selected markets, structuring jurisdictions and cross-border situations.";
+
+// Homepage coverage-teaser line only. Kept separate from JURISDICTION_SUBTEXT
+// (the /coverage hero subtext) so the homepage can read more assertively
+// without changing the Coverage page, which is out of scope for this pass.
+export const HOMEPAGE_COVERAGE_TEASER =
+  "Active across selected global markets, structuring jurisdictions and cross-border situations.";
 
 export const JURISDICTION_REGIONS = [
   "Europe",
@@ -128,10 +128,6 @@ export const JURISDICTION_DISCLAIMER =
   "Selected coverage reflects current or recent market exposure, transaction review, advisory activity, partner coverage, structuring relevance or special-market monitoring, and does not imply physical office presence or regulated operations in each market.";
 
 export const JURISDICTION_LINK = { label: "View selected coverage", href: "/coverage" };
-
-// /experience (and its homepage Experience section) was removed from v1 —
-// the same three anonymized exposure themes now live on /firm's Exposure &
-// Experience section (src/content/firm.ts's FIRM_EXPOSURE), not here.
 
 export const CONTACT_COPY =
   "Deimos engages selectively. For confidential transaction, capital formation or strategic advisory enquiries, contact the firm directly.";

@@ -47,9 +47,9 @@ export function AdvisoryPreview() {
             </span>
           </CTALink>
 
-          {/* Capital access disclaimer travels with the claim: one of the
-              four pillars above is Capital Access & Private Capital
-              Formation, so the hedge sits here, not only in the footer. */}
+          {/* Capital access disclaimer travels with the claim: Capital
+              Formation is one of the capabilities above, so the hedge sits
+              here, not only in the footer. */}
           <p className="text-muted-on-dark max-w-[65ch] text-[length:var(--text-small)]">
             {CAPITAL_ACCESS_DISCLAIMER}
           </p>

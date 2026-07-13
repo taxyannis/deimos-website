@@ -1,13 +1,10 @@
 import { FIRM_OPERATING_POSTURE } from "@/content/firm";
 
-// Operating Posture — the closing section. A short statement of independence,
-// then four labelled points (independence, selective engagement, international
-// orientation, execution discipline) in a two-column editorial grid at sm+.
-// Static and restrained; the labels reinforce that independence means no
-// captive product or distribution mandate — which keeps the firm clear of
-// broker / placement-agent territory while it participates in selected
-// proprietary transactions. Ink-blue tonal panel closes the page's navy/ink
-// rhythm before the representation line.
+// Operating Posture — the closing section. Three short statements (mandate
+// structure, selective proprietary capability, selective/international
+// engagement), then four labelled points in a two-column editorial grid at
+// sm+. Static and restrained; positive framing only, with no defensive broker
+// boundary. Ink-blue tonal panel closes the page's navy/ink rhythm.
 export function FirmOperatingPosture() {
   return (
     <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
@@ -15,9 +12,14 @@ export function FirmOperatingPosture() {
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {FIRM_OPERATING_POSTURE.heading}
         </h2>
-        <p className="text-on-dark mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
-          {FIRM_OPERATING_POSTURE.statement}
-        </p>
+        {FIRM_OPERATING_POSTURE.statements.map((statement, index) => (
+          <p
+            key={index}
+            className={`text-on-dark ${index === 0 ? "mt-[var(--space-md)]" : "mt-[var(--space-sm)]"} max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90`}
+          >
+            {statement}
+          </p>
+        ))}
 
         <dl className="mt-[var(--space-xl)] grid gap-x-[var(--space-xl)] border-t border-white/10 sm:grid-cols-2">
           {FIRM_OPERATING_POSTURE.points.map((point, index) => (

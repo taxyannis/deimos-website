@@ -13,13 +13,16 @@ export function MandateProcess() {
           {MANDATE_ORIENTATION.heading}
         </h2>
 
-        <p className="text-on-dark mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
-          {MANDATE_ORIENTATION.statement}
-        </p>
-
-        <p className="text-on-dark mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body)] opacity-90">
-          {MANDATE_ORIENTATION.processDescription}
-        </p>
+        {/* All three paragraphs share one type treatment (size, line height,
+            opacity) so the section reads as a single, level statement. */}
+        {MANDATE_ORIENTATION.paragraphs.map((paragraph, index) => (
+          <p
+            key={index}
+            className={`text-on-dark ${index === 0 ? "mt-[var(--space-md)]" : "mt-[var(--space-sm)]"} max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90`}
+          >
+            {paragraph}
+          </p>
+        ))}
 
         {/* See Confidentiality.tsx: the animated single-line rail only holds
             on the lg one-row layout; below lg each cell carries its own

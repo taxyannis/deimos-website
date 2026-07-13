@@ -91,7 +91,7 @@ export const JURISDICTION_COORDS: Record<string, [number, number]> = {
   Lithuania: [23.8813, 55.1694],
   France: [2.35, 48.85],
   Spain: [-3.7, 40.4],
-  Portugal: [-9.14, 38.7],
+  Luxembourg: [6.1296, 49.8153],
   "United Kingdom": [-0.13, 51.5],
   Switzerland: [8.2275, 46.8182],
   Cyprus: [33.4299, 35.1264],

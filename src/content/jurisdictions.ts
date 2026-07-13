@@ -37,7 +37,7 @@ export const JURISDICTION_GROUPS: JurisdictionGroup[] = [
       "Lithuania",
       "France",
       "Spain",
-      "Portugal",
+      "Luxembourg",
       "United Kingdom",
       "Switzerland",
       "Cyprus",
@@ -107,10 +107,8 @@ export const JURISDICTION_GROUPS: JurisdictionGroup[] = [
       "Canada",
       "Mexico",
       "Nicaragua",
-      "Panama",
       "Chile",
       "Dominican Republic",
-      "Antigua and Barbuda",
       "Argentina",
       "Brazil",
       "Peru",
@@ -144,70 +142,265 @@ export const JURISDICTION_GROUPS: JurisdictionGroup[] = [
       "Vanuatu",
       "Cook Islands",
       "Seychelles",
+      // Moved here from the Americas group — treated as structuring
+      // jurisdictions (Coverage Type "Structuring Jurisdiction" below).
+      "Antigua and Barbuda",
+      "Panama",
     ],
   },
 ];
 
-// Per-jurisdiction exposure classification shown in the coverage detail
-// panel — never a claim of offices, licenses, local teams, or completed
-// mandates (DISCLAIMERS.jurisdictional). The approved vocabulary is
-// exactly these six values (client-provided):
+// Per-jurisdiction coverage data. Each market carries ONE Coverage Type (the
+// categorical axis) and a short set of "Relevant Themes" (the sector / asset /
+// transaction themes shown on the card). Neither claims offices, licenses, local
+// teams or completed mandates (see COVERAGE_THEMES_NOTE).
 //
-//   Transaction Review · Market Exposure · Partner Coverage ·
-//   Structuring Relevance · Principal / Historical Exposure ·
-//   Strategic Market Monitoring
-//
-// The six canonical classification values (client-provided vocabulary):
-//
-//   Transaction Review · Market Exposure · Partner Coverage ·
-//   Structuring Relevance · Principal / Historical Exposure ·
-//   Strategic Market Monitoring
-//
-// Per-jurisdiction assignments below are the client's explicit mapping.
-// Where the client didn't name one, a jurisdiction keeps the conservative
-// baseline "Market Exposure" — never invent a stronger classification for a
-// named market (that would make an unsupported claim more specific).
-// Switzerland uses a client-specified dual label ("Partner Coverage /
-// Structuring Relevance"), so override values are typed as string rather
-// than the strict union.
-export type JurisdictionClassification =
-  | "Transaction Review"
+// Rules held across this data: title case throughout; 2–4 representative (not
+// exhaustive) themes; no firm-wide capabilities pasted onto every market; no
+// "or" in any label; "Partner Coverage" (never "Counterparty Coverage"); and no
+// "Structuring Relevance". Coverage Type is restricted to the four values below.
+export type CoverageType =
   | "Market Exposure"
+  | "Structuring Jurisdiction"
   | "Partner Coverage"
-  | "Structuring Relevance"
-  | "Principal / Historical Exposure"
   | "Strategic Market Monitoring";
 
-const DEFAULT_CLASSIFICATION = "Market Exposure";
+type CoverageEntry = { type: CoverageType; themes: readonly string[] };
 
-const CLASSIFICATION_OVERRIDES: Record<string, string> = {
-  // International Structuring Jurisdictions — Structuring Relevance
-  "Cayman Islands": "Structuring Relevance",
-  "Saint Vincent and the Grenadines": "Structuring Relevance",
-  Bermuda: "Structuring Relevance",
-  Belize: "Structuring Relevance",
-  Labuan: "Structuring Relevance",
-  "Timor-Leste": "Structuring Relevance",
-  "Ras Al Khaimah": "Structuring Relevance",
-  Nevis: "Structuring Relevance",
-  Ireland: "Structuring Relevance",
-  Vanuatu: "Structuring Relevance",
-  "Cook Islands": "Structuring Relevance",
-  Seychelles: "Structuring Relevance",
-  // General coverage additions (explicit, though Market Exposure is default)
-  Jamaica: "Market Exposure",
-  Japan: "Market Exposure",
-  // Switzerland — client-specified dual classification
-  Switzerland: "Partner Coverage / Structuring Relevance",
+// Fallback for any market without an explicit entry below — the conservative
+// baseline; themes are not invented for it. Every current jurisdiction now has
+// an explicit entry, so this remains only as a safety net.
+const DEFAULT_ENTRY: CoverageEntry = { type: "Market Exposure", themes: [] };
+
+const STRUCTURING_THEMES = ["Corporate Structuring", "International Structuring"] as const;
+
+const COVERAGE: Record<string, CoverageEntry> = {
+  // ---- Europe ----
+  Greece: { type: "Market Exposure", themes: ["Debt Refinancing", "Hospitality", "FinTech"] },
+  Cyprus: {
+    type: "Structuring Jurisdiction",
+    themes: ["International Structuring", "Banking", "Hospitality"],
+  },
+  Estonia: {
+    type: "Market Exposure",
+    themes: ["FinTech", "Defense & Security", "Data Infrastructure"],
+  },
+  Lithuania: { type: "Partner Coverage", themes: ["Strategic Partnerships", "Industrial Assets"] },
+  Georgia: { type: "Market Exposure", themes: ["Hospitality", "Privatization", "Education"] },
+  Luxembourg: {
+    type: "Structuring Jurisdiction",
+    themes: ["Fund Structuring", "International Structuring", "Banking"],
+  },
+  France: {
+    type: "Market Exposure",
+    themes: ["Precious Metals", "Industrial Assets", "Hospitality", "Sports"],
+  },
+  Spain: { type: "Market Exposure", themes: ["Renewable Energy", "Sports", "Hospitality"] },
+  "United Kingdom": {
+    type: "Partner Coverage",
+    themes: ["Banking", "Private Equity", "Sports", "Strategic Partnerships"],
+  },
+  Switzerland: {
+    type: "Structuring Jurisdiction",
+    themes: ["International Structuring", "Banking", "Corporate Structuring", "Precious Metals"],
+  },
+
+  // ---- Africa ----
+  Uganda: {
+    type: "Market Exposure",
+    themes: ["Public-Private Partnerships", "Foreign Investment", "Energy"],
+  },
+  Kenya: {
+    type: "Market Exposure",
+    themes: ["Infrastructure", "Energy", "Public-Private Partnerships"],
+  },
+  Rwanda: { type: "Market Exposure", themes: ["Infrastructure", "Public-Private Partnerships"] },
+  Malawi: { type: "Market Exposure", themes: ["Energy", "Infrastructure"] },
+  "South Africa": {
+    type: "Market Exposure",
+    themes: ["Debt Markets", "Real Assets", "Energy", "Mining"],
+  },
+  Namibia: { type: "Market Exposure", themes: ["Real Estate", "Private Residences"] },
+  Ghana: { type: "Market Exposure", themes: ["Oil & Gas", "Mining", "Commodities"] },
+  "Democratic Republic of the Congo": {
+    type: "Market Exposure",
+    themes: ["Critical Minerals", "Mining", "Mineral Processing", "Public-Private Partnerships"],
+  },
+  // Somaliland — reflects actual exposure; not an office/branch/local-team/
+  // regulated-presence claim and not a sovereign-recognition statement.
+  Somaliland: { type: "Strategic Market Monitoring", themes: ["Restructuring", "Infrastructure"] },
+  Morocco: {
+    type: "Market Exposure",
+    themes: ["Commodities", "Oil & Gas", "Sports", "Defense & Security"],
+  },
+
+  // ---- Asia-Pacific ----
+  Australia: { type: "Market Exposure", themes: ["Energy", "Oil & Gas", "Hospitality"] },
+  Singapore: {
+    type: "Structuring Jurisdiction",
+    themes: ["International Structuring", "Corporate Structuring", "Banking", "Fund Advisory"],
+  },
+  Cambodia: { type: "Market Exposure", themes: ["Energy", "Commodity Trading"] },
+  Philippines: {
+    type: "Market Exposure",
+    themes: ["Fund Advisory", "Commodity Trading", "Trade Finance", "Banking"],
+  },
   // Golden Triangle SEZ — special-market monitoring only; NOT a country,
   // office, formal jurisdiction, or standard structuring jurisdiction.
-  "Golden Triangle SEZ": "Strategic Market Monitoring",
-  // Somaliland — client-specified dual classification, reflecting actual
-  // exposure; not an office/branch/local-team/regulated-presence claim and
-  // not a sovereign-recognition statement.
-  Somaliland: "Market Exposure / Strategic Market Monitoring",
+  "Golden Triangle SEZ": {
+    type: "Strategic Market Monitoring",
+    themes: ["International Structuring", "Corporate Structuring", "Banking", "Hospitality & Tourism"],
+  },
+  Indonesia: {
+    type: "Market Exposure",
+    themes: ["Infrastructure", "Energy", "Data Infrastructure", "Aviation"],
+  },
+  Malaysia: { type: "Market Exposure", themes: ["Hospitality", "Aviation", "Oil & Gas"] },
+  "Hong Kong SAR": {
+    type: "Structuring Jurisdiction",
+    themes: ["Financial Services", "Banking", "International Structuring", "Real Estate"],
+  },
+  China: {
+    type: "Market Exposure",
+    themes: ["Manufacturing", "Technology", "Commodities", "Critical Minerals"],
+  },
+  India: {
+    type: "Market Exposure",
+    themes: ["Public-Private Partnerships", "Energy", "Infrastructure"],
+  },
+  Japan: { type: "Market Exposure", themes: ["FinTech", "Technology"] },
+
+  // ---- Middle East / Central Asia ----
+  Kazakhstan: { type: "Market Exposure", themes: ["Infrastructure", "Oil & Gas", "Commodities"] },
+  Uzbekistan: {
+    type: "Market Exposure",
+    themes: ["Privatization", "Banking", "Hospitality", "Automotive Manufacturing"],
+  },
+  Oman: {
+    type: "Market Exposure",
+    themes: ["Public-Sector Advisory", "Oil & Gas", "Renewable Energy"],
+  },
+  Qatar: { type: "Market Exposure", themes: ["Financial Services", "Islamic Finance", "Sports"] },
+  "United Arab Emirates": {
+    type: "Structuring Jurisdiction",
+    themes: ["Real Estate", "International Structuring", "Hospitality", "Precious Metals"],
+  },
+  "Saudi Arabia": {
+    type: "Market Exposure",
+    themes: ["Sports", "Infrastructure", "Hospitality & Tourism", "Precious Metals"],
+  },
+
+  // ---- Americas ----
+  "United States": {
+    type: "Market Exposure",
+    themes: [
+      "Commodity Trading",
+      "Real Estate",
+      "Hospitality",
+      "Financial Services",
+      "Oil & Gas",
+      "Renewable Energy",
+    ],
+  },
+  Canada: { type: "Market Exposure", themes: ["Private Equity", "Oil & Gas", "Renewable Energy"] },
+  Mexico: {
+    type: "Market Exposure",
+    themes: ["Public-Private Partnerships", "Mining", "Commodity Trading", "Agriculture", "Sports"],
+  },
+  Jamaica: { type: "Market Exposure", themes: ["Energy", "Hospitality"] },
+  "Dominican Republic": {
+    type: "Market Exposure",
+    themes: ["Commodity Trading", "Oil & Gas", "Public-Private Partnerships"],
+  },
+  Nicaragua: { type: "Market Exposure", themes: ["Infrastructure"] },
+  Colombia: {
+    type: "Market Exposure",
+    themes: ["Sports", "Hospitality", "Mining", "Agriculture"],
+  },
+  Ecuador: {
+    type: "Market Exposure",
+    themes: ["Public-Private Partnerships", "Sports", "Mining", "Renewable Energy"],
+  },
+  Peru: {
+    type: "Market Exposure",
+    themes: [
+      "Public-Private Partnerships",
+      "Hospitality",
+      "Renewable Energy",
+      "Mining",
+      "Manufacturing",
+    ],
+  },
+  Brazil: {
+    type: "Market Exposure",
+    themes: ["Renewable Energy", "Infrastructure", "Mining", "Agriculture", "Sports"],
+  },
+  Paraguay: {
+    type: "Market Exposure",
+    themes: [
+      "Logistics",
+      "Public-Sector Advisory",
+      "Public-Private Partnerships",
+      "Renewable Energy",
+      "Refining",
+      "Infrastructure",
+    ],
+  },
+  Chile: {
+    type: "Market Exposure",
+    themes: ["Renewable Energy", "Mining", "Public-Sector Advisory", "Hospitality", "Refining"],
+  },
+  Argentina: {
+    type: "Market Exposure",
+    themes: ["Renewable Energy", "Hospitality", "Mining", "Agriculture"],
+  },
+
+  // ---- International Structuring Jurisdictions ----
+  // Structuring centres share the structuring-theme baseline; not client-named
+  // in this pass, so themes are left at that baseline (not invented per market).
+  "Cayman Islands": { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  "Saint Vincent and the Grenadines": { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  Bermuda: { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  Belize: { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  Labuan: { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  "Timor-Leste": { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  "Ras Al Khaimah": { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  Nevis: { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  Ireland: { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  Vanuatu: { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  "Cook Islands": { type: "Structuring Jurisdiction", themes: STRUCTURING_THEMES },
+  Seychelles: {
+    type: "Structuring Jurisdiction",
+    themes: ["Hospitality", "Corporate Structuring", "International Structuring"],
+  },
+  // Moved from the Americas group into the structuring set.
+  "Antigua and Barbuda": {
+    type: "Structuring Jurisdiction",
+    themes: ["International Structuring", "Corporate Structuring", "Hospitality", "Real Estate"],
+  },
+  Panama: {
+    type: "Structuring Jurisdiction",
+    themes: ["International Structuring", "Banking", "Corporate Structuring", "Logistics"],
+  },
 };
 
-export function jurisdictionClassification(name: string): string {
-  return CLASSIFICATION_OVERRIDES[name] ?? DEFAULT_CLASSIFICATION;
+// Relevant Themes shown on the card. Where a market carries no specific themes
+// yet (the conservative baseline), the card falls back to its Coverage Type so
+// the line is never empty — preserving the prior display for those markets.
+export function jurisdictionThemes(name: string): readonly string[] {
+  const entry = COVERAGE[name] ?? DEFAULT_ENTRY;
+  return entry.themes.length > 0 ? entry.themes : [entry.type];
 }
+
+// Coverage Type — the categorical axis for a market (one of the four values in
+// CoverageType). Exposed for organisation/future surfaces; the detail panel
+// itself still shows only Relevant Themes (unchanged layout).
+export function jurisdictionCoverageType(name: string): CoverageType {
+  return (COVERAGE[name] ?? DEFAULT_ENTRY).type;
+}
+
+// One global coverage note, shown once below the map (replacing the per-card
+// disclaimer that formerly repeated on every selected jurisdiction). Carries the
+// required legal negatives, so the hedge still travels with the claim.
+export const COVERAGE_THEMES_NOTE =
+  "Coverage reflects market relevance, structuring familiarity and historical exposure. It does not imply office presence, regulated local operations or active mandate activity in every market shown.";

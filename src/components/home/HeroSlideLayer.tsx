@@ -134,20 +134,20 @@ export function HeroSlideLayer({
               : `opacity ${HERO_TRANSITION_MS}ms ${PREMIUM_EASE}, transform ${HERO_TRANSITION_MS}ms ${PREMIUM_EASE}`,
         }}
       >
-        <div className="mx-auto max-w-7xl">
-          {slide.metricRegister === "numeric" ? (
-            <p className="text-on-dark text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)] tracking-[var(--text-h1--letter-spacing)] font-serif">
-              {slide.metric}
-            </p>
-          ) : (
-            <p className="text-on-dark text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
-              {slide.metric}
-            </p>
-          )}
+        {/* Metric, label and supporting line read as ONE centered vertical
+            unit: the block is centered in the viewport width and its three
+            lines share a single text axis. */}
+        <div className="mx-auto max-w-7xl text-center">
+          {/* Every slide's metric renders at the same display size and centred
+              axis — the qualitative slides (Cross-Border, Strategic Assets)
+              align visually with the numeric ones rather than sitting smaller. */}
+          <p className="text-on-dark text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)] tracking-[var(--text-h1--letter-spacing)] font-serif">
+            {slide.metric}
+          </p>
           <p className="text-muted-on-dark mt-[var(--space-2xs)] max-w-none text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
             {slide.label}
           </p>
-          <p className="text-on-dark mt-[var(--space-xs)] max-w-[46ch] text-[length:var(--text-body)] opacity-90">
+          <p className="text-on-dark mx-auto mt-[var(--space-xs)] max-w-[46ch] text-[length:var(--text-body)] opacity-90">
             {slide.supportingLine}
           </p>
         </div>

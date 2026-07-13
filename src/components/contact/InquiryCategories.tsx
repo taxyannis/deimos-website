@@ -16,7 +16,7 @@ export function InquiryCategories() {
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           Inquiry Categories
         </h2>
-        <p className="text-muted-on-dark mt-[var(--space-sm)] max-w-[60ch] text-[length:var(--text-body)]">
+        <p className="text-on-dark mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
           Select the relevant inquiry category below. Each link opens your email
           client with the appropriate Deimos address and subject line
           pre-filled.
@@ -31,13 +31,13 @@ export function InquiryCategories() {
             index 1 is the one case that differs between the two layouts
             (top-right at sm+, second row on mobile), so it explicitly opts
             out of the mobile border. */}
-        <ul className="mt-[var(--space-xl)] border-t border-b border-white/15 sm:grid sm:grid-cols-2 sm:gap-x-[var(--space-xl)]">
+        <ul className="mt-[var(--space-xl)] border-t border-b border-white/10 sm:grid sm:grid-cols-2 sm:gap-x-[var(--space-xl)]">
           {INQUIRY_CATEGORIES.map((category, index) => (
             <li
               key={category.id}
-              className={`${index >= 1 ? "border-t border-white/15" : ""} ${
+              className={`${index >= 1 ? "border-t border-white/10" : ""} ${
                 index === 1 ? "sm:border-t-0" : ""
-              } ${index >= 2 ? "sm:border-t sm:border-white/15" : ""}`}
+              } ${index >= 2 ? "sm:border-t sm:border-white/10" : ""}`}
             >
               <a
                 href={inquiryMailto(category.email, category.subject)}

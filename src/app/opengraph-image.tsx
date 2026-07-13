@@ -5,7 +5,7 @@ import { ImageResponse } from "next/og";
 // next/og's built-in default font (no external font fetch), matching the
 // site's deep-navy / off-white / muted-steel palette.
 export const alt =
-  "Deimos Group | Reducing Capital Risk Through Structure, Process, and Execution";
+  "Deimos Group | Global Independent Strategic Advisory Firm";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,10 +35,10 @@ export default function OpengraphImage() {
           Deimos Group
         </div>
         <div style={{ display: "flex", fontSize: 66, lineHeight: 1.15, maxWidth: 960 }}>
-          Reducing Capital Risk Through Structure, Process, and Execution
+          Global Independent Strategic Advisory Firm
         </div>
         <div style={{ fontSize: 26, color: "#9FB3C8" }}>
-          Independent private-market advisory
+          Reducing capital risk through structure, process and execution
         </div>
       </div>
     ),

@@ -27,7 +27,7 @@ export function FirmEngagement() {
           <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
             {FIRM_ENGAGEMENT.processLabel}
           </p>
-          <p className="text-on-dark mt-[var(--space-sm)] max-w-[65ch] text-[length:var(--text-body)] opacity-90">
+          <p className="text-on-dark mt-[var(--space-xs)] max-w-[65ch] text-[length:var(--text-body)] opacity-90">
             {FIRM_ENGAGEMENT.process}
           </p>
 

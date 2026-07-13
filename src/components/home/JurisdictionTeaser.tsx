@@ -1,9 +1,9 @@
 import {
+  HOMEPAGE_COVERAGE_TEASER,
   JURISDICTION_DISCLAIMER,
   JURISDICTION_HEADLINE,
   JURISDICTION_LINK,
   JURISDICTION_REGIONS,
-  JURISDICTION_SUBTEXT,
 } from "@/content/homepage";
 import { CoverageMapCanvas } from "@/components/jurisdictions/CoverageMapCanvas";
 import { CTALink } from "@/components/ui/CTALink";
@@ -20,11 +20,11 @@ export function JurisdictionTeaser() {
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         <div className="grid gap-[var(--space-xl)] lg:grid-cols-2 lg:items-center">
           <div>
-            <h2 className="text-on-dark text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)] tracking-[var(--text-h1--letter-spacing)] font-serif">
+            <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
               {JURISDICTION_HEADLINE}
             </h2>
-            <p className="text-on-dark mt-[var(--space-md)] max-w-[55ch] text-[length:var(--text-body)] opacity-90">
-              {JURISDICTION_SUBTEXT}
+            <p className="text-on-dark mt-[var(--space-md)] max-w-[55ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
+              {HOMEPAGE_COVERAGE_TEASER}
             </p>
 
             <ul className="text-muted-on-dark mt-[var(--space-lg)] flex flex-wrap gap-x-[var(--space-md)] gap-y-[var(--space-2xs)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">

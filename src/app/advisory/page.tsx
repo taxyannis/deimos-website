@@ -8,7 +8,7 @@ import { ADVISORY_HERO } from "@/content/advisory";
 
 const TITLE = "Advisory | Deimos Group";
 const DESCRIPTION =
-  "Deimos advises across strategic advisory, capital formation, transaction architecture, private capital and partnerships, special situations and selected proprietary transactions.";
+  "Independent strategic advisory across private capital, transactions, partnerships and selected proprietary opportunities.";
 
 export const metadata: Metadata = {
   title: TITLE,
