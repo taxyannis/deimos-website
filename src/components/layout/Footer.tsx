@@ -26,7 +26,7 @@ export function Footer() {
   return (
     <footer className="section-slate border-t border-white/10">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] pt-[var(--space-xl)] pb-[var(--space-md)] sm:px-[var(--space-lg)]">
-        {/* Masthead row — brand, direct line and firm descriptor on the left,
+        {/* Masthead row — brand, email and firm descriptor on the left,
             grouped nav columns on the right. Kept deliberately compact: a
             single-line descriptor and tight column spacing so the footer reads
             as a premium imprint rather than a tall sitemap. */}

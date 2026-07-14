@@ -10,11 +10,10 @@ export function ContactDirectEmail() {
   return (
     <section className="section-navy border-t border-white/10 py-[var(--space-xl)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        <p className="eyebrow text-muted-on-dark mb-[var(--space-sm)]">Direct Line</p>
         {/* The plain email address is set larger and in the serif so it reads
             as the page's quiet closing action, not another line of body copy. */}
         <p className="text-on-dark max-w-[60ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
-          Prefer a direct line? Email Deimos Group at{" "}
+          Email Deimos Group directly at{" "}
           <a
             href={DIRECT_EMAIL_MAILTO}
             className="text-on-dark font-serif underline decoration-white/30 underline-offset-4 transition-colors hover:text-steel-blue hover:decoration-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"

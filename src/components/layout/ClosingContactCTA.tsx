@@ -35,10 +35,10 @@ export function ClosingContactCTA({ statement }: ClosingContactCTAProps) {
               {CONTACT_CTA.label}
             </CTALink>
 
-            {/* Direct line — a quiet secondary path beneath the primary ask,
-                giving the block a second tier without competing with it. */}
+            {/* A quiet secondary path beneath the primary ask — the plain
+                email, giving the block a second tier without competing with
+                the filled CTA. */}
             <div className="lg:text-right">
-              <p className="eyebrow text-muted-on-dark mb-[var(--space-2xs)]">Direct Line</p>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 className="text-on-dark font-serif text-[length:var(--text-h3)] underline decoration-white/25 underline-offset-4 transition-colors hover:text-steel-blue hover:decoration-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
