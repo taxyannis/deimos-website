@@ -313,6 +313,36 @@
   }
 
   /*
+    Cartographic contour texture — a very faint topographic linework wash laid
+    tone-on-tone over a section band, for depth on otherwise flat surfaces.
+    Painted on a z-index:-1 ::before inside an isolated stacking context, so it
+    sits above the section's background fill but strictly below all content and
+    never intercepts pointer events or affects legibility. A top-anchored
+    linear mask fades the lines out toward the lower half of the band, keeping
+    the texture an atmospheric accent at the top rather than a full-height
+    pattern behind body copy. Used sparingly — coverage bands (thematically
+    cartographic) and the closing contact band only.
+  */
+  .texture-contour {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .texture-contour::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1200'%20height='800'%20viewBox='0%200%201200%20800'%3E%3Cg%20fill='none'%20stroke='%23a9c6ef'%20stroke-width='1'%3E%3Cpath%20d='M0,150C300,70,520,210,780,130S1100,70,1200,140'/%3E%3Cpath%20d='M0,220C300,140,520,280,780,200S1100,140,1200,210'/%3E%3Cpath%20d='M0,300C310,220,530,360,790,280S1110,220,1200,290'/%3E%3Cpath%20d='M0,390C320,310,540,450,800,370S1120,310,1200,380'/%3E%3Cpath%20d='M0,490C330,410,550,550,810,470S1130,410,1200,480'/%3E%3Cpath%20d='M0,600C340,520,560,660,820,580S1140,520,1200,590'/%3E%3Cpath%20d='M0,710C340,630,560,770,820,690S1140,630,1200,700'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 1200px 800px;
+    opacity: 0.08;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 70%);
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 70%);
+  }
+
+  /*
     Hero video overlay — bottom-to-top navy wash with a HIGH FLOOR, not just
     a bottom-weighted fade. A live pixel audit against real footage measured
     contrast as low as ~1.4:1 for text near the top of the frame (nav, the

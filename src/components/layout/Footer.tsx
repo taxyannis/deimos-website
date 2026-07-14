@@ -25,31 +25,28 @@ export function Footer() {
 
   return (
     <footer className="section-slate border-t border-white/10">
-      <div className="mx-auto max-w-7xl px-[var(--space-md)] py-[var(--space-3xl)] sm:px-[var(--space-lg)]">
-        {/* Masthead row — brand and firm descriptor on the left, grouped nav
-            columns on the right. A four-column editorial grid at lg gives the
-            footer real structure instead of a name floated opposite a link
-            wrap. */}
-        <div className="grid gap-[var(--space-2xl)] border-b border-white/10 pb-[var(--space-2xl)] lg:grid-cols-[2fr_1fr_1fr] lg:gap-[var(--space-3xl)]">
+      <div className="mx-auto max-w-7xl px-[var(--space-md)] pt-[var(--space-2xl)] pb-[var(--space-lg)] sm:px-[var(--space-lg)]">
+        {/* Masthead row — brand, direct line and firm descriptor on the left,
+            grouped nav columns on the right. Kept deliberately compact: a
+            single-line descriptor and tight column spacing so the footer reads
+            as a premium imprint rather than a tall sitemap. */}
+        <div className="grid gap-x-[var(--space-2xl)] gap-y-[var(--space-lg)] border-b border-white/10 pb-[var(--space-lg)] lg:grid-cols-[2fr_1fr_1fr] lg:gap-x-[var(--space-3xl)]">
           <div>
-            <Wordmark className="text-[length:var(--text-h2)]" />
-            <p className="text-muted-on-slate mt-[var(--space-md)] max-w-[34ch] text-[length:var(--text-body)] leading-[var(--text-body--line-height)]">
+            <Wordmark className="text-[length:var(--text-h3)]" />
+            <p className="text-muted-on-slate mt-[var(--space-xs)] max-w-[38ch] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
               A global independent strategic advisory firm advising principals, investors and institutions across international markets.
             </p>
-            <div className="mt-[var(--space-lg)]">
-              <p className="eyebrow text-muted-on-slate mb-[var(--space-2xs)]">Direct Line</p>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="text-on-dark text-[length:var(--text-body)] underline decoration-white/25 underline-offset-4 transition-colors hover:text-steel-blue hover:decoration-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
-              >
-                {CONTACT_EMAIL}
-              </a>
-            </div>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="text-on-dark mt-[var(--space-sm)] inline-block text-[length:var(--text-body)] underline decoration-white/25 underline-offset-4 transition-colors hover:text-steel-blue hover:decoration-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
+            >
+              {CONTACT_EMAIL}
+            </a>
           </div>
 
           <nav aria-label="Footer">
-            <p className="eyebrow text-muted-on-slate mb-[var(--space-md)]">Navigate</p>
-            <ul className="flex flex-col gap-[var(--space-3xs)]">
+            <p className="eyebrow text-muted-on-slate mb-[var(--space-sm)]">Navigate</p>
+            <ul className="flex flex-col gap-0">
               {PRIMARY_NAV.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -68,8 +65,8 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Legal">
-            <p className="eyebrow text-muted-on-slate mb-[var(--space-md)]">Legal</p>
-            <ul className="flex flex-col gap-[var(--space-3xs)]">
+            <p className="eyebrow text-muted-on-slate mb-[var(--space-sm)]">Legal</p>
+            <ul className="flex flex-col gap-0">
               {LEGAL_NAV.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -94,13 +91,13 @@ export function Footer() {
           the deep-navy/ink-blue muted-on-dark was calibrated against. Using
           muted-on-dark here measured 2.43:1 in a live audit — see globals.css.
         */}
-        <div className="text-muted-on-slate mt-[var(--space-xl)] flex flex-col gap-[var(--space-sm)] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
+        <div className="text-muted-on-slate mt-[var(--space-lg)] flex flex-col gap-[var(--space-xs)] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
           <p className="max-w-none">{DISCLAIMERS.general}</p>
           <p className="max-w-none">{DISCLAIMERS.jurisdictional}</p>
           <p className="max-w-none">{DISCLAIMERS.capitalAccess}</p>
         </div>
 
-        <p className="text-muted-on-slate mt-[var(--space-lg)] text-[length:var(--text-small)]">
+        <p className="text-muted-on-slate mt-[var(--space-md)] text-[length:var(--text-small)]">
           © {year} {SITE_NAME}. All rights reserved.
         </p>
       </div>

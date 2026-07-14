@@ -17,7 +17,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 // deep-navy base, ahead of the navy contact bookend that follows.
 export function JurisdictionTeaser() {
   return (
-    <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
+    <section className="section-dark texture-contour border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         <div className="grid gap-[var(--space-xl)] lg:grid-cols-2 lg:items-center">
           <div>

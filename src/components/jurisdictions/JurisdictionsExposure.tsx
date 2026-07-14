@@ -8,7 +8,7 @@ import { RegionJurisdictionList } from "@/components/jurisdictions/RegionJurisdi
 // one is ever visible/interactive at a time, so there's nothing to sync.
 export function JurisdictionsExposure() {
   return (
-    <section className="section-navy border-t border-white/10 py-[var(--space-section)]">
+    <section className="section-navy texture-contour border-t border-white/10 py-[var(--space-section)]">
       {/* Standard content column up to xl; at 2xl the coverage instrument is
           allowed a modest breakout (7xl -> 86rem) so the map reads as a
           primary feature on ultra-wide screens rather than a short strip in a

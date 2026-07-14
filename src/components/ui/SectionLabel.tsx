@@ -12,13 +12,14 @@ type SectionLabelProps = {
   className?: string;
 };
 
-// Indexed section label — the connective tissue that gives the site editorial
-// density: a tabular index numeral, a short hairline, then the tracked eyebrow.
-// This is the "subtle indexed sections" register used across institutional
-// advisory sites (Rothschild / Evercore) — it adds structure and rhythm
-// without cards, icons or decoration. The index is aria-hidden: it is a visual
-// enumeration cue, not content a screen reader needs to announce before the
-// label.
+// Institutional section header — a single refined system used sitewide.
+// A short vertical steel-blue marker opens the header, followed by an
+// optional compact index numeral and the small uppercase label, on tight
+// asymmetric spacing. This replaces the earlier "01 — Label" treatment with
+// its long horizontal rule: the vertical tick reads as a considered editorial
+// index cue (the register used on institutional advisory/annual-report
+// mastheads) rather than a dash. The marker and index are aria-hidden — they
+// are visual enumeration, not content a screen reader needs to announce.
 export function SectionLabel({
   index,
   children,
@@ -26,17 +27,22 @@ export function SectionLabel({
   className = "",
 }: SectionLabelProps) {
   const muted = tone === "on-slate" ? "text-muted-on-slate" : "text-muted-on-dark";
-  const ruleColor = tone === "on-slate" ? "bg-white/25" : "bg-white/20";
 
   return (
-    <div className={`flex items-center gap-[var(--space-sm)] ${className}`}>
+    <div className={`flex items-center ${className}`}>
+      {/* Short vertical marker — a steel-blue tick, slightly taller than the
+          cap height, that anchors the header. */}
+      <span
+        aria-hidden="true"
+        className="mr-[var(--space-xs)] h-[1.15em] w-px shrink-0 bg-steel-blue/70"
+      />
       {index && (
-        <span aria-hidden="true" className={`metric-figures eyebrow ${muted}`}>
+        <span
+          aria-hidden="true"
+          className={`metric-figures mr-[var(--space-sm)] text-[length:var(--text-small)] tracking-[0.06em] text-steel-blue`}
+        >
           {index}
         </span>
-      )}
-      {index && (
-        <span aria-hidden="true" className={`h-px w-[var(--space-lg)] ${ruleColor}`} />
       )}
       <span className={`eyebrow ${muted}`}>{children}</span>
     </div>
