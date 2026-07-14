@@ -12,24 +12,23 @@ import {
 // from the six Advisory Capabilities accordion below.
 export function WhatWeAdviseOn() {
   return (
-    <section className="section-navy border-t border-white/10 py-[var(--space-section)]">
+    <section className="section-navy border-t border-white/10 pt-[var(--space-xl)] pb-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         <p className="eyebrow text-muted-on-dark mb-[var(--space-md)]">Overview</p>
-        <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
+        <h2 className="text-on-dark max-w-[24ch] text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {WHAT_WE_ADVISE_ON.heading}
         </h2>
 
-        <div className="mt-[var(--space-md)] grid gap-[var(--space-xl)] lg:grid-cols-[3fr_2fr] lg:items-start">
-          <p className="text-on-dark max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
+        {/* Left body copy paired with the disciplines index. The columns are
+            top-aligned to a shared baseline (both start level with the heading
+            zone) and the gap is widened at lg so the two columns read as
+            deliberately separated registers rather than crowding together. */}
+        <div className="mt-[var(--space-lg)] grid gap-[var(--space-xl)] lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-[var(--space-3xl)]">
+          <p className="text-on-dark max-w-[60ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
             {WHAT_WE_ADVISE_ON.body}
           </p>
 
-          {/* Pulled up slightly (-16px at lg) so the index's top rule
-              bridges toward the heading zone and the column reads as
-              anchored to the left body copy rather than floating just
-              below its first line. lg-scoped: the stacked mobile/tablet
-              flow keeps its full gap. */}
-          <div className="lg:-mt-[var(--space-sm)]">
+          <div className="lg:border-l lg:border-white/10 lg:pl-[var(--space-2xl)]">
             <p className="eyebrow text-muted-on-dark">
               {ADVISORY_DISCIPLINES_HEADING}
             </p>

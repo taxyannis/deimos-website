@@ -18,7 +18,7 @@ export function PageHeader({ title, description, eyebrow }: PageHeaderProps) {
   // unchanged.
   const paragraphs = description.split("\n\n");
   return (
-    <section className="section-navy py-[var(--space-section-tight)]">
+    <section className="section-navy pt-[var(--space-section-tight)] pb-[var(--space-xl)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)] [animation:rise-in_700ms_cubic-bezier(0.25,1,0.5,1)_both]">
         {eyebrow && (
           <p className="eyebrow text-muted-on-dark mb-[var(--space-md)]">{eyebrow}</p>

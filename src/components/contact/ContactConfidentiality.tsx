@@ -4,7 +4,7 @@ import { CONTACT_CONFIDENTIALITY_NOTE } from "@/content/contact";
 // sentence, reused verbatim here rather than redrafted.
 export function ContactConfidentiality() {
   return (
-    <section className="section-navy border-t border-white/10 py-[var(--space-section-tight)]">
+    <section className="section-navy border-t border-white/10 py-[var(--space-xl)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         <h2 className="sr-only">Confidentiality &amp; Selective Engagement</h2>
         <div className="grid gap-[var(--space-sm)] lg:grid-cols-[minmax(0,16rem)_1fr] lg:gap-[var(--space-2xl)]">

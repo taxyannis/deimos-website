@@ -21,7 +21,7 @@ const DEFAULT_STATEMENT =
 // stays the single most consequential control on the page.
 export function ClosingContactCTA({ statement }: ClosingContactCTAProps) {
   return (
-    <section className="section-navy texture-contour border-t border-white/10 py-[var(--space-section)]">
+    <section className="section-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         <SectionLabel className="mb-[var(--space-xl)]">Contact</SectionLabel>
 

@@ -8,7 +8,7 @@ import { DIRECT_EMAIL_MAILTO } from "@/content/contact";
 // one real action, per the "hedge travels with the claim" rule).
 export function ContactDirectEmail() {
   return (
-    <section className="section-navy border-t border-white/10 py-[var(--space-section-tight)]">
+    <section className="section-navy border-t border-white/10 py-[var(--space-xl)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         <p className="eyebrow text-muted-on-dark mb-[var(--space-sm)]">Direct Line</p>
         {/* The plain email address is set larger and in the serif so it reads

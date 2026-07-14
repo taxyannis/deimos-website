@@ -25,7 +25,7 @@ export function Footer() {
 
   return (
     <footer className="section-slate border-t border-white/10">
-      <div className="mx-auto max-w-7xl px-[var(--space-md)] pt-[var(--space-2xl)] pb-[var(--space-lg)] sm:px-[var(--space-lg)]">
+      <div className="mx-auto max-w-7xl px-[var(--space-md)] pt-[var(--space-xl)] pb-[var(--space-md)] sm:px-[var(--space-lg)]">
         {/* Masthead row — brand, direct line and firm descriptor on the left,
             grouped nav columns on the right. Kept deliberately compact: a
             single-line descriptor and tight column spacing so the footer reads
@@ -91,15 +91,14 @@ export function Footer() {
           the deep-navy/ink-blue muted-on-dark was calibrated against. Using
           muted-on-dark here measured 2.43:1 in a live audit — see globals.css.
         */}
-        <div className="text-muted-on-slate mt-[var(--space-lg)] flex flex-col gap-[var(--space-xs)] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
+        <div className="text-muted-on-slate mt-[var(--space-md)] flex flex-col gap-[var(--space-2xs)] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
           <p className="max-w-none">{DISCLAIMERS.general}</p>
           <p className="max-w-none">{DISCLAIMERS.jurisdictional}</p>
           <p className="max-w-none">{DISCLAIMERS.capitalAccess}</p>
+          <p className="mt-[var(--space-2xs)] border-t border-white/10 pt-[var(--space-sm)]">
+            © {year} {SITE_NAME}. All rights reserved.
+          </p>
         </div>
-
-        <p className="text-muted-on-slate mt-[var(--space-md)] text-[length:var(--text-small)]">
-          © {year} {SITE_NAME}. All rights reserved.
-        </p>
       </div>
     </footer>
   );
