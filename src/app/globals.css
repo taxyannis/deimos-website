@@ -207,23 +207,23 @@
 */
 @layer components {
   /*
-    Navy bands carry tonal depth rather than a flat fill: a restrained
-    top-to-bottom wash that lifts the top of the band very slightly toward
-    ink-blue and darkens the base toward the foot. Because sections stack, the
-    darkened foot of one band meeting the lifted head of the next reads as a
-    soft tonal separation across the hairline border — controlled institutional
-    depth, no gradients bright enough to register as decoration. Tone-on-tone
-    within the navy family only (ink-blue lift, black shade), so off-white text
-    contrast is unaffected.
+    Navy bands carry tonal depth rather than a flat fill: a single, continuous
+    top-to-bottom wash that lifts the head of the band very slightly toward
+    ink-blue and settles the foot toward black. It is one uninterrupted
+    gradient (a lift stop, a transparent midpoint, a shade stop) with no flat
+    plateaus — the earlier hard stops at 20%/84% produced a faint visible seam,
+    so the transition now eases smoothly across the full height. Because
+    sections stack, the settled foot of one band meeting the lifted head of the
+    next reads as a soft tonal separation across the hairline border. Tone-on-
+    tone within the navy family only, so off-white text contrast is unaffected.
   */
   .section-navy {
     background-color: var(--color-deep-navy);
     background-image: linear-gradient(
       to bottom,
-      color-mix(in oklab, var(--color-ink-blue) 42%, transparent) 0%,
-      transparent 20%,
-      transparent 84%,
-      color-mix(in oklab, black 16%, transparent) 100%
+      color-mix(in oklab, var(--color-ink-blue) 26%, transparent) 0%,
+      transparent 52%,
+      color-mix(in oklab, black 12%, transparent) 100%
     );
     color: var(--color-ink-on-dark);
   }
@@ -232,10 +232,9 @@
     background-color: var(--color-ink-blue);
     background-image: linear-gradient(
       to bottom,
-      color-mix(in oklab, var(--color-off-white) 5%, transparent) 0%,
-      transparent 22%,
-      transparent 82%,
-      color-mix(in oklab, black 18%, transparent) 100%
+      color-mix(in oklab, var(--color-off-white) 4%, transparent) 0%,
+      transparent 54%,
+      color-mix(in oklab, black 13%, transparent) 100%
     );
     color: var(--color-ink-on-dark);
   }
