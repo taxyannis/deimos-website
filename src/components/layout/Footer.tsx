@@ -25,20 +25,20 @@ export function Footer() {
 
   return (
     <footer className="section-slate border-t border-white/10">
-      <div className="mx-auto max-w-7xl px-[var(--space-md)] pt-[var(--space-xl)] pb-[var(--space-md)] sm:px-[var(--space-lg)]">
+      <div className="mx-auto max-w-7xl px-[var(--space-md)] pt-[var(--space-lg)] pb-[var(--space-sm)] sm:px-[var(--space-lg)]">
         {/* Masthead row — brand, email and firm descriptor on the left,
             grouped nav columns on the right. Kept deliberately compact: a
             single-line descriptor and tight column spacing so the footer reads
             as a premium imprint rather than a tall sitemap. */}
-        <div className="grid gap-x-[var(--space-2xl)] gap-y-[var(--space-lg)] border-b border-white/10 pb-[var(--space-lg)] lg:grid-cols-[2fr_1fr_1fr] lg:gap-x-[var(--space-3xl)]">
+        <div className="grid gap-x-[var(--space-2xl)] gap-y-[var(--space-md)] border-b border-white/10 pb-[var(--space-md)] lg:grid-cols-[2fr_1fr_1fr] lg:gap-x-[var(--space-3xl)]">
           <div>
             <Wordmark className="text-[length:var(--text-h3)]" />
-            <p className="text-muted-on-slate mt-[var(--space-xs)] max-w-[38ch] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
+            <p className="text-muted-on-slate mt-[var(--space-2xs)] max-w-[38ch] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
               A global independent strategic advisory firm advising principals, investors and institutions across international markets.
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="text-on-dark mt-[var(--space-sm)] inline-block text-[length:var(--text-body)] underline decoration-white/25 underline-offset-4 transition-colors hover:text-steel-blue hover:decoration-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
+              className="text-on-dark mt-[var(--space-xs)] inline-block text-[length:var(--text-body)] underline decoration-white/25 underline-offset-4 transition-colors hover:text-steel-blue hover:decoration-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
             >
               {CONTACT_EMAIL}
             </a>
@@ -91,7 +91,7 @@ export function Footer() {
           the deep-navy/ink-blue muted-on-dark was calibrated against. Using
           muted-on-dark here measured 2.43:1 in a live audit — see globals.css.
         */}
-        <div className="text-muted-on-slate mt-[var(--space-md)] flex flex-col gap-[var(--space-2xs)] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
+        <div className="text-muted-on-slate mt-[var(--space-sm)] flex flex-col gap-[var(--space-2xs)] text-[length:var(--text-small)] leading-[var(--text-small--line-height)]">
           <p className="max-w-none">{DISCLAIMERS.general}</p>
           <p className="max-w-none">{DISCLAIMERS.jurisdictional}</p>
           <p className="max-w-none">{DISCLAIMERS.capitalAccess}</p>
