@@ -243,13 +243,32 @@
     color: var(--color-ink-on-dark);
   }
 
+  /* Slate band (footer) — same continuous navy-family wash as the darker
+     bands so it doesn't read as a flat block abruptly meeting the smoothly
+     shaded section above it. A gentle ink-blue lift at the head, settling
+     toward black at the foot. */
   .section-slate {
     background-color: var(--color-slate-navy);
+    background-image: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-ink-blue) 22%, transparent) 0%,
+      transparent 55%,
+      color-mix(in oklab, black 11%, transparent) 100%
+    );
     color: var(--color-ink-on-dark);
   }
 
+  /* Light band — a whisper-faint tonal wash in the same direction (barely
+     perceptible on off-white) so light sections transition into their
+     neighbours with the same eased rhythm rather than a hard flat edge. */
   .section-light {
     background-color: var(--color-off-white);
+    background-image: linear-gradient(
+      to bottom,
+      color-mix(in oklab, black 3%, transparent) 0%,
+      transparent 45%,
+      color-mix(in oklab, black 5%, transparent) 100%
+    );
     color: var(--color-ink-on-light);
   }
 
