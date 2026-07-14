@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function CoveragePage() {
   return (
     <>
-      <PageHeader eyebrow="Coverage" title={JURISDICTIONS_HERO.title} description={JURISDICTIONS_HERO.description} />
+      <PageHeader title={JURISDICTIONS_HERO.title} description={JURISDICTIONS_HERO.description} />
       <JurisdictionsExposure />
     </>
   );
