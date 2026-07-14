@@ -211,23 +211,25 @@
 */
 @layer components {
   /*
-    Navy bands carry tonal depth rather than a flat fill: a single, continuous
-    top-to-bottom wash that lifts the head of the band very slightly toward
-    ink-blue and settles the foot toward black. It is one uninterrupted
-    gradient (a lift stop, a transparent midpoint, a shade stop) with no flat
-    plateaus — the earlier hard stops at 20%/84% produced a faint visible seam,
-    so the transition now eases smoothly across the full height. Because
-    sections stack, the settled foot of one band meeting the lifted head of the
-    next reads as a soft tonal separation across the hairline border. Tone-on-
-    tone within the navy family only, so off-white text contrast is unaffected.
+    Band depth WITHOUT edge seams. Earlier revisions lifted each band's head
+    toward ink-blue at 0% and darkened its foot toward black at 100%; because
+    sections stack, that placed a dark foot directly against a lifted head at
+    every boundary — a light/dark reversal that read as a visible seam (most
+    obvious under each subpage banner). The fix: BOTH edges (0% and 100%)
+    return to the base tone (a transparent overlay = the section's own
+    background-color), and the only modulation is a soft glow in the band's
+    interior that dissolves back to base before the foot. Every boundary is
+    therefore base-meets-base and blends seamlessly regardless of the order
+    sections are stacked in. Tone-on-tone within each surface family only, so
+    text contrast is unaffected.
   */
   .section-navy {
     background-color: var(--color-deep-navy);
     background-image: linear-gradient(
       to bottom,
-      color-mix(in oklab, var(--color-ink-blue) 26%, transparent) 0%,
-      transparent 52%,
-      color-mix(in oklab, black 12%, transparent) 100%
+      transparent 0%,
+      color-mix(in oklab, var(--color-ink-blue) 18%, transparent) 24%,
+      transparent 62%
     );
     color: var(--color-ink-on-dark);
   }
@@ -236,38 +238,37 @@
     background-color: var(--color-ink-blue);
     background-image: linear-gradient(
       to bottom,
-      color-mix(in oklab, var(--color-off-white) 4%, transparent) 0%,
-      transparent 54%,
-      color-mix(in oklab, black 13%, transparent) 100%
+      transparent 0%,
+      color-mix(in oklab, var(--color-off-white) 5%, transparent) 24%,
+      transparent 62%
     );
     color: var(--color-ink-on-dark);
   }
 
-  /* Slate band (footer) — same continuous navy-family wash as the darker
-     bands so it doesn't read as a flat block abruptly meeting the smoothly
-     shaded section above it. A gentle ink-blue lift at the head, settling
-     toward black at the foot. */
+  /* Slate band (footer) — same interior-glow, base-at-both-edges wash as the
+     navy bands so its head blends seamlessly into the foot of the last
+     content section above it. */
   .section-slate {
     background-color: var(--color-slate-navy);
     background-image: linear-gradient(
       to bottom,
-      color-mix(in oklab, var(--color-ink-blue) 22%, transparent) 0%,
-      transparent 55%,
-      color-mix(in oklab, black 11%, transparent) 100%
+      transparent 0%,
+      color-mix(in oklab, var(--color-ink-blue) 16%, transparent) 24%,
+      transparent 62%
     );
     color: var(--color-ink-on-dark);
   }
 
-  /* Light band — a whisper-faint tonal wash in the same direction (barely
-     perceptible on off-white) so light sections transition into their
-     neighbours with the same eased rhythm rather than a hard flat edge. */
+  /* Light band — the same base-at-both-edges principle, with a whisper-faint
+     dark interior glow (barely perceptible on off-white) so light sections
+     blend into their neighbours with no hard edge. */
   .section-light {
     background-color: var(--color-off-white);
     background-image: linear-gradient(
       to bottom,
-      color-mix(in oklab, black 3%, transparent) 0%,
-      transparent 45%,
-      color-mix(in oklab, black 5%, transparent) 100%
+      transparent 0%,
+      color-mix(in oklab, black 3%, transparent) 24%,
+      transparent 62%
     );
     color: var(--color-ink-on-light);
   }
