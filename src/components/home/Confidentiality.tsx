@@ -3,6 +3,7 @@ import {
   CONFIDENTIALITY_PRINCIPLES,
   PROCESS_STEPS,
 } from "@/content/homepage";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 // "Mandate Discipline" — the former grey confidentiality box, rebuilt as a
 // premium process/control section inside the dark homepage system rather
@@ -26,27 +27,39 @@ export function Confidentiality() {
   return (
     <section className="ambient-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        <p className="eyebrow text-muted-on-dark mb-[var(--space-lg)]">Engagement</p>
-        <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
-          Mandate Discipline
-        </h2>
+        <SectionLabel index="03" className="mb-[var(--space-lg)]">
+          Engagement
+        </SectionLabel>
 
-        <p className="text-on-dark mt-[var(--space-md)] max-w-[65ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
-          {CONFIDENTIALITY_COPY}
-        </p>
+        {/* Editorial split — the statement carries the left column, the
+            engagement-posture principles form a numbered register on the
+            right, giving the section two columns of structure instead of one
+            paragraph over a middot row. */}
+        <div className="grid gap-[var(--space-xl)] lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-[var(--space-3xl)]">
+          <div>
+            <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
+              Mandate Discipline
+            </h2>
+            <p className="text-on-dark mt-[var(--space-md)] max-w-[55ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-80">
+              {CONFIDENTIALITY_COPY}
+            </p>
+          </div>
 
-        <ul className="text-muted-on-dark mt-[var(--space-lg)] flex flex-wrap items-center gap-y-[var(--space-2xs)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
-          {principles.map((principle, index) => (
-            <li key={principle} className="flex items-center">
-              <span>{principle}</span>
-              {index < principles.length - 1 && (
-                <span aria-hidden="true" className="mx-[var(--space-sm)] text-white/30">
-                  &middot;
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
+          <div className="lg:border-l lg:border-white/10 lg:pl-[var(--space-2xl)]">
+            <p className="eyebrow text-muted-on-dark mb-[var(--space-md)]">Engagement Posture</p>
+            <ul className="border-t border-white/10">
+              {principles.map((principle) => (
+                <li
+                  key={principle}
+                  className="flex items-baseline gap-[var(--space-md)] border-b border-white/10 py-[var(--space-sm)]"
+                >
+                  <span aria-hidden="true" className="mt-[0.55rem] h-[6px] w-[6px] shrink-0 self-start rounded-full bg-steel-blue/60" />
+                  <span className="text-on-dark text-[length:var(--text-body)]">{principle}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
         {/* Process rail — a hairline that draws in from the left as the
             section enters view (rail-line, globals.css; static full-width
@@ -60,13 +73,18 @@ export function Confidentiality() {
         <div className="relative mt-[var(--space-2xl)]">
           <span aria-hidden="true" className="rail-line absolute top-0 left-0 hidden h-px w-full bg-white/15 lg:block" />
           <ol className="grid grid-cols-2 gap-x-[var(--space-lg)] gap-y-[var(--space-lg)] sm:grid-cols-3 lg:grid-cols-6">
-            {PROCESS_STEPS.map((step) => (
+            {PROCESS_STEPS.map((step, index) => (
               <li key={step} className="group relative border-t border-white/15 pt-[var(--space-md)] lg:border-t-0">
                 <span
                   aria-hidden="true"
                   className="absolute top-0 left-0 h-[7px] w-[7px] -translate-y-1/2 rounded-full bg-steel-blue/60 transition-colors group-hover:bg-steel-blue"
                 />
-                <span className="text-muted-on-dark block text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] transition-colors group-hover:text-on-dark">
+                {/* Step index above the label — the rail now enumerates its
+                    controlled sequence explicitly, left to right. */}
+                <span aria-hidden="true" className="metric-figures text-steel-blue block text-[length:var(--text-small)]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-muted-on-dark mt-[var(--space-2xs)] block text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)] transition-colors group-hover:text-on-dark">
                   {step}
                 </span>
               </li>

@@ -1,4 +1,5 @@
 import { FIRM_OPERATING_POSTURE } from "@/content/firm";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 // Operating Posture — the closing section. Three short statements (mandate
 // structure, selective proprietary capability, selective/international
@@ -9,7 +10,9 @@ export function FirmOperatingPosture() {
   return (
     <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        <p className="eyebrow text-muted-on-dark mb-[var(--space-md)]">Standing</p>
+        <SectionLabel index="05" className="mb-[var(--space-lg)]">
+          Standing
+        </SectionLabel>
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {FIRM_OPERATING_POSTURE.heading}
         </h2>
@@ -22,15 +25,21 @@ export function FirmOperatingPosture() {
           </p>
         ))}
 
-        <dl className="mt-[var(--space-xl)] grid gap-x-[var(--space-xl)] border-t border-white/10 sm:grid-cols-2">
+        {/* Posture points as a numbered two-column register — the label sits
+            in the serif with its index above, giving each point the weight of
+            a stated principle rather than a definition-list caption. */}
+        <dl className="mt-[var(--space-2xl)] grid gap-x-[var(--space-2xl)] border-t border-white/10 sm:grid-cols-2">
           {FIRM_OPERATING_POSTURE.points.map((point, index) => (
             <div
               key={point.label}
-              className={`border-b border-white/10 py-[var(--space-md)] ${
+              className={`border-b border-white/10 py-[var(--space-lg)] ${
                 index >= 2 ? "sm:border-b-0" : ""
               }`}
             >
-              <dt className="text-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+              <span aria-hidden="true" className="metric-figures text-steel-blue block text-[length:var(--text-small)]">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <dt className="text-on-dark mt-[var(--space-xs)] text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
                 {point.label}
               </dt>
               <dd className="text-muted-on-dark mt-[var(--space-2xs)] max-w-[52ch] text-[length:var(--text-body)]">
