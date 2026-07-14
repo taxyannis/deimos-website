@@ -40,7 +40,7 @@ export function Confidentiality() {
             <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
               Mandate Discipline
             </h2>
-            <p className="text-on-dark mt-[var(--space-md)] max-w-[55ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-80">
+            <p className="text-on-dark mt-[var(--space-md)] max-w-[34ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-80">
               {CONFIDENTIALITY_COPY}
             </p>
           </div>
@@ -70,7 +70,7 @@ export function Confidentiality() {
             on one row (lg). Below lg the grid wraps to 2–3 rows, so each cell
             carries its own hairline (matching the rail tone) to keep every
             station dot sitting on a line instead of floating. */}
-        <div className="relative mt-[var(--space-2xl)]">
+        <div className="relative mt-[var(--space-xl)]">
           <span aria-hidden="true" className="rail-line absolute top-0 left-0 hidden h-px w-full bg-white/15 lg:block" />
           <ol className="grid grid-cols-2 gap-x-[var(--space-lg)] gap-y-[var(--space-lg)] sm:grid-cols-3 lg:grid-cols-6">
             {PROCESS_STEPS.map((step, index) => (
