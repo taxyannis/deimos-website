@@ -228,7 +228,7 @@ const COVERAGE: Record<string, CoverageEntry> = {
   },
   // Somaliland — reflects actual exposure; not an office/branch/local-team/
   // regulated-presence claim and not a sovereign-recognition statement.
-  Somaliland: { type: "Strategic Market Monitoring", themes: ["Restructuring", "Infrastructure"] },
+  Somaliland: { type: "Strategic Market Monitoring", themes: ["Public-Sector Advisory", "Infrastructure"] },
   Morocco: {
     type: "Market Exposure",
     themes: ["Commodities", "Oil & Gas", "Sports", "Defense & Security"],
