@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { displaySerif, bodySerif } from "@/lib/fonts";
+import { displaySerif, bodySans } from "@/lib/fonts";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { SITE_URL } from "@/content/site";
@@ -40,7 +40,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${displaySerif.variable} ${bodySerif.variable} h-full antialiased`}
+      className={`${displaySerif.variable} ${bodySans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <Nav />

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { ClosingContactCTA } from "@/components/layout/ClosingContactCTA";
 import { JurisdictionsExposure } from "@/components/jurisdictions/JurisdictionsExposure";
 import { JURISDICTIONS_HERO } from "@/content/jurisdictions";
 
@@ -20,13 +19,13 @@ export const metadata: Metadata = {
 // footer, CTAs, page title) and /jurisdictions now permanently redirects
 // here (next.config.ts). Internal component/content module names keep the
 // jurisdictions vocabulary to limit churn; only public-facing language
-// changed. Section order: hero -> map + region filters + disclaimer -> CTA.
+// changed. Section order: hero -> map + region filters + disclaimer. The
+// closing contact band was removed sitewide; the footer carries contact.
 export default function CoveragePage() {
   return (
     <>
       <PageHeader title={JURISDICTIONS_HERO.title} description={JURISDICTIONS_HERO.description} />
       <JurisdictionsExposure />
-      <ClosingContactCTA />
     </>
   );
 }

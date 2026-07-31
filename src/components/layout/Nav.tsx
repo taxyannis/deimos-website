@@ -167,7 +167,16 @@ export function Nav() {
             a hard cut. `inert` (not `hidden`) removes the collapsed panel
             from the tab order and accessibility tree while still allowing
             it to participate in the height transition — `hidden` would
-            skip the animation entirely. */}
+            skip the animation entirely.
+
+            The collapsible grid item (the inner div) carries ONLY
+            min-height:0 + overflow-hidden and no padding/border of its own,
+            so at 0fr it truly resolves to 0px. All visible padding and the
+            top hairline live on the <ul> nested inside it — padding and
+            border are not collapsible, so if they sat on the grid item
+            directly the panel would never shrink below ~49px (their combined
+            height) and the first link would leak below the header when
+            closed. */}
         <div
           id="mobile-nav-panel"
           inert={!menuOpen}
@@ -175,25 +184,27 @@ export function Nav() {
             menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
           }`}
         >
-          <ul className="flex min-h-0 flex-col gap-[var(--space-2xs)] overflow-hidden border-t border-white/10 px-[var(--space-md)] py-[var(--space-md)]">
-            {MAIN_NAV.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={isActive ? "page" : undefined}
-                    className={`block py-[var(--space-2xs)] text-[length:var(--text-body)] transition-colors duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-steel-blue ${
-                      isActive ? "text-steel-blue" : "text-ink-on-dark hover:text-steel-blue active:text-steel-blue"
-                    }`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="min-h-0 overflow-hidden">
+            <ul className="flex flex-col gap-[var(--space-2xs)] border-t border-white/10 px-[var(--space-md)] py-[var(--space-md)]">
+              {MAIN_NAV.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`block py-[var(--space-2xs)] text-[length:var(--text-body)] transition-colors duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-steel-blue ${
+                        isActive ? "text-steel-blue" : "text-ink-on-dark hover:text-steel-blue active:text-steel-blue"
+                      }`}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </header>
     </>

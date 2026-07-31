@@ -1,4 +1,5 @@
 import { WHY_CLIENTS_ENGAGE } from "@/content/firm";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 // Where Deimos Is Useful — a restrained editorial index of the recurring
 // situations the firm is engaged on. Static by design: the page's one
@@ -12,6 +13,9 @@ export function FirmUseful() {
   return (
     <section className="section-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
+        <SectionLabel index="03" className="mb-[var(--space-lg)]">
+          Situations
+        </SectionLabel>
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {WHY_CLIENTS_ENGAGE.heading}
         </h2>

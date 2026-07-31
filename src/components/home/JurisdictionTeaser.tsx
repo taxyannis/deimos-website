@@ -7,6 +7,7 @@ import {
 } from "@/content/homepage";
 import { CoverageMapCanvas } from "@/components/jurisdictions/CoverageMapCanvas";
 import { CTALink } from "@/components/ui/CTALink";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 // Coverage teaser — the exact same map canvas as /coverage
 // (CoverageMapCanvas), rendered STATIC and non-interactive: no onSelect, so
@@ -20,16 +21,28 @@ export function JurisdictionTeaser() {
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
         <div className="grid gap-[var(--space-xl)] lg:grid-cols-2 lg:items-center">
           <div>
+            <SectionLabel index="04" className="mb-[var(--space-lg)]">
+              Coverage
+            </SectionLabel>
             <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
               {JURISDICTION_HEADLINE}
             </h2>
-            <p className="text-on-dark mt-[var(--space-md)] max-w-[55ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-90">
+            <p className="text-on-dark mt-[var(--space-md)] max-w-[55ch] text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] opacity-80">
               {HOMEPAGE_COVERAGE_TEASER}
             </p>
 
-            <ul className="text-muted-on-dark mt-[var(--space-lg)] flex flex-wrap gap-x-[var(--space-md)] gap-y-[var(--space-2xs)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+            {/* Regions as a two-column hairline register rather than a wrapped
+                inline row — reads as a structured coverage index and fills the
+                left column with deliberate weight. */}
+            <ul className="mt-[var(--space-lg)] grid grid-cols-1 gap-x-[var(--space-xl)] border-t border-white/10 sm:grid-cols-2">
               {JURISDICTION_REGIONS.map((region) => (
-                <li key={region}>{region}</li>
+                <li
+                  key={region}
+                  className="text-on-dark flex items-center gap-[var(--space-sm)] border-b border-white/10 py-[var(--space-xs)] text-[length:var(--text-body)]"
+                >
+                  <span aria-hidden="true" className="h-[5px] w-[5px] shrink-0 rounded-full bg-steel-blue/60" />
+                  {region}
+                </li>
               ))}
             </ul>
 

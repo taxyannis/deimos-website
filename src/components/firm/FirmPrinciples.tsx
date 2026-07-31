@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FIRM_PRINCIPLES, FIRM_PRINCIPLES_HEADING } from "@/content/firm";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 // The /firm page's single interactive section. Each row always shows the
 // principle name and a one-line summary; the "+" expands a concise explanation
@@ -19,12 +20,15 @@ export function FirmPrinciples() {
   return (
     <section className="ambient-navy border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
+        <SectionLabel index="01" className="mb-[var(--space-lg)]">
+          Approach
+        </SectionLabel>
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {FIRM_PRINCIPLES_HEADING}
         </h2>
 
         <div className="mt-[var(--space-lg)] divide-y divide-white/10 border-t border-b border-white/10">
-          {FIRM_PRINCIPLES.map((principle) => {
+          {FIRM_PRINCIPLES.map((principle, index) => {
             const isOpen = openId === principle.id;
             const panelId = `firm-principle-${principle.id}`;
             return (
@@ -36,16 +40,26 @@ export function FirmPrinciples() {
                   onClick={() => setOpenId(isOpen ? null : principle.id)}
                   className="group flex w-full cursor-pointer origin-left items-start justify-between gap-[var(--space-md)] py-[var(--space-md)] text-left select-none transition-transform duration-150 ease-out active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
                 >
-                  <span className="flex-1">
+                  <span className="flex flex-1 items-baseline gap-[var(--space-md)] sm:gap-[var(--space-lg)]">
+                    {/* Discipline index — a numbered register for the four
+                        principles, tabular so the column aligns. */}
                     <span
-                      className={`block text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif transition-colors group-hover:text-steel-blue ${
-                        isOpen ? "text-steel-blue" : "text-on-dark"
-                      }`}
+                      aria-hidden="true"
+                      className="metric-figures text-muted-on-dark w-[2ch] shrink-0 text-[length:var(--text-small)]"
                     >
-                      {principle.name}
+                      {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-muted-on-dark mt-[var(--space-3xs)] block max-w-[60ch] text-[length:var(--text-body)]">
-                      {principle.summary}
+                    <span className="min-w-0 flex-1">
+                      <span
+                        className={`block text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif transition-colors group-hover:text-steel-blue ${
+                          isOpen ? "text-steel-blue" : "text-on-dark"
+                        }`}
+                      >
+                        {principle.name}
+                      </span>
+                      <span className="text-muted-on-dark mt-[var(--space-3xs)] block max-w-[60ch] text-[length:var(--text-body)]">
+                        {principle.summary}
+                      </span>
                     </span>
                   </span>
                   <span

@@ -171,9 +171,16 @@ export function Hero() {
       })}
 
       {/* pt floor reserves clearance below the fixed nav wordmark so the
-          (now longer) headline never rides up under it on shorter viewports;
-          justify-center still centres the block on tall screens. */}
-      <div className="relative z-10 flex min-h-dvh flex-col justify-center px-[var(--space-md)] pt-[clamp(6rem,14vh,9rem)] pb-[clamp(10rem,22vh,16rem)] sm:px-[var(--space-lg)]">
+          headline never rides up under it on shorter viewports; justify-center
+          still centres the block on tall screens. The pb floor is sized to
+          fully clear the absolutely-positioned lower-third metric AND the
+          controls beneath it: at 10rem the metric block overlapped the CTAs on
+          short viewports (short phones with browser chrome), so the floor is
+          raised to 14rem — enough to clear the metric+controls even on a
+          ~640px-tall viewport. On a very short screen the content now grows
+          the section past the fold and the metric sits just below it rather
+          than colliding with the buttons. */}
+      <div className="relative z-10 flex min-h-dvh flex-col justify-center px-[var(--space-md)] pt-[clamp(6rem,14vh,9rem)] pb-[clamp(14rem,22vh,16rem)] sm:px-[var(--space-lg)]">
         {/* One quiet rise on first paint (rise-in, globals.css) — mount-time
             only, never scroll-gated, collapsed under reduced motion. */}
         <div className="mx-auto max-w-7xl [animation:rise-in_800ms_cubic-bezier(0.25,1,0.5,1)_both]">

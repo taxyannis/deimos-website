@@ -1,5 +1,6 @@
 import { FIRM_ENGAGEMENT } from "@/content/firm";
 import { DISCLAIMERS } from "@/content/site";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 // How Deimos Engages — the mandate / selective-engagement section. Leads with
 // the shared Mandate Discipline statement (kept prominent per
@@ -13,6 +14,9 @@ export function FirmEngagement() {
   return (
     <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
+        <SectionLabel index="02" className="mb-[var(--space-lg)]">
+          Engagement
+        </SectionLabel>
         <h2 className="text-on-dark text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {FIRM_ENGAGEMENT.heading}
         </h2>
@@ -24,25 +28,28 @@ export function FirmEngagement() {
             it reads as engagement mechanics rather than a second paragraph of
             the same statement. */}
         <div className="mt-[var(--space-xl)] border-t border-white/10 pt-[var(--space-lg)]">
-          <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+          <p className="eyebrow text-muted-on-dark">
             {FIRM_ENGAGEMENT.processLabel}
           </p>
-          <p className="text-on-dark mt-[var(--space-xs)] max-w-[65ch] text-[length:var(--text-body)] opacity-90">
+          <p className="text-on-dark mt-[var(--space-sm)] max-w-[65ch] text-[length:var(--text-body)] opacity-90">
             {FIRM_ENGAGEMENT.process}
           </p>
 
-          <ul className="text-muted-on-dark mt-[var(--space-lg)] flex flex-wrap items-center gap-y-[var(--space-2xs)] text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+          {/* Mandate criteria as a structured hairline grid — reads as the
+              defined conditions the firm engages against, not a runline. */}
+          <dl className="mt-[var(--space-lg)] grid grid-cols-1 gap-x-[var(--space-2xl)] border-t border-white/10 sm:grid-cols-2">
             {FIRM_ENGAGEMENT.criteria.map((criterion, index) => (
-              <li key={criterion} className="flex items-center">
-                <span>{criterion}</span>
-                {index < FIRM_ENGAGEMENT.criteria.length - 1 && (
-                  <span aria-hidden="true" className="mx-[var(--space-sm)] text-white/30">
-                    &middot;
-                  </span>
-                )}
-              </li>
+              <div
+                key={criterion}
+                className="flex items-baseline gap-[var(--space-md)] border-b border-white/10 py-[var(--space-sm)]"
+              >
+                <dt className="metric-figures text-steel-blue w-[2ch] shrink-0 text-[length:var(--text-small)]" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </dt>
+                <dd className="text-on-dark text-[length:var(--text-body)]">{criterion}</dd>
+              </div>
             ))}
-          </ul>
+          </dl>
         </div>
 
         {/* Capital access disclaimer travels with the claim: this section and

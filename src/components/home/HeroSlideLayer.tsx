@@ -134,22 +134,32 @@ export function HeroSlideLayer({
               : `opacity ${HERO_TRANSITION_MS}ms ${PREMIUM_EASE}, transform ${HERO_TRANSITION_MS}ms ${PREMIUM_EASE}`,
         }}
       >
-        {/* Metric, label and supporting line read as ONE centered vertical
-            unit: the block is centered in the viewport width and its three
-            lines share a single text axis. */}
-        <div className="mx-auto max-w-7xl text-center">
-          {/* Every slide's metric renders at the same display size and centred
-              axis — the qualitative slides (Cross-Border, Strategic Assets)
-              align visually with the numeric ones rather than sitting smaller. */}
-          <p className="text-on-dark text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)] tracking-[var(--text-h1--letter-spacing)] font-serif">
-            {slide.metric}
-          </p>
-          <p className="text-muted-on-dark mt-[var(--space-2xs)] max-w-none text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
-            {slide.label}
-          </p>
-          <p className="text-on-dark mx-auto mt-[var(--space-xs)] max-w-[46ch] text-[length:var(--text-body)] opacity-90">
-            {slide.supportingLine}
-          </p>
+        {/* Metric rail — anchored to the same content column as the headline
+            (mx-auto max-w-7xl, matching horizontal padding) rather than
+            floating centred, so the hero reads on one axis. A hairline rule
+            opens the rail; the metric figure + eyebrow label sit on the left
+            margin and the supporting line balances on the right, margin to
+            margin, the way an institutional lower-third resolves. Stacks on
+            mobile. */}
+        <div className="mx-auto max-w-7xl">
+          <div className="hairline flex flex-col gap-[var(--space-sm)] border-t pt-[var(--space-md)] sm:flex-row sm:items-end sm:justify-between sm:gap-[var(--space-2xl)]">
+            <div className="sm:shrink-0">
+              {/* Every slide's metric renders at the same display size — the
+                  qualitative slides (Cross-Border, Strategic Assets) align
+                  visually with the numeric ones rather than sitting smaller.
+                  Tabular figures keep the numeric values optically steady as
+                  the value changes between slides. */}
+              <p className="metric-figures text-on-dark text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)] tracking-[var(--text-h1--letter-spacing)] font-serif">
+                {slide.metric}
+              </p>
+              <p className="eyebrow text-muted-on-dark mt-[var(--space-xs)]">
+                {slide.label}
+              </p>
+            </div>
+            <p className="text-on-dark max-w-[42ch] text-[length:var(--text-body)] leading-[var(--text-body--line-height)] opacity-80 sm:pb-[0.35rem] sm:text-right">
+              {slide.supportingLine}
+            </p>
+          </div>
         </div>
       </div>
     </div>

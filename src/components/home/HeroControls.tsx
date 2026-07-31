@@ -22,7 +22,14 @@ export function HeroControls({
   onTogglePause,
 }: HeroControlsProps) {
   return (
-    <div className="absolute right-[var(--space-md)] bottom-[var(--space-md)] z-10 flex items-center gap-[var(--space-sm)] sm:right-[var(--space-lg)] sm:bottom-[var(--space-lg)]">
+    // Anchored to the same content column as the hero headline and the
+    // lower-third metric (mx-auto max-w-7xl, matching horizontal padding)
+    // rather than jammed into the bottom-right corner, where on a narrow
+    // phone the marks bunched against the right edge and read as cramped and
+    // half-cut. Now the pause control and marks sit on the left margin,
+    // aligned under the metric, fully inside the safe padding on both sides.
+    <div className="absolute inset-x-0 bottom-[var(--space-md)] z-10 px-[var(--space-md)] sm:bottom-[var(--space-lg)] sm:px-[var(--space-lg)]">
+      <div className="mx-auto flex max-w-7xl items-center gap-[var(--space-sm)] sm:justify-end">
       <button
         type="button"
         onClick={onTogglePause}
@@ -41,7 +48,7 @@ export function HeroControls({
         )}
       </button>
 
-      <ol className="flex items-center gap-[var(--space-xs)]" aria-label="Hero slides">
+      <ol className="flex items-center gap-[var(--space-sm)]" aria-label="Hero slides">
         {slides.map((slide, index) => {
           const isCurrent = index === currentIndex;
           return (
@@ -70,6 +77,7 @@ export function HeroControls({
           );
         })}
       </ol>
+      </div>
     </div>
   );
 }

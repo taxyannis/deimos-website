@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { ClosingContactCTA } from "@/components/layout/ClosingContactCTA";
 import { FirmPrinciples } from "@/components/firm/FirmPrinciples";
 import { FirmEngagement } from "@/components/firm/FirmEngagement";
 import { FirmUseful } from "@/components/firm/FirmUseful";
@@ -24,7 +23,8 @@ export const metadata: Metadata = {
 // operating-principles accordion) -> How Deimos Engages (mandate, boundary,
 // process) -> Where Deimos Is Useful (editorial index of situations) ->
 // Selected Exposure (merged /experience content, kept with its disclaimer)
-// -> Operating Posture (independence and discipline) -> contact CTA. No
+// -> Operating Posture (independence and discipline). The closing contact
+// band was removed sitewide; the footer carries the contact path. No
 // leadership/team content anywhere in this sequence — resolved out of v1 scope
 // entirely.
 export default function FirmPage() {
@@ -36,7 +36,6 @@ export default function FirmPage() {
       <FirmUseful />
       <FirmExposure />
       <FirmOperatingPosture />
-      <ClosingContactCTA />
     </>
   );
 }

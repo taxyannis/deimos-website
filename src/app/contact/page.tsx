@@ -3,7 +3,6 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { ContactStatement } from "@/components/contact/ContactStatement";
 import { InquiryCategories } from "@/components/contact/InquiryCategories";
 import { ContactConfidentiality } from "@/components/contact/ContactConfidentiality";
-import { ContactDirectEmail } from "@/components/contact/ContactDirectEmail";
 import { CONTACT_HERO } from "@/content/contact";
 
 const TITLE = "Contact | Deimos Group";
@@ -19,9 +18,10 @@ export const metadata: Metadata = {
 
 // Section order per SITE_COMPLETION_PLAN.md /contact spec: hero -> contact
 // statement -> categorized mailto: inquiry links -> confidentiality/
-// selective-engagement note -> direct email + disclaimer reminder. No
-// ClosingContactCTA here — this page already IS the contact destination
-// every other page's contact CTA points to.
+// selective-engagement note. No ClosingContactCTA here — this page already IS
+// the contact destination every other page's contact CTA points to. The
+// former trailing direct-email + disclaimer block was removed to keep the
+// page sharp; the categorized inquiry links remain the primary routing.
 export default function ContactPage() {
   return (
     <>
@@ -29,7 +29,6 @@ export default function ContactPage() {
       <ContactStatement />
       <InquiryCategories />
       <ContactConfidentiality />
-      <ContactDirectEmail />
     </>
   );
 }

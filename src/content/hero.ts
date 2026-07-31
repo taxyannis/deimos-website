@@ -78,7 +78,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     video: {
       // Rotated to first (was slide-5).
       src: "/videos/hero-historic-riverfront-01.mp4",
-      poster: null,
+      poster: "/posters/hero-historic-riverfront-01.jpg",
       alt: "Aerial view of a historic riverfront old town",
     },
   },
@@ -96,7 +96,7 @@ export const HERO_SLIDES: HeroSlide[] = [
       "Active across selected markets and structuring jurisdictions worldwide.",
     video: {
       src: "/videos/hero-cable-bridge-skyline-01.mp4",
-      poster: null,
+      poster: "/posters/hero-cable-bridge-skyline-01.jpg",
       alt: "Aerial view of a cable-stayed bridge over a dense city skyline",
     },
   },
@@ -108,7 +108,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     supportingLine: "Core pillars of the Deimos operating model.",
     video: {
       src: "/videos/hero-coastline-city-01.mp4",
-      poster: null,
+      poster: "/posters/hero-coastline-city-01.jpg",
       alt: "Aerial view of a dense coastal city built along a steep hillside",
     },
   },
@@ -121,7 +121,7 @@ export const HERO_SLIDES: HeroSlide[] = [
       "Capital, counterparties and process coordination across jurisdictions.",
     video: {
       src: "/videos/hero-dense-skyline-01.mp4",
-      poster: null,
+      poster: "/posters/hero-dense-skyline-01.jpg",
       alt: "Dense overcast skyscraper skyline",
     },
   },
@@ -134,7 +134,7 @@ export const HERO_SLIDES: HeroSlide[] = [
       "Advisory focus across asset-backed transactions and operating businesses.",
     video: {
       src: "/videos/hero-harbor-night-01.mp4",
-      poster: null,
+      poster: "/posters/hero-harbor-night-01.jpg",
       alt: "Night aerial view over a dense harbor-front skyline",
     },
   },

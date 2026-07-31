@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { ClosingContactCTA } from "@/components/layout/ClosingContactCTA";
 import { WhatWeAdviseOn } from "@/components/advisory/WhatWeAdviseOn";
 import { AdvisoryPillars } from "@/components/advisory/AdvisoryPillars";
 import { MandateProcess } from "@/components/advisory/MandateProcess";
@@ -18,7 +17,8 @@ export const metadata: Metadata = {
 };
 
 // Section order per SITE_COMPLETION_PLAN.md /advisory spec:
-// hero -> what we advise on -> 7 pillars -> mandate/process -> contact CTA.
+// hero -> what we advise on -> 7 pillars -> mandate/process. The closing
+// contact band was removed sitewide; the footer carries the contact path.
 export default function AdvisoryPage() {
   return (
     <>
@@ -26,7 +26,6 @@ export default function AdvisoryPage() {
       <WhatWeAdviseOn />
       <AdvisoryPillars />
       <MandateProcess />
-      <ClosingContactCTA />
     </>
   );
 }

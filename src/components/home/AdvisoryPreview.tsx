@@ -5,6 +5,7 @@ import {
   CAPITAL_ACCESS_DISCLAIMER,
 } from "@/content/homepage";
 import { CTALink } from "@/components/ui/CTALink";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 // Editorial index, not cards — per HOMEPAGE_BLUEPRINT.md §8/§18: large label
 // typography, thin rule dividers, one-line definitions in sans, no icons, no
@@ -19,22 +20,38 @@ export function AdvisoryPreview() {
   return (
     <section className="section-dark border-t border-white/10 py-[var(--space-section)]">
       <div className="mx-auto max-w-7xl px-[var(--space-md)] sm:px-[var(--space-lg)]">
-        <h2 className="text-on-dark max-w-[60ch] text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
+        <SectionLabel index="02" className="mb-[var(--space-lg)]">
+          Advisory
+        </SectionLabel>
+        <h2 className="text-on-dark max-w-[40ch] text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif">
           {ADVISORY_INTRO}
         </h2>
 
-        <div className="mt-[var(--space-xl)] divide-y divide-white/10 border-t border-b border-white/10">
-          {ADVISORY_PILLARS.map((pillar) => (
-            <div key={pillar.name} className="group py-[var(--space-md)]">
-              <span
-                tabIndex={0}
-                className="text-on-dark inline-block text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] font-serif transition-colors duration-150 ease-out hover:text-steel-blue focus-visible:text-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
-              >
-                {pillar.name}
-              </span>
-              <p className="text-muted-on-dark mt-[var(--space-2xs)] max-w-[65ch] text-[length:var(--text-body)] sm:max-h-0 sm:overflow-hidden sm:opacity-0 sm:transition-all sm:duration-300 sm:group-hover:max-h-24 sm:group-hover:opacity-100 sm:group-focus-within:max-h-24 sm:group-focus-within:opacity-100">
-                {pillar.definition}
-              </p>
+        <div className="mt-[var(--space-xl)] border-t border-white/10">
+          {ADVISORY_PILLARS.map((pillar, index) => (
+            <div key={pillar.name} className="group border-b border-white/10 py-[var(--space-md)]">
+              <div className="flex items-baseline gap-[var(--space-md)] sm:gap-[var(--space-lg)]">
+                {/* Two-digit index in tabular grotesque — the numbered
+                    capability register shared with /advisory, subordinate to
+                    the serif capability name. */}
+                <span
+                  aria-hidden="true"
+                  className="metric-figures text-muted-on-dark w-[2ch] shrink-0 pt-[0.35rem] text-[length:var(--text-small)]"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <span
+                    tabIndex={0}
+                    className="text-on-dark inline-block text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] tracking-[var(--text-h3--letter-spacing)] font-serif transition-colors duration-150 ease-out hover:text-steel-blue focus-visible:text-steel-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-steel-blue"
+                  >
+                    {pillar.name}
+                  </span>
+                  <p className="text-muted-on-dark mt-[var(--space-2xs)] max-w-[60ch] text-[length:var(--text-body)] sm:max-h-0 sm:overflow-hidden sm:opacity-0 sm:transition-all sm:duration-300 sm:group-hover:mt-[var(--space-xs)] sm:group-hover:max-h-24 sm:group-hover:opacity-100 sm:group-focus-within:mt-[var(--space-xs)] sm:group-focus-within:max-h-24 sm:group-focus-within:opacity-100">
+                    {pillar.definition}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

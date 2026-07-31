@@ -45,14 +45,14 @@ export function JurisdictionDetailPanel({
         key={`j-${jurisdiction.name}`}
         className="flex h-full min-h-[12rem] flex-col justify-center p-[var(--space-lg)] [animation:panel-fade-in_220ms_cubic-bezier(0.25,1,0.5,1)_both]"
       >
-        <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+        <p className="eyebrow text-muted-on-dark">
           {jurisdiction.region}
         </p>
-        <h3 className="text-on-dark mt-[var(--space-3xs)] text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
+        <h3 className="text-on-dark mt-[var(--space-2xs)] text-[length:var(--text-h3)] leading-[var(--text-h3--line-height)] font-serif">
           {jurisdiction.name}
         </h3>
         <div className="mt-[var(--space-sm)] border-t border-white/15 pt-[var(--space-sm)]">
-          <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+          <p className="eyebrow text-muted-on-dark">
             Relevant Themes
           </p>
           {/* Sector, asset, transaction and structuring themes on one restrained
@@ -72,7 +72,7 @@ export function JurisdictionDetailPanel({
         key={`g-${activeGroup.id}`}
         className="flex h-full min-h-[12rem] flex-col p-[var(--space-lg)] [animation:panel-fade-in_220ms_cubic-bezier(0.25,1,0.5,1)_both]"
       >
-        <p className="text-muted-on-dark text-[length:var(--text-label)] tracking-[var(--text-label--letter-spacing)]">
+        <p className="eyebrow text-muted-on-dark">
           {activeGroup.region}
         </p>
         <ul className="scrollbar-dark mt-[var(--space-sm)] max-h-[14rem] overflow-y-auto border-t border-white/15">
