@@ -274,7 +274,7 @@ const COVERAGE: Record<string, CoverageEntry> = {
   Kazakhstan: { type: "Market Exposure", themes: ["Infrastructure", "Oil & Gas", "Commodities"] },
   Uzbekistan: {
     type: "Market Exposure",
-    themes: ["Privatization", "Banking", "Hospitality", "Automotive Manufacturing"],
+    themes: ["Hospitality", "Automotive Manufacturing"],
   },
   Oman: {
     type: "Market Exposure",
