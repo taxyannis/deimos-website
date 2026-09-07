@@ -95,6 +95,5 @@ jobs:
             exit 0
           fi
           git commit -m "Optimize hero video assets and add posters"
+          git pull --rebase origin main
           git push origin HEAD:main
-
-# Triggered after workflow registration on main.
