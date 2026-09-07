@@ -1,0 +1,98 @@
+name: Optimize Hero Media
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/optimize-hero-media.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure ffmpeg is available
+        shell: bash
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Re-encode hero clips and generate WebP posters
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p .hero-media-tmp public/images/video-posters
+
+          encode() {
+            local input="$1"
+            local output="$2"
+            local start="$3"
+            local fps="$4"
+
+            ffmpeg -y \
+              -ss "$start" \
+              -i "$input" \
+              -t 10.6 \
+              -an \
+              -vf "scale=1920:1080:flags=lanczos,fps=${fps}" \
+              -c:v libx264 \
+              -preset medium \
+              -b:v 3200k \
+              -maxrate 3500k \
+              -bufsize 7000k \
+              -pix_fmt yuv420p \
+              -movflags +faststart \
+              ".hero-media-tmp/${output}"
+          }
+
+          # 9.0s active slide + 1.4s outgoing dissolve + 0.2s timing buffer.
+          # Starts preserve the previously selected sequences.
+          encode public/videos/hero-historic-riverfront-01.mp4 hero-historic-riverfront-01.mp4 0 30
+          encode public/videos/hero-cable-bridge-skyline-01.mp4 hero-cable-bridge-skyline-01.mp4 2.2 30
+          encode public/videos/hero-coastline-city-01.mp4 hero-coastline-city-01.mp4 0.8 30
+          encode public/videos/hero-dense-skyline-01.mp4 hero-dense-skyline-01.mp4 0 24000/1001
+          encode public/videos/hero-harbor-night-01.mp4 hero-harbor-night-01.mp4 0 25
+
+          for video in .hero-media-tmp/*.mp4; do
+            base="$(basename "$video" .mp4)"
+            ffmpeg -y \
+              -ss 0.4 \
+              -i "$video" \
+              -frames:v 1 \
+              -vf "scale=1920:1080:flags=lanczos" \
+              -c:v libwebp \
+              -quality 82 \
+              -compression_level 4 \
+              "public/images/video-posters/${base}-poster.webp"
+          done
+
+          mv .hero-media-tmp/*.mp4 public/videos/
+          rmdir .hero-media-tmp
+
+          echo "Optimized asset sizes:"
+          du -h public/videos/*.mp4 public/images/video-posters/*.webp
+
+      - name: Commit optimized media
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/videos public/images/video-posters
+          if git diff --cached --quiet; then
+            echo "No media changes to commit."
+            exit 0
+          fi
+          git commit -m "Optimize hero video assets and add posters"
+          git push origin HEAD:main
