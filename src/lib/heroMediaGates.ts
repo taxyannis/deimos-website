@@ -16,6 +16,11 @@ function getConnection(): NetworkInformationLike | undefined {
     .connection;
 }
 
+// Temporary emergency bandwidth gate. Keep the hero structure and text
+// rotation intact, but prevent every browser from requesting the large MP4
+// assets until the replacement deployment is ready.
+const TEMPORARY_DISABLE_HERO_VIDEO = true;
+
 export function subscribeReducedMotion(callback: () => void) {
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
   mq.addEventListener("change", callback);
@@ -47,6 +52,8 @@ export function subscribeViewportAllowsVideo(callback: () => void) {
 }
 
 export function getViewportAllowsVideoSnapshot() {
+  if (TEMPORARY_DISABLE_HERO_VIDEO) return false;
+
   const isNarrow = window.matchMedia("(max-width: 640px)").matches;
   const connection = getConnection();
   const slowNetwork = Boolean(
