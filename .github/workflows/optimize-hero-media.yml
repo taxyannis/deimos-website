@@ -96,3 +96,5 @@ jobs:
           fi
           git commit -m "Optimize hero video assets and add posters"
           git push origin HEAD:main
+
+# Triggered after workflow registration on main.
