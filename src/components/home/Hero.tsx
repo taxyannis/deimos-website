@@ -107,7 +107,11 @@ export function Hero() {
         );
       })}
 
-      <div className="relative z-10 flex min-h-dvh flex-col justify-center px-[var(--space-md)] pt-[clamp(6rem,14vh,9rem)] pb-[clamp(10rem,22vh,16rem)] sm:px-[var(--space-lg)]">
+      {/* On narrow screens the primary copy is tall enough that the old
+          viewport-relative bottom padding let it enter the absolutely
+          positioned slide-caption zone. Reserve that zone explicitly on
+          mobile; desktop keeps the original fluid spacing. */}
+      <div className="relative z-10 flex min-h-dvh flex-col justify-center px-[var(--space-md)] pt-[clamp(6rem,14vh,9rem)] pb-[18rem] sm:px-[var(--space-lg)] sm:pb-[clamp(10rem,22vh,16rem)]">
         <div className="mx-auto max-w-7xl [animation:rise-in_800ms_cubic-bezier(0.25,1,0.5,1)_both]">
           <h1 className="text-on-dark max-w-[18ch] text-[length:var(--text-display)] leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)] font-serif 2xl:max-w-[24ch]">
             {HERO_HEADLINE}
